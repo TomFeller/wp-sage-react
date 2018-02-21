@@ -4,7 +4,7 @@ import alt   from 'flux/alt/alt.js';
 class DataActions {
 
     constructor() {
-        const appUrl = 'http://andreypokrovskiy.com/projects/wp-api-react'; // Wordpress installation url
+        const appUrl = 'http://127.0.0.1:8082/wordpress'; // Wordpress installation url
 
         this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages`; // Endpoint for getting Wordpress Pages
         this.postsEndPoint = `${appUrl}/wp-json/wp/v2/posts`; // Endpoint for getting Wordpress Posts
