@@ -1,0 +1,44 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  &--layout {
+    border:1px solid red;
+    &-start {
+      justify-content: flex-start;
+    }
+    &-end {
+      justify-content: flex-end;
+    }
+    &-center {
+      justify-content: center;
+    }
+    &-between {
+      justify-content: space-between;
+    }
+    &-around {
+      justify-content: space-around;
+    }
+  }
+  &--wrap {
+    &-wrap {
+      flex-wrap: wrap;
+    }
+    &-nowrap {
+      flex-wrap: nowrap;
+    }
+  }
+  &__cell {
+    padding: $gutter-sm;
+    border:1px solid green;
+    display: flex;
+    & > * {
+      width: 100%;
+    }
+    @include responsive-mtd(
+                    width,
+                    100%,
+                    50%,
+                    25%
+    );
+  }
+}

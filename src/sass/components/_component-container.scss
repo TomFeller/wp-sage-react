@@ -1,0 +1,37 @@
+.container {
+  transition: padding .5s;
+  border: 1px solid;
+  @include responsive-prop(
+                  padding,
+                  0 $gutter,
+                  0 $gutter,
+                  0 1.8rem,
+                  0 9.2rem,
+                  0 12rem,
+                  0 16rem,
+                  0 20rem
+  );
+  &--fluid {
+    padding: 0 $gutter;
+  }
+}
+
+.row {
+  padding: $gutter-sm;
+  border: .1rem solid red;
+  margin-left: -$gutter;
+  margin-right: -$gutter;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cell {
+  padding: $gutter-sm;
+  border:1px solid green;
+  @include responsive-mtd(
+                  width,
+                  100%,
+                  50%,
+                  25%
+  );
+}

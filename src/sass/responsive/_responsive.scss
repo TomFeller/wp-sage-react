@@ -1,0 +1,148 @@
+@mixin viewport-size($media) {
+  @if $media == mobile {
+    @media only screen and (min-width: $viewport-mobile) {
+      @content;
+    }
+  } @else {
+    @if $media == mobile-lg {
+      @media only screen and (min-width: $viewport-mobile-lg) {
+        @content;
+      }
+    } @else {
+      @if $media == tablet {
+        @media only screen and (min-width: $viewport-tablet) {
+          @content;
+        }
+      } @else {
+        @if $media == desktop {
+          @media only screen and (min-width: $viewport-desktop) {
+            @content;
+          }
+        } @else {
+          @if $media == desktop-md {
+            @media only screen and (min-width: $viewport-desktop-md) {
+              @content;
+            }
+          } @else {
+            @if $media == desktop-lg {
+              @media only screen and (min-width: $viewport-desktop-lg) {
+                @content;
+              }
+            } @else {
+              @if $media == wide {
+                @media only screen and (min-width: $viewport-wide) {
+                  @content;
+                }
+              } @else {
+                @media only screen and (min-width: $media + px) {
+                  @content;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin v-mobile() {
+  @include viewport-size(mobile) {
+    @content;
+  }
+;
+}
+
+@mixin v-mobile-lg() {
+  @include viewport-size(mobile-lg) {
+    @content;
+  }
+;
+}
+
+@mixin v-tablet() {
+  @include viewport-size(tablet) {
+    @content;
+  }
+;
+}
+
+@mixin v-desktop() {
+  @include viewport-size(desktop) {
+    @content;
+  }
+;
+}
+
+@mixin v-desktop-md() {
+  @include viewport-size(desktop-md) {
+    @content;
+  }
+;
+}
+
+@mixin v-desktop-lg() {
+  @include viewport-size(desktop-lg) {
+    @content;
+  }
+;
+}
+
+@mixin v-wide() {
+  @include viewport-size(wide) {
+    @content;
+  }
+;
+}
+
+@mixin responsive-prop($property, $m:"", $ml:"", $t:"", $d:"", $dm:"", $dl:"", $w:"" ) {
+  @if $m  != "" {
+    #{$property}: $m;
+  }
+  @if $ml != "" {
+    @include viewport-size(mobile-lg) {
+      #{$property}: $ml;
+    }
+  }
+  @if $t  != "" {
+    @include viewport-size(tablet) {
+      #{$property}: $t;
+    }
+  }
+  @if $d  != "" {
+    @include viewport-size(desktop) {
+      #{$property}: $d;
+    }
+  }
+  @if $dm != "" {
+    @include viewport-size(desktop-md) {
+      #{$property}: $dm;
+    }
+  }
+  @if $dl != "" {
+    @include viewport-size(desktop-lg) {
+      #{$property}: $dl;
+    }
+  }
+  @if $w  != "" {
+    @include viewport-size(wide) {
+      #{$property}: $w;
+    }
+  }
+}
+
+@mixin responsive-mtd($property, $m:"", $t:"", $d:"") {
+  @if $m  != "" {
+    #{$property}: $m;
+  }
+  @if $t != "" {
+    @include viewport-size(tablet) {
+      #{$property}: $t;
+    }
+  }
+  @if $d  != "" {
+    @include viewport-size(desktop) {
+      #{$property}: $d;
+    }
+  }
+}

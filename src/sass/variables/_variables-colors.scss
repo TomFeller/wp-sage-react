@@ -1,0 +1,28 @@
+// Create a colors variables list with: http://chir.ag/projects/name-that-color/#6195ED
+
+// General Colors
+$black: #000;
+$white: #fff;
+$gray: #333;
+$color-primary: purple;
+$color-secondary: blue;
+
+$color-body: #333;
+
+// Link Colors
+$color-link: blue;
+$color-link-visited: pink;
+$color-link-hover: brown;
+
+// Button Colors
+$color-button-background: $gray;
+$color-button-background-hover: pink;
+$color-button-background-focus: pink;
+
+$color-button-text: $white;
+$color-button-text-hover: $white;
+$color-button-text-focus: $white;
+
+$color-button-border: $black;
+$color-button-border-hover: $white;
+$color-button-border-focus: $white;

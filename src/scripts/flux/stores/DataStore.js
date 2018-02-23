@@ -34,8 +34,9 @@ class DataStore {
     }
 
     // Returns all Posts
-    getAllPosts() { 
-        return this.getState().data.posts; 
+    getAllPosts(cat) {
+
+        return this.getState().data.posts;
     }
 
     // Returns a Page by provided slug

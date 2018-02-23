@@ -1,0 +1,173 @@
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #333;
+        text-align: left;
+        padding: 8px;
+        vertical-align: top;
+    }
+    td:first-child {
+        white-space: nowrap;
+    }
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+</style>
+<h1>Responsive Mixins</h1>
+<p>The responsive mixins file is used to build responsive css elements.<br>
+    There are 3 mixins you can include (listed in the table below). <br>
+    All mixins needs to get different kind of parameters. These are the parameters that can used:</p>
+<p><strong>mobile | mobile-lg | tablet | desktop | desktop-lg | wide </strong></p>
+<p>The parameter that will send define witch query to use (with min-width on the query). <br>
+    The viewport variables is in the '_responsive-variable.scss' file.</p>
+
+<h2>Available Mixins:</h2>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>name</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <td>viewport-size</td>
+        <td>Use to add css to a specific query.
+            <br>
+            The mixin can get one of the available queries or a custom number of pixels.
+        </td>
+        <td>
+<pre>
+    <code>
+        .item {
+            @include viewport-size(tablet) {
+                // That code will appear in min-width of $viewport-tablet variable.
+            }
+        }
+    </code>
+</pre>
+        </td>
+    </tr>
+    <tr>
+        <td>responsive-prop</td>
+        <td>Use when need to give different values in every query for specific css property.</td>
+        <td>
+<pre>
+    <code>
+        .item {
+            @include responsive-prop(width, 10px, 20px, 30px, 40px, 50px ,60px, 70px) {
+                // all '.item' class will get the width property in the query sizes respectively.
+            }
+        }
+    </code>
+</pre>
+        </td>
+    </tr>
+    <tr>
+        <td>responsive-mtd</td>
+        <td>Use to add css only for mobile, tablet, and desktop.</td>
+        <td>
+<pre>
+    <code>
+        .item {
+            @include responsive-mtd(width, 10px, 20px, 30px) {
+                // query in mobile tablet and desktop respectively.
+            }
+        }
+    </code>
+</pre>
+        </td>
+    </tr>
+</table>
+
+<h2>Live example:</h2>
+<table border="1" cellpadding="5">
+    <tr>
+        <td>SCSS</td>
+        <Td>CSS</Td>
+    </tr>
+    <tr>
+        <td>
+<pre>
+    <code>
+    .wrapper {
+        @include viewport-size(tablet) {
+            background-color: red;
+        }
+    }
+    </code>
+</pre>
+        </td>
+        <td>
+<pre>
+    <code>
+    @media only screen and (min-width: 768px) {
+        .wrapper {
+            background-color: red; }
+        }
+    }
+    </code>
+</pre>
+        </td>
+    </tr>
+    <tr>
+        <td>
+<pre>
+    <code>
+    .wrapper {
+        @include viewport-size(400) {
+            background-color: blue;
+        }
+    }
+    </code>
+</pre>
+        </td>
+        <td>
+<pre>
+    <code>
+    @media only screen and (min-width: 400px) {
+        .wrapper {
+            background-color: blue;
+        }
+    }
+    </code>
+</pre>
+        </td>
+    </tr>
+    <tr>
+        <td>
+<pre>
+    <code>
+    .wrapper {
+        @include responsive-mtd('width', 100px, 200px, 300px);
+    }
+    </code>
+</pre>
+        </td>
+        <td>
+<pre>
+    <code>
+    .wrapper {
+        width: 100px;
+    }
+
+    @media only screen and (min-width: 768px) {
+        .wrapper {
+            width: 200px;
+        }
+    }
+
+    @media only screen and (min-width: 992px) {
+        .wrapper {
+            width: 300px;
+        }
+    }
+    </code>
+</pre>
+        </td>
+    </tr>
+</table>
