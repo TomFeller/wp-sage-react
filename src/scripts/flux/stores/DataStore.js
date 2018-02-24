@@ -20,6 +20,7 @@ class DataStore {
 
     // Store data returned by getSuccess() in DataActions.js
     handleSuccess(data) {
+        console.log(data);
         this.setState({ data });
     }
 
@@ -34,10 +35,14 @@ class DataStore {
     }
 
     // Returns all Posts
-    getAllPosts(cat) {
-
+    getAllPosts() {
         return this.getState().data.posts;
     }
+
+    getAllMenus() {
+        return this.getState().data.pages;
+    }
+
 
     // Returns a Page by provided slug
     getPageBySlug(slug){

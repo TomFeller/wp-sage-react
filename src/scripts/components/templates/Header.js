@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import DataStore from 'flux/stores/DataStore.js'
+import Menu from '../templates/Menu.js';
 
 class Header extends React.Component {   
    
@@ -9,6 +10,7 @@ class Header extends React.Component {
 
         return (
             <header id="site-header" className="site-header">
+
                 <Link to="/" style={{marginRight: '10px'}} >Home</Link>
 
                 {allPages.map((page) => {

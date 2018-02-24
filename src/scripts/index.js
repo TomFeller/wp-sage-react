@@ -1,11 +1,12 @@
 import {render}             from 'react-dom';
 import DataActions          from 'flux/actions/DataActions.js';
 
-import Header               from 'components/Header.js';
-import Home                 from 'components/Home.js';
-import About                from 'components/About.js';
-import Contact              from 'components/Contact.js';
-import Archive              from 'components/Archive.js';
+import Header               from 'components/templates/Header.js';
+import Menu               from 'components/templates/Menu.js';
+import Home                 from 'components/pages/Home.js';
+import About                from 'components/pages/About.js';
+import Contact              from 'components/pages/Contact.js';
+import Archive              from 'components/pages/Archive.js';
 
 import {
     BrowserRouter as Router,
