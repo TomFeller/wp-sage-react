@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import DataStore from '../../flux/stores/DataStore.js'
 
-class Header extends React.Component {
+ class Header extends React.Component {
 
     render() {
         let allPages = DataStore.getAllPages();

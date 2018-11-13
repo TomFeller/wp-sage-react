@@ -6,6 +6,8 @@ class DataActions {
     constructor() {
         const appUrl = 'http://127.0.0.1:86/wordpress'; // Wordpress installation url
 
+        this.configurationsEndPoint = `${appUrl}/wp-json/wp/v2/configurations?_embed`; // Endpoint for getting Wordpress Configurations
+        this.stylingEndPoint = `${appUrl}/wp-json/wp/v2/configurations/42?_embed`; // Endpoint for getting Wordpress Configurations
         this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages?_embed`; // Endpoint for getting Wordpress Pages
         this.postsEndPoint = `${appUrl}/wp-json/wp/v2/posts?_embed`; // Endpoint for getting Wordpress Posts
     }
@@ -29,11 +31,23 @@ class DataActions {
         return true;
     }
 
+    getStyle(cb) {
+        this.api(this.stylingEndPoint).then((response)=>{
+
+            const payload   = response ;
+
+            this.getSuccess(payload); // Pass returned data to the store
+            cb(payload); // This callback will be used for dynamic rout building
+        });
+        return true;
+    }
+
+
     // Method for getting Posts data
     getPosts(pages, cb){
         this.api(this.postsEndPoint).then((response)=>{
             const posts     = response;
-            const payload   = { pages, posts };
+            const payload   = { pages, posts};
 
             this.getSuccess(payload); // Pass returned data to the store
             cb(payload); // This callback will be used for dynamic rout building

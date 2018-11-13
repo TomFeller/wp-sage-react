@@ -1,3 +1,5 @@
+import DataActions from "../../flux/actions/DataActions";
+
 const Viewport = {
         xs: '320px',
         xs_l: '480px',
@@ -24,14 +26,14 @@ const Viewport = {
         xxs: '1rem',
         xs: '1.3rem',
         sm: '1.8rem',
-        md: '2.4rem',i
+        md: '2.4rem',
         lg: '4rem',
         xl: '6rem',
         jumbo: '9rem'
     },
     Colors = {
-        main: '#5f55d5',
-        sub: '#edcb36',
+        primary: '#5f55d5',
+        secondary: '#edcb36',
         success: '#f2ab41',
         danger: '#6af2d4',
         action: '#3341ad',
@@ -60,7 +62,6 @@ const Viewport = {
             action: '#3341ad',
             error: '#ff0000',
         }
-
     },
     Zindex = {
         xs: '10',
@@ -70,6 +71,7 @@ const Viewport = {
         xl: '50',
         modal: '100',
     };
+
 
 const header_height = '8rem';
 

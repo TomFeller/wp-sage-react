@@ -2,31 +2,31 @@ import {Colors} from "./variables.jsx";
 
 const ColorClasses = () => {
     return (
-        `&-main {
-            background-color: ${Colors.main};
+        `&-primary {
+            background-color: ${Colors.primary};
             color: #000;
             &:hover { 
-                background-color: ${Colors.hover.main};
+                background-color: ${Colors.hover.primary};
             }
             &:focus {
-                background-color: ${Colors.focus.main};
+                background-color: ${Colors.focus.primary};
             }
             &.active {
-                background-color: ${Colors.active.main};
+                background-color: ${Colors.active.primary};
             }
         }
         
-        &-sub {
-            background-color: ${Colors.sub};
+        &-secondary {
+            background-color: ${Colors.secondary};
             color: #000;
             &:hover {
-                background-color: ${Colors.hover.sub};
+                background-color: ${Colors.hover.secondary};
             }
             &:focus {
-                background-color: ${Colors.focus.sub};
+                background-color: ${Colors.focus.secondary};
             }
             &.active {
-                background-color: ${Colors.active.sub};
+                background-color: ${Colors.active.secondary};
             }
         }
         

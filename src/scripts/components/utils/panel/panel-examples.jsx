@@ -25,8 +25,8 @@ class PanelExamples extends React.Component {
                         <Panel className={'test'}>
                             <PanelBody>
                                 <PanelHeader>
-                                    <h2>Bla</h2>
-                                    <h3>Blis</h3>
+                                    <H2>Bla</H2>
+                                    <H3>Blis</H3>
                                 </PanelHeader>
                             </PanelBody>
 

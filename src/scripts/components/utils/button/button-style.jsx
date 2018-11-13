@@ -4,7 +4,7 @@ import {ColorClasses} from "../../style/colors";
 const ButtonStyle = styled.button` 
     &.button {
         font-size: ${props => props.size};
-        padding: ${props => props.gutter};
+        padding: ${props => props.gutter}; 
         border: ${props => props.border};
         ${props => props.block && {display: 'block', width: '100%'}};
         ${props => props.border && {border: props.border}};
