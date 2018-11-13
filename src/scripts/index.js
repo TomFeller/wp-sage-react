@@ -1,11 +1,12 @@
-import {render}             from 'react-dom';
-import DataActions          from 'flux/actions/DataActions.js';
+import React from 'react';
+import {render} from 'react-dom';
+import DataActions from 'flux/actions/DataActions.js';
 
-import Header               from 'components/Header.js';
-import Home                 from 'components/Home.js';
-import About                from 'components/About.js';
-import Contact              from 'components/Contact.js';
-import Archive              from 'components/Archive.js';
+import Header from 'components/header/header';
+import Home from 'components/home';
+import About from 'components/pages/about';
+import Contact from 'components/pages/contact';
+import Archive from 'components/templates/archive';
 
 import {
     BrowserRouter as Router,
@@ -13,6 +14,13 @@ import {
     Redirect,
     Switch
 } from 'react-router-dom';
+import {Single} from "./components/templates/single";
+import AccordionExamples from "./components/utils/accordion/accordion-examples.jsx";
+import GridExamples from "./components/utils/grid/grid-examples.jsx";
+import PanelExamples from "./components/utils/panel/panel-examples";
+import ButtonExamples from "./components/utils/button/button-examples";
+import ModalExamples from "./components/utils/modal/modal-examples";
+import TextExamples from "./components/utils/text/text-examples";
 
 
 class AppInitializer {
@@ -20,35 +28,50 @@ class AppInitializer {
     templates = {
         'about': About,
         'contact': Contact,
-        'archive': Archive
-    }
+        'archive': Archive,
+        'accordion-examples': AccordionExamples,
+        'grid-examples': GridExamples,
+        'text-examples': TextExamples,
+        'panel-examples': PanelExamples,
+        'button-examples': ButtonExamples,
+        'modal-examples': ModalExamples,
+        'post': Single
+    };
 
-    buildRoutes(data){
-        return data.pages.map((page, i) => {
-            return(
-                <Route
-                    key={i}
-                    component={this.templates[page.slug]}
-                    path={`/${page.slug}`}
-                    exact
-                /> 
-            )
-        })     
+    buildRoutes(data) {
+        const allData = data.posts.concat(data.pages);
+
+        return (
+            allData.map((post, i) => {
+                const isPost = post.type === 'post';
+                const C = isPost ? this.templates.post : this.templates[post.slug];
+                return (
+                    <Route
+                        key={i}
+                        component={(props) => <C {...props} {...post}/>}
+                        path={isPost ? `/post/${post.slug}` : `/${post.slug}`}
+                        exact
+                    />
+                )
+            })
+        )
     }
 
     run() {
-        DataActions.getPages((response)=>{
+        DataActions.getPages((response) => {
             render(
                 <Router>
                     <div>
-                        <Header />
+                        <Header/>
 
                         <Switch>
-                            <Route path="/" component={ Home } exact />
+                            <Route path="/" component={Home} exact/>
 
                             {this.buildRoutes(response)}
-                            <Route render={() => { return <Redirect to="/" /> }} />
-                        </Switch> 
+                            <Route render={() => {
+                                return <Redirect to="/"/>
+                            }}/>
+                        </Switch>
                     </div>
                 </Router>
 
