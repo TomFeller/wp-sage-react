@@ -8,19 +8,13 @@ const AccordionWrapper = styled.div`
         
         &_header{
             padding: 1rem;
-            background-color: ${props => props.colors.header.background};
-            color: ${props => props.colors.header.color};
-            &:hover {
-                background-color: ${props => props.colors.headerHover.background};
-                color: ${props => props.colors.headerHover.color};
-            }
+            border: 1px solid;
         }
         
         &_content {    
             padding: 1rem;
             display: none;
-            background-color: ${props => props.colors.content.background};
-            color: ${props => props.colors.content.color};
+            border: 1px solid;
         }
         
         &_section.active {
@@ -28,8 +22,7 @@ const AccordionWrapper = styled.div`
                 display: block;
             }
             .accordion_header {
-                background-color: ${props => props.colors.headerActive.background};
-                color: ${props => props.colors.headerActive.color};
+                
             }
         }
     }

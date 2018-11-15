@@ -53,7 +53,7 @@ class Accordion extends React.Component {
     }
 
     render() {
-        const {sections, className, colors} = this.props,
+        const {sections, className, color} = this.props,
             {activeSections} = this.state;
 
         const classNames = ['accordion', className].join(className ? ' accordion-' : ''),
@@ -78,7 +78,7 @@ class Accordion extends React.Component {
             });
 
         return (
-            <AccordionWrapper className={classNames} colors={colors}>
+            <AccordionWrapper className={classNames} color={color}>
                 {accordionSections}
             </AccordionWrapper>
         )

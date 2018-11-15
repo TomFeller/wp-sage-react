@@ -23,8 +23,7 @@ const
     `;
 
 const
-    PageTitle = styled.h1`
-    font-size: ${FontSize.jumbo}; 
+    PageTitle = styled.h1` 
     font-weight: 100;
     text-align: center;
     color: #000;

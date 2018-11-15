@@ -1,31 +1,21 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import DataStore from '../../flux/stores/DataStore.js'
+import {Container} from 'reactstrap';
+import Navigation from "../navbar/navigation";
 
- class Header extends React.Component {
+class Header extends React.Component {
 
     render() {
-        let allPages = DataStore.getAllPages();
-        allPages = _.sortBy(allPages, [function (page) {
-            return page.menu_order;
-        }]); // Sort pages by order
-
+        const {color} = this.props;
         return (
-            <header id="site-header" className="site-header" style={{marginBottom: '10px'}}>
+            <header id={'site-header'}
+                    className={`site-header
+                    ${color && `bg-${color}`}`}>
 
-                <Link to="/">Home</Link>
-
-                {allPages.map((page) => {
-                    if (page['slug'] !== 'home') {
-                        return (
-                            <Link key={page.id}
-                                  to={`/${page.slug}`}
-                            style={{fontSize: '1.5rem', padding: '0 .5rem'}}>
-                                {page.title.rendered}
-                            </Link>
-                        )
-                    }
-                })}
+                <Container>
+                    <Navigation expand={'md'}
+                                color={color && color}
+                                itemColor={'#fff'}/>
+                </Container>
 
             </header>
         )

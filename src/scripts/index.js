@@ -63,7 +63,8 @@ class AppInitializer {
             render(
                 <Router>
                     <div>
-                        <Header/>
+
+                        <Header color={'primary'}/>
 
                         <Switch>
                             <Route path="/" component={Home} exact/>
