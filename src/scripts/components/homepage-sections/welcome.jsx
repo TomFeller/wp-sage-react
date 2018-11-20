@@ -12,13 +12,10 @@ class Welcome extends React.Component {
             content = homePageData.content.rendered;
 
         return (
-            <div className={'welcome'}>
+            <section className={'section section-welcome mb-3'}>
                 <Jumbotron>
                     <Container>
-                        <Row className={'align-items-center no-border'}>
-                            <Col md={6}>
-                                <Image src={featuredImage} width={'80%'}/>
-                            </Col>
+                        <Row className={'align-items-center justify-content-between no-border'}>
                             <Col md={6}>
                                 <Card body className="text-right" color={'transparent'}>
                                     <CardTitle>{title}</CardTitle>
@@ -26,10 +23,13 @@ class Welcome extends React.Component {
                                     <Button>קרא עוד</Button>
                                 </Card>
                             </Col>
+                            <Col md={6} className={'text-center'}>
+                                <Image src={featuredImage} width={'80%'}/>
+                            </Col>
                         </Row>
                     </Container>
                 </Jumbotron>
-            </div>
+            </section>
         )
     }
 }

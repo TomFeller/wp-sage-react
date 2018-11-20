@@ -1,8 +1,9 @@
 import React from 'react'
 import DataStore from "../../flux/stores/DataStore";
-import {Container, Media} from 'reactstrap';
+import {Container, Row, Col, Card, CardBody, CardTitle, CardText} from 'reactstrap';
 import Archive from "../templates/archive";
 import Slider from "../utils/slider/Slider";
+import Image from "../utils/image/image";
 
 class Recommendations extends React.Component {
     constructor(props) {
@@ -18,14 +19,25 @@ class Recommendations extends React.Component {
 
     componentDidMount() {
         const {allRecommendations} = this.state;
-        const sliderItems = allRecommendations.map((recommendation, r) => {
-
-        const featuredImage = recommendation._embedded['wp:featuredmedia']['0'].source_url;
-            return ({
-                src: featuredImage,
-                altText: recommendation.title.rendered,
-                caption: <div dangerouslySetInnerHTML={{__html: recommendation.content.rendered}}/>
-            })
+        const sliderItems = allRecommendations.map((rec, r) => {
+            const featuredImage = rec._embedded['wp:featuredmedia']['0'].source_url,
+                title = rec.title.rendered,
+                content = rec.content.rendered;
+            return (
+                <Row key={r}>
+                    <Col sm={3}>
+                        <Image src={featuredImage}/>
+                    </Col>
+                    <Col sm={9}>
+                        <Card className={'text-right'}>
+                            <CardBody>
+                                <CardTitle>{title}</CardTitle>
+                                <CardText dangerouslySetInnerHTML={{__html: content}}/>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                </Row>
+            )
         });
 
         this.setState({
@@ -36,11 +48,11 @@ class Recommendations extends React.Component {
     render() {
         const {sliderItems} = this.state;
         return (
-            <div className={'recommendations'}>
+            <section className={'section section-recommendations mb-3'}>
                 <Container>
                     <Slider items={sliderItems}/>
                 </Container>
-            </div>
+            </section>
         )
     }
 }

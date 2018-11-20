@@ -22,6 +22,7 @@ import PanelExamples from "./components/utils/panel/panel-examples";
 import ButtonExamples from "./components/utils/button/button-examples";
 import ModalExamples from "./components/utils/modal/modal-examples";
 import TextExamples from "./components/utils/text/text-examples";
+import Footer from "./components/footer/footer";
 
 
 class AppInitializer {
@@ -74,6 +75,8 @@ class AppInitializer {
                                 return <Redirect to="/"/>
                             }}/>
                         </Switch>
+
+                        <Footer color={'secondary'}/>
                     </div>
                 </Router>
 

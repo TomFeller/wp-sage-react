@@ -1,22 +1,11 @@
 import React from 'react';
-import DataStore from '../flux/stores/DataStore.js'
-import classnames from "classnames";
-import Archive from "./templates/archive";
 import {PageWrapper} from "./templates/page-wrapper.jsx";
-import {Jumbotron, Container, Row, Col} from 'reactstrap';
-import {Card, CardTitle, CardText, CardImg, CardBody, CardSubtitle} from 'reactstrap';
 
-import Slider from "./utils/slider/Slider";
-import Image from "./utils/image/image";
-import Tabs from "./utils/tabs/tabs";
-import TooltipItem from "./utils/tooltip/tooltip";
-import PopoverItem from "./utils/popover/popover";
 import Welcome from "./homepage-sections/welcome";
 import Treatments from "./homepage-sections/treatments";
 import Articles from "./homepage-sections/articles";
 import Recommendations from "./homepage-sections/recommendations";
-import Faq from "./homepage-sections/faq";
-import Accordion from "./utils/accordion/accordion";
+import Faq from "./homepage-sections/faq.jsx";
 
 class Home extends React.Component {
     render() {
@@ -36,12 +25,12 @@ class Home extends React.Component {
                 content: <div>CONTENT 4</div>
             }];
         return (
-            <PageWrapper>
+            <PageWrapper className={'homepage'}>
                 <Welcome/>
                 <Recommendations/>
                 <Treatments/>
                 <Articles/>
-                 <Faq/>
+                <Faq/>
             </PageWrapper>
         );
     }

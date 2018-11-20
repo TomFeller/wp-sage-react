@@ -6,6 +6,9 @@ import {
     CarouselIndicators,
     CarouselCaption
 } from 'reactstrap';
+import {HBox, VBox, Element,} from 'react-stylesheet';
+import Image from "../image/image";
+
 
 class Slider extends React.Component {
     constructor(props) {
@@ -51,13 +54,10 @@ class Slider extends React.Component {
 
         const slides = items.map((item, i) => {
             return (
-                <CarouselItem
-                    onExiting={this.onExiting}
-                    onExited={this.onExited}
-                    key={i}>
-                    <img src={item.src} alt={item.altText} width={'100%'}/>
-
-                    <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+                <CarouselItem onExiting={this.onExiting}
+                              onExited={this.onExited}
+                              key={i}>
+                    {item}
                 </CarouselItem>
             );
         });
