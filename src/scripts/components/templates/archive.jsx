@@ -3,12 +3,18 @@ import DataStore from '../../flux/stores/DataStore.js';
 import {Post} from "./post";
 import {PageTitle} from '../style/style';
 import {Row, Col} from 'reactstrap';
+import DataActions from "../../flux/actions/DataActions";
 
 
 class Archive extends React.Component {
+    constructor(props) {
+        super(props);
+
+
+    }
     render() {
-        const {title} = this.props,
-            archiveData = DataStore.getAllPosts();
+        const {title, category} = this.props,
+            archiveData = category ? DataStore.getPostsByCategory(category) : DataStore.getAllPosts()
 
         let getArchivePosts = archiveData.map((post, i) => {
             return (

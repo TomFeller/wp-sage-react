@@ -14,7 +14,8 @@ class DataStore {
             getAll:         this.getAll,
             getAllPages:    this.getAllPages,
             getAllPosts:    this.getAllPosts,
-            getPageBySlug:  this.getPageBySlug
+            getPageBySlug:  this.getPageBySlug,
+            getPostsByCategory: this.getPostsByCategory
         });
     }
 
@@ -33,10 +34,18 @@ class DataStore {
         return this.getState().data.pages; 
     }
 
-    // Returns all Posts
-    getAllPosts(cat) {
+    getAllCategories() {
+        return this.getState().data.categories;
+    }
 
+    // Returns all Posts
+    getAllPosts() {
         return this.getState().data.posts;
+    }
+
+    getPostsByCategory(cat) {
+        const allPosts = this.getState().data.posts;
+        return allPosts.filter(post => post.categories.some(category => category === cat))
     }
 
     // Returns a Page by provided slug

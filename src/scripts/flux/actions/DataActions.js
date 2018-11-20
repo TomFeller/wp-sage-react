@@ -10,6 +10,7 @@ class DataActions {
         this.stylingEndPoint = `${appUrl}/wp-json/wp/v2/configurations/42?_embed`; // Endpoint for getting Wordpress Configurations
         this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages?_embed`; // Endpoint for getting Wordpress Pages
         this.postsEndPoint = `${appUrl}/wp-json/wp/v2/posts?_embed`; // Endpoint for getting Wordpress Posts
+        this.categoriesEndPoint = `${appUrl}/wp-json/wp/v2/categories?_embed`; // Endpoint for getting Wordpress Posts
     }
 
     // Method for getting data from the provided end point url
@@ -35,6 +36,17 @@ class DataActions {
         this.api(this.stylingEndPoint).then((response)=>{
 
             const payload   = response ;
+
+            this.getSuccess(payload); // Pass returned data to the store
+            cb(payload); // This callback will be used for dynamic rout building
+        });
+        return true;
+    }
+
+    getCategories(pages, cb){
+        this.api(this.categoriesEndPoint).then((response)=>{
+            const categories     = response;
+            const payload   = {pages, categories};
 
             this.getSuccess(payload); // Pass returned data to the store
             cb(payload); // This callback will be used for dynamic rout building

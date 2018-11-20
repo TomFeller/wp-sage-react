@@ -3,7 +3,7 @@ import DataStore from '../flux/stores/DataStore.js'
 import classnames from "classnames";
 import Archive from "./templates/archive";
 import {PageWrapper} from "./templates/page-wrapper.jsx";
-import {Container, Button} from 'reactstrap';
+import {Jumbotron, Container, Button} from 'reactstrap';
 import {Card, CardTitle, CardText, CardImg, CardBody, CardSubtitle} from 'reactstrap';
 
 import Slider from "./utils/slider/Slider";
@@ -63,10 +63,24 @@ class Home extends React.Component {
             <PageWrapper>
 
                 <Slider items={items}/>
-
+                <div>
+                    <Jumbotron>
+                        <Container>
+                            <h1 className="display-3">Hello, world!</h1>
+                            <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for
+                                calling extra attention to featured content or information.</p>
+                            <hr className="my-2"/>
+                            <p>It uses utility classes for typography and spacing to space content out within the larger
+                                container.</p>
+                            <p className="lead">
+                                <Button color="primary">Learn More</Button>
+                            </p>
+                        </Container>
+                    </Jumbotron>
+                </div>
                 <Container>
 
-                    <Archive title={'Archive'}/>
+                    <Archive title={'Archive'} category={3}/>
 
                     <Accordion className={'test'}
                                sections={accordion}
