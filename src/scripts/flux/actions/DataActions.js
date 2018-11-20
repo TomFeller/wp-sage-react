@@ -4,13 +4,16 @@ import alt   from '../../flux/alt/alt.js';
 class DataActions {
 
     constructor() {
-        const appUrl = 'http://127.0.0.1:86/wordpress'; // Wordpress installation url
+        const appUrl = 'http://127.0.0.1:88/wordpress'; // Wordpress installation url
 
-        this.configurationsEndPoint = `${appUrl}/wp-json/wp/v2/configurations?_embed`; // Endpoint for getting Wordpress Configurations
-        this.stylingEndPoint = `${appUrl}/wp-json/wp/v2/configurations/42?_embed`; // Endpoint for getting Wordpress Configurations
-        this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages?_embed`; // Endpoint for getting Wordpress Pages
-        this.postsEndPoint = `${appUrl}/wp-json/wp/v2/posts?_embed`; // Endpoint for getting Wordpress Posts
-        this.categoriesEndPoint = `${appUrl}/wp-json/wp/v2/categories?_embed`; // Endpoint for getting Wordpress Posts
+        this.configurationsEndPoint = `${appUrl}/wp-json/wp/v2/configurations?_embed`;
+        this.stylingEndPoint = `${appUrl}/wp-json/wp/v2/configurations/42?_embed`;
+        this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages?_embed`;
+        this.postsEndPoint = `${appUrl}/wp-json/wp/v2/posts?_embed&per_page=100`;
+        this.treatmentsEndPoint = `${appUrl}/wp-json/wp/v2/treatments?_embed&per_page=100`;
+        this.articlesEndPoint = `${appUrl}/wp-json/wp/v2/letters_articles?_embed&per_page=100`;
+        this.recommendationsEndPoint = `${appUrl}/wp-json/wp/v2/recommendations?_embed&per_page=100`;
+        this.categoriesEndPoint = `${appUrl}/wp-json/wp/v2/categories?_embed`;
     }
 
     // Method for getting data from the provided end point url
@@ -57,12 +60,17 @@ class DataActions {
 
     // Method for getting Posts data
     getPosts(pages, cb){
-        this.api(this.postsEndPoint).then((response)=>{
-            const posts     = response;
-            const payload   = { pages, posts};
+        this.api(this.postsEndPoint).then((posts)=> {
+            this.api(this.treatmentsEndPoint).then((treatments)=>{
+                this.api(this.articlesEndPoint).then((articles)=>{
+                    this.api(this.recommendationsEndPoint).then((recommendations)=> {
+                        const payload = {pages, posts, treatments,  articles, recommendations};
+                        this.getSuccess(payload); // Pass returned data to the store
+                        cb(payload); // This callback will be used for dynamic rout building
+                    })
+                })
 
-            this.getSuccess(payload); // Pass returned data to the store
-            cb(payload); // This callback will be used for dynamic rout building
+            });
         });
         return true;
     }

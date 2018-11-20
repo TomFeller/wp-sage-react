@@ -56,7 +56,8 @@ class Slider extends React.Component {
                     onExited={this.onExited}
                     key={i}>
                     <img src={item.src} alt={item.altText} width={'100%'}/>
-                    <CarouselCaption captionText={item.caption} captionHeader={item.caption}/>
+
+                    <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
                 </CarouselItem>
             );
         });
@@ -65,10 +66,11 @@ class Slider extends React.Component {
             <Carousel
                 activeIndex={activeIndex}
                 next={this.next}
-                previous={this.previous}
-            >
+                previous={this.previous}>
                 <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex}/>
+
                 {slides}
+
                 <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}/>
                 <CarouselControl direction="next" directionText="Next" onClickHandler={this.next}/>
             </Carousel>

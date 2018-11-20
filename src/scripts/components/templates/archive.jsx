@@ -12,18 +12,27 @@ class Archive extends React.Component {
 
 
     }
+
     render() {
-        const {title, category} = this.props,
-            archiveData = category ? DataStore.getPostsByCategory(category) : DataStore.getAllPosts()
+        const {title, category, posts, max, postSize} = this.props,
+
+            archiveData = posts ? posts : category ? DataStore.getPostsByCategory(category) : DataStore.getAllPosts();
+
+        
 
         let getArchivePosts = archiveData.map((post, i) => {
-            return (
-                <Col sm={6} md={4} lg={3} key={i}>
-                    <Post id={post.id}
-                          className={post['slug']}
-                          {...post}/>
-                </Col>
-            )
+            if (max && i < max) {
+                return (
+                    <Col sm={postSize && postSize.xs ? postSize.xs : 12}
+                         md={postSize && postSize.md ? postSize.md : 6}
+                         lg={postSize && postSize.lg ? postSize.lg : 6}
+                         key={i}>
+                        <Post id={post.id}
+                              className={post['slug']}
+                              {...post}/>
+                    </Col>
+                )
+            }
         });
 
         return (

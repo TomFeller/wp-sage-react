@@ -14,7 +14,11 @@ class DataStore {
             getAll:         this.getAll,
             getAllPages:    this.getAllPages,
             getAllPosts:    this.getAllPosts,
+            getAllTreatments: this.getAllTreatments,
+            getAllArticles: this.getAllArticles,
+            getAllRecommendations: this.getAllRecommendations,
             getPageBySlug:  this.getPageBySlug,
+            getPagesByCustomFields: this.getPagesByCustomFields,
             getPostsByCategory: this.getPostsByCategory
         });
     }
@@ -43,6 +47,18 @@ class DataStore {
         return this.getState().data.posts;
     }
 
+    getAllTreatments() {
+        return this.getState().data.treatments;
+    }
+
+    getAllRecommendations() {
+        return this.getState().data.recommendations;
+    }
+
+    getAllArticles() {
+        return this.getState().data.articles;
+    }
+
     getPostsByCategory(cat) {
         const allPosts = this.getState().data.posts;
         return allPosts.filter(post => post.categories.some(category => category === cat))
@@ -54,6 +70,11 @@ class DataStore {
         return pages[Object.keys(pages).find((page, i) => {
             return pages[page].slug === slug;
         })] || {};
+    }
+
+    getPagesByCustomFields(field){
+        const pages = this.getState().data.pages;
+        return pages.filter(page => page.acf[field]);
     }
 
 }
