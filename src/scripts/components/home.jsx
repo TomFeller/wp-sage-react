@@ -6,6 +6,7 @@ import Treatments from "./homepage-sections/treatments";
 import Articles from "./homepage-sections/articles";
 import Recommendations from "./homepage-sections/recommendations";
 import Faq from "./homepage-sections/faq.jsx";
+import Videos from "./homepage-sections/videos";
 
 class Home extends React.Component {
     render() {
@@ -30,6 +31,7 @@ class Home extends React.Component {
                 <Recommendations/>
                 <Treatments/>
                 <Articles/>
+                <Videos/>
                 <Faq/>
             </PageWrapper>
         );

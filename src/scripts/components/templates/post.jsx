@@ -9,7 +9,7 @@ import {
 const Post = ({post, className, id, ...props}) => {
     const classNames = ['post', className].join(className ? ' post-' : '');
     const postImageUrl = props._embedded && props._embedded["wp:featuredmedia"] && props._embedded["wp:featuredmedia"][0].source_url;
-    const {title, content, slug} = props;
+    const {title, content, excerpt, slug} = props;
 
     return (
         <div id={`post-${id}`} className={classNames}>
@@ -17,7 +17,7 @@ const Post = ({post, className, id, ...props}) => {
                 <CardImg top width="100%" src={postImageUrl}/>
                 <CardBody>
                     <CardTitle>{title.rendered}</CardTitle>
-                    {/*<CardText dangerouslySetInnerHTML={{__html: content.rendered}}/>*/}
+                    <CardText dangerouslySetInnerHTML={{__html: excerpt.rendered}}/>
                     <Link to={`/post/${slug}`}>
                         <Button>קרא עוד</Button>
                     </Link>

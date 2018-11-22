@@ -26,7 +26,8 @@ class Archive extends React.Component {
                     <Col sm={postSize && postSize.xs ? postSize.xs : 12}
                          md={postSize && postSize.md ? postSize.md : 6}
                          lg={postSize && postSize.lg ? postSize.lg : 6}
-                         key={i}>
+                         key={i}
+                         className={'my-3'}>
                         <Post id={post.id}
                               className={post['slug']}
                               {...post}/>

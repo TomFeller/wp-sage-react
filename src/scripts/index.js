@@ -23,6 +23,7 @@ import ButtonExamples from "./components/utils/button/button-examples";
 import ModalExamples from "./components/utils/modal/modal-examples";
 import TextExamples from "./components/utils/text/text-examples";
 import Footer from "./components/footer/footer";
+import SvgBackground from "./components/utils/svg/svg-background";
 
 
 class AppInitializer {
@@ -65,7 +66,7 @@ class AppInitializer {
                 <Router>
                     <div>
 
-                        <Header color={'primary'}/>
+                        <Header color={'primary'} fixed/>
 
                         <Switch>
                             <Route path="/" component={Home} exact/>

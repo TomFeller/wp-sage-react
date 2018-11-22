@@ -10,19 +10,17 @@ class Articles extends React.Component {
         const allArticles = DataStore.getAllArticles();
 
         return (
-            <section className={'section section-articles mb-3'}>
+            <section className={'section section-articles'}>
                 <Container>
-                    <ShadowFrame>
-                        <Archive max={6}
-                                 posts={allArticles}
-                                 postSize={{
-                                     sm: 6,
-                                     md: 4,
-                                     lg: 4
+                    <Archive max={6}
+                             posts={allArticles}
+                             postSize={{
+                                 sm: 6,
+                                 md: 4,
+                                 lg: 4
 
-                                 }}
-                                 title={'מאמרים'}/>
-                    </ShadowFrame>
+                             }}
+                             title={'מאמרים'}/>
                 </Container>
             </section>
         )

@@ -1,17 +1,29 @@
 import React from 'react';
+import styled from 'styled-components';
+import {Gutter} from "../style/style";
 
 const PageWrapper = ({content, className, ...props}) => {
     const classNames = ['site-content', className].join(" ");
 
     return (
-        <div id={'site-content'}{...props}
-             className={classNames}
-             style={pageWrapper}>
+        <Wrapper id={'site-content'}
+                 className={classNames}
+                 {...props}>
             {props.children}
-        </div>
+        </Wrapper>
     )
 };
 
 export {PageWrapper}
 
-const pageWrapper = {};
+const Wrapper = styled.div`
+    &.homepage {
+        .section {
+            padding: ${Gutter.xl} 0;
+            
+            &-welcome {
+                padding-top: 10rem;
+            }
+         }
+    }
+`;

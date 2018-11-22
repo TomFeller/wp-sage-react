@@ -17,6 +17,7 @@ class DataStore {
             getAllTreatments: this.getAllTreatments,
             getAllArticles: this.getAllArticles,
             getAllRecommendations: this.getAllRecommendations,
+            getAllVideos: this.getAllVideos,
             getPageBySlug:  this.getPageBySlug,
             getPagesByCustomFields: this.getPagesByCustomFields,
             getPostsByCategory: this.getPostsByCategory
@@ -53,6 +54,10 @@ class DataStore {
 
     getAllRecommendations() {
         return this.getState().data.recommendations;
+    }
+
+    getAllVideos() {
+        return this.getState().data.videos;
     }
 
     getAllArticles() {

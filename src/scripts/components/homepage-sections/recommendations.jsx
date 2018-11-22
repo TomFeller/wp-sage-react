@@ -29,7 +29,7 @@ class Recommendations extends React.Component {
                         <Image src={featuredImage}/>
                     </Col>
                     <Col sm={9}>
-                        <Card className={'text-right'}>
+                        <Card className={'text-right border-0'}>
                             <CardBody>
                                 <CardTitle>{title}</CardTitle>
                                 <CardText dangerouslySetInnerHTML={{__html: content}}/>
@@ -48,7 +48,7 @@ class Recommendations extends React.Component {
     render() {
         const {sliderItems} = this.state;
         return (
-            <section className={'section section-recommendations mb-3'}>
+            <section className={'section section-recommendations my-5'}>
                 <Container>
                     <Slider items={sliderItems}/>
                 </Container>

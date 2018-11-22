@@ -5,12 +5,8 @@ class Accordion extends React.Component {
     constructor(props) {
         super(props);
         this.handleHeaderClick = this.handleHeaderClick.bind(this);
-
-        const {collapsible} = this.props;
-
         this.state = {
-            activeSections: [],
-            collapsible: collapsible,
+            activeSections: []
         }
     }
 
@@ -24,7 +20,8 @@ class Accordion extends React.Component {
     }
 
     handleHeaderClick(e) {
-        const {activeSections, collapsible, minOne} = this.state,
+        const {activeSections, minOne} = this.state,
+            {collapsible} = this.props,
             section = e.target.closest('.accordion_section'),
             index = parseInt(section.getAttribute('data-index')),
             action = activeSections.some(section => section === index) ? 0 : 1, // 0 = close section; 1 = open section;

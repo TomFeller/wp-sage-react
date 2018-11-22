@@ -1,7 +1,7 @@
 import React from 'react'
 import DataStore from "../../flux/stores/DataStore";
 import {Container} from 'reactstrap';
-import {H4, H2} from "../style/style";
+import {H6, H3, ShadowFrame} from "../style/style";
 
 import Accordion from "../utils/accordion/accordion";
 
@@ -11,22 +11,23 @@ class Faq extends React.Component {
         const faqPage = DataStore.getPageBySlug('faq');
         const accordionItems = [];
         for (let i = 1; i < 6; i++) {
+            const {question, answer} = faqPage.acf[i];
 
-            const item = faqPage.acf[i];
-            if (item.question !== '') {
+            if (question !== '') {
                 accordionItems.push({
-                    header: <H4>{item.question}</H4>,
-                    content: <p>{item.answer}</p>
+                    header: <H6>{question}</H6>,
+                    content: <p>{answer}</p>
                 });
             }
-
         }
 
         return (
             <section className={'section section-faq mb-3'}>
                 <Container>
-                    <H2 className={'display-2'}>שאלות נפוצות</H2>
-                    <Accordion sections={accordionItems}/>
+                    <ShadowFrame>
+                        <H3>שאלות נפוצות</H3>
+                        <Accordion sections={accordionItems}/>
+                    </ShadowFrame>
                 </Container>
             </section>
         )
