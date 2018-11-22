@@ -25,10 +25,10 @@ class Recommendations extends React.Component {
                 content = rec.content.rendered;
             return (
                 <Row key={r}>
-                    <Col sm={3}>
+                    <Col sm={4}>
                         <Image src={featuredImage}/>
                     </Col>
-                    <Col sm={9}>
+                    <Col sm={8}>
                         <Card className={'text-right border-0'}>
                             <CardBody>
                                 <CardTitle>{title}</CardTitle>

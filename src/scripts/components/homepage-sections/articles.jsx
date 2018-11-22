@@ -3,6 +3,7 @@ import DataStore from "../../flux/stores/DataStore";
 import {Container} from 'reactstrap';
 import Archive from "../templates/archive";
 import {ShadowFrame} from '../style/style';
+import Masonary from "../utils/masonary/masonary";
 
 class Articles extends React.Component {
     render() {
@@ -12,6 +13,7 @@ class Articles extends React.Component {
         return (
             <section className={'section section-articles'}>
                 <Container>
+
                     <Archive max={6}
                              posts={allArticles}
                              postSize={{

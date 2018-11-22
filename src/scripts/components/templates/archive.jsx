@@ -39,7 +39,7 @@ class Archive extends React.Component {
         return (
             <div className={'archive'}>
 
-                <H2 className={'archive-title display-2'}>{title}</H2>
+                <H2 className={'archive-title display-3 text-center mt-3 mb-5'}>{title}</H2>
 
                 <div className={'archive-posts'}>
                     <Row>

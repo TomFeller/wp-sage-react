@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
 
 import {
     Collapse,
@@ -10,12 +11,11 @@ import {
     NavItem,
     NavLink,
     UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem
+    Dropdown, DropdownItem, DropdownToggle, DropdownMenu
 } from 'reactstrap';
 import DataStore from "../../flux/stores/DataStore";
 import DataActions from "../../flux/actions/DataActions";
+import Image from "../utils/image/image";
 
 class Navigation extends React.Component {
     constructor(props) {
@@ -50,7 +50,7 @@ class Navigation extends React.Component {
         }
 
         this.setState({
-            menuItems: parents
+            navItems: parents
         })
     }
 
@@ -66,40 +66,102 @@ class Navigation extends React.Component {
         //     return page.menu_order;
         // }]); // Sort pages by order
 
-        const {menuItems} = this.state;
+        const {navItems} = this.state;
         const {expand, color, itemColor} = this.props;
 
         return (
-            <div>
-                <Navbar color={color ? color : 'light'}
-                        expand={expand ? expand : 'md'}
-                        light>
-
+            <Wrapper>
+                <Navbar expand={expand ? expand : 'md'}>
                     <div className={'px-3'}>
-                        <Link to="/" style={{color: itemColor ? itemColor : '#000'}}>Home</Link>
+                        <Link to="/" style={{color: itemColor ? itemColor : '#000'}}>
+                            <Image src={'http://127.0.0.1:88/wordpress/wp-content/uploads/2017/09/לוגו-לאתר.png'}
+                                   width={260}/>
+                        </Link>
                     </div>
 
                     <NavbarToggler onClick={this.toggle}/>
 
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className={'ml-auto'} navbar>
-                            {menuItems && menuItems.map((page, p) => {
-                                return (
-                                    <NavItem key={p} className={'px-3'}>
-                                        <Link key={page.id}
-                                              to={`/${page['slug']}`}
-                                              style={{color: itemColor ? itemColor : '#000'}}>
-                                            {page.title.rendered}
-                                        </Link>
-                                    </NavItem>
-                                )
+                            {navItems && navItems.map((nav, p) => {
+                                const children = nav.children;
+                                if (children.length > 0) {
+                                    return (
+                                        <NavWithChildren children={children} nav={nav}
+                                                         color={itemColor ? itemColor : '#000'}/>
+                                    )
+                                } else {
+                                    return (
+                                        <NavItem key={p} className={'mx-2'}>
+                                            <Link to={`/${nav.url}`}
+                                                  style={{color: itemColor ? itemColor : '#000'}}>
+                                                {nav.title}
+                                            </Link>
+                                            {children.map}
+                                        </NavItem>
+                                    )
+                                }
                             })}
                         </Nav>
                     </Collapse>
                 </Navbar>
-            </div>
+            </Wrapper>
         )
     }
 }
 
 export default Navigation;
+
+
+class NavWithChildren extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            dropdownOpen: false
+        };
+
+        this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+        this.setState({
+            dropdownOpen: !this.state.dropdownOpen
+        });
+    }
+
+    render() {
+        const {children, nav, color} = this.props;
+
+        return (
+            <Dropdown nav
+                      isOpen={this.state.dropdownOpen}
+                      toggle={this.toggle}
+                      className={'mx-2'}>
+                <DropdownToggle nav caret style={{color: color, padding: '0'}}>
+                    {nav.title}
+                </DropdownToggle>
+                <DropdownMenu>
+                    {children.map((child, c) => {
+                        return (
+                            <DropdownItem key={c}>
+                                <Link to={`/${child.url}`}
+                                      style={{color: color}}
+                                      className={'px-0'}>
+                                    {child.title}
+                                </Link>
+                            </DropdownItem>
+                        )
+                    })}
+                </DropdownMenu>
+            </Dropdown>
+        )
+    }
+}
+
+
+const Wrapper = styled.div`
+    .dropdown-toggle::after {
+        margin-right: .5rem;
+    }
+`;

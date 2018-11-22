@@ -7,14 +7,12 @@ const AccordionWrapper = styled.div`
         }
         
         &_header{
-            padding: 1rem;
-            border: 1px solid;
+            cursor: pointer
         }
         
         &_content {    
-            padding: 1rem;
+            
             display: none;
-            border: 1px solid;
         }
         
         &_section.active {

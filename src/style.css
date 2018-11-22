@@ -33,7 +33,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff; }
+  background-color: #f3f3f3; }
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -111,12 +111,12 @@ sup {
   top: -.5em; }
 
 a {
-  color: #007bff;
+  color: #d6e9e9;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects; }
   a:hover {
-    color: #0056b3;
+    color: #a4cece;
     text-decoration: underline; }
 
 a:not([href]):not([tabindex]) {

@@ -8,7 +8,7 @@
 // Color system
 //
 
-$white:    #fff !default;
+$white:    #f3f3f3 !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
@@ -45,7 +45,7 @@ $pink:    #e83e8c !default;
 $red:     #dc3545 !default;
 $orange:  #fd7e14 !default;
 $yellow:  #ffc107 !default;
-$green:   #28a745 !default;
+$green:   #d6e9e9 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
 
@@ -63,14 +63,14 @@ $colors: map-merge(
     "green":      $green,
     "teal":       $teal,
     "cyan":       $cyan,
-    "white":      $white,
+    "white":      $white, 
     "gray":       $gray-600,
     "gray-dark":  $gray-800
   ),
   $colors
 );
 
-$primary:       $blue !default;
+$primary:       $green !default;
 $secondary:     $gray-600 !default;
 $success:       $green !default;
 $info:          $cyan !default;
