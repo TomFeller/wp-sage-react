@@ -23,6 +23,7 @@ const Viewport = {
         content: "'Lato', sans-serif"
     },
     FontSize = {
+        tiny: '.8rem',
         xxs: '1rem',
         xs: '1.3rem',
         sm: '1.8rem',

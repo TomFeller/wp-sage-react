@@ -9,20 +9,23 @@ class Articles extends React.Component {
     render() {
 
         const allArticles = DataStore.getAllArticles();
-
+        const {list} = this.props;
         return (
             <section className={'section section-articles'}>
                 <Container>
 
                     <Archive max={6}
-                             posts={allArticles}
+                             posts={allArticles.slice(0, 6)}
                              postSize={{
                                  sm: 6,
                                  md: 4,
                                  lg: 4
 
                              }}
-                             title={'מאמרים'}/>
+                             list={list && list}
+                             title={'מאמרים'}
+                             cardColor={'primary'}/>
+
                 </Container>
             </section>
         )

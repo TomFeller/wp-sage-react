@@ -41,7 +41,7 @@ $grays: map-merge(
 $blue:    #007bff !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
-$pink:    #e83e8c !default;
+$pink:    #c76394 !default;
 $red:     #dc3545 !default;
 $orange:  #fd7e14 !default;
 $yellow:  #ffc107 !default;
@@ -71,7 +71,7 @@ $colors: map-merge(
 );
 
 $primary:       $green !default;
-$secondary:     $gray-600 !default;
+$secondary:     $pink !default;
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
@@ -905,17 +905,17 @@ $breadcrumb-border-radius:          $border-radius !default;
 
 // Carousel
 
-$carousel-control-color:            $black !default;
+$carousel-control-color:            $pink !default;
 $carousel-control-width:            15% !default;
 $carousel-control-opacity:          .5 !default;
 
 $carousel-indicator-width:          30px !default;
 $carousel-indicator-height:         3px !default;
 $carousel-indicator-spacer:         3px !default;
-$carousel-indicator-active-bg:      $black !default;
+$carousel-indicator-active-bg:      $pink !default;
 
 $carousel-caption-width:            70% !default;
-$carousel-caption-color:            $black !default;
+$carousel-caption-color:            $pink !default;
 
 $carousel-control-icon-width:       30px !default;
 
