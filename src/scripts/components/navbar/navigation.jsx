@@ -88,6 +88,7 @@ class Navigation extends React.Component {
                                 if (children.length > 0) {
                                     return (
                                         <NavWithChildren children={children} nav={nav}
+                                                         key={p}
                                                          color={itemColor ? itemColor : '#000'}/>
                                     )
                                 } else {

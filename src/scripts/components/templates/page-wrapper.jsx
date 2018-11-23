@@ -17,8 +17,9 @@ const PageWrapper = ({content, className, ...props}) => {
 export {PageWrapper}
 
 const Wrapper = styled.div`
+    padding-top: 14rem;
     &.homepage {
-        .section {
+        .section { 
             padding: ${Gutter.xl} 0;
             
             &-welcome {

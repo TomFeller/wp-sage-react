@@ -5,7 +5,7 @@ import Archive from "../templates/archive";
 import Slider from "../utils/slider/Slider";
 import Image from "../utils/image/image";
 import styled from 'styled-components';
-import {Gutter} from "../style/style";
+import {Gutter, H2} from "../style/style";
 
 class Videos extends React.Component {
     constructor(props) {
@@ -40,6 +40,7 @@ class Videos extends React.Component {
         return (
             <section className={'section section-videos my-5'}>
                 <Container>
+                    <H2 className={'archive-title display-3 text-center mt-3 mb-5'}>סרטונים והדרכות</H2>
                     <VideosSlider>
                     {sliderItems}
                     </VideosSlider>

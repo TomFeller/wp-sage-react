@@ -16,13 +16,14 @@ class Faq extends React.Component {
             if (question !== '') {
                 accordionItems.push({
                     header: (
-                        <div className={'bg-primary p-3 border'}>
+                        <div
+                            className={`bg-primary p-3 border border-left-0 border-right-0 border-dark ${i === 1 ? 'border-top-0' : ''}`}>
                             <H6>{question}</H6>
                         </div>
                     ),
                     content: (
-                        <div className={'bg-secondary p-3'}>
-                            <p className={'mb-0'}>{answer}</p>
+                        <div className={'bg-white p-3 border border-left-0 border-right-0 border-dark'}>
+                            <p className={'mb-0'} dangerouslySetInnerHTML={{__html: answer}}/>
                         </div>
                     )
                 });
@@ -35,7 +36,8 @@ class Faq extends React.Component {
                     <ShadowFrame>
                         <H2 className={'display-3 text-center mt-3 mb-5'}>שאלות נפוצות</H2>
                         <Accordion sections={accordionItems}
-                                   color={'primary'}/>
+                                   color={'primary'}
+                                   collapsible/>
                     </ShadowFrame>
                 </Container>
             </section>
