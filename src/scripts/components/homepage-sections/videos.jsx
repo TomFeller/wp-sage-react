@@ -6,7 +6,7 @@ import Archive from "../templates/archive";
 import Slider from "../utils/slider/Slider";
 import Image from "../utils/image/image";
 import styled from 'styled-components';
-import {FontSize, Gutter, H2} from "../style/style";
+import {Color, FontSize, Gutter, SectionTitle} from "../style/style";
 import {FaPlayCircle} from 'react-icons/fa';
 
 class Videos extends React.Component {
@@ -15,8 +15,10 @@ class Videos extends React.Component {
 
         const allVideos = DataStore.getAllVideos();
 
+        const {maxItems} = this.props;
+
         this.state = {
-            allVideos: allVideos,
+            allVideos: maxItems ? allVideos.slice(0, maxItems) : allVideos,
             sliderItems: [],
             isList: this.props.list
         };
@@ -37,9 +39,11 @@ class Videos extends React.Component {
                                 </Thumbnail>
                             </Col>
                             <Col xs={9} className={'pr-1'}>
-                                <div style={{fontSize: FontSize.tiny, color: '#fff'}}
-                                     className={'font-weight-bold'}
-                                     dangerouslySetInnerHTML={{__html: video.title.rendered}}/>
+                                <div dangerouslySetInnerHTML={{__html: video.title.rendered}}
+                                     style={{
+                                         fontSize: FontSize.xxs,
+                                         color: Color.white
+                                     }}/>
                             </Col>
                         </Row>
                         :
@@ -48,9 +52,9 @@ class Videos extends React.Component {
                             :
                             <HBox>
                                 <img src={video.acf.thumbnail}
-                                             width={'auto'}
-                                             height={220}
-                                             className={'display-block'}/>
+                                     width={'auto'}
+                                     height={220}
+                                     className={'display-block'}/>
                             </HBox>
                     }
                 </div>
@@ -72,7 +76,8 @@ class Videos extends React.Component {
                         <div>{sliderItems}</div>
                         :
                         <VideosSlider>
-                            <H2 className={'archive-title display-3 text-center mt-3 mb-5'}>סרטונים והדרכות</H2>
+                            <SectionTitle className={'archive-title display-3 text-center mt-3 mb-5'}>סרטונים
+                                והדרכות</SectionTitle>
                             {sliderItems}
                         </VideosSlider>}
                 </Container>
@@ -93,12 +98,12 @@ const VideosSlider = styled.div`
         background-color: #f3f3f3; 
     }
     &::-webkit-scrollbar {
-        height: .3rem;
-        background-color: #c83e81;
+        height: .5rem;
+        background-color: ${Color.secondary};
         width: .5rem; 
     }
     &::-webkit-scrollbar-thumb {
-        background-color: #c83e81; 
+        background-color: ${Color.secondary}; 
     }
    
     .video-thumbnail {

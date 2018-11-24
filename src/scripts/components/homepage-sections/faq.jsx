@@ -1,7 +1,7 @@
 import React from 'react'
 import DataStore from "../../flux/stores/DataStore";
 import {Container} from 'reactstrap';
-import {H6, H2, ShadowFrame} from "../style/style";
+import {H6, SectionTitle, ShadowFrame} from '../style/style';
 
 import Accordion from "../utils/accordion/accordion";
 
@@ -34,7 +34,7 @@ class Faq extends React.Component {
             <section className={'section section-faq mb-3'}>
                 <Container>
                     <ShadowFrame>
-                        <H2 className={'display-3 text-center mt-3 mb-5'}>שאלות נפוצות</H2>
+                        <SectionTitle className={'display-3 text-center mt-3 mb-5'}>שאלות נפוצות</SectionTitle>
                         <Accordion sections={accordionItems}
                                    color={'primary'}
                                    collapsible/>

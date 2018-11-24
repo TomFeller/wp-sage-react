@@ -1,7 +1,7 @@
 import React from 'react';
 import DataStore from '../../flux/stores/DataStore.js';
 import {Post} from "./post";
-import {FontSize, H2} from '../style/style';
+import {Color, FontSize, H2, SectionTitle} from '../style/style';
 import {Row, Col, ListGroup, ListGroupItem} from 'reactstrap';
 import {Link} from 'react-router-dom';
 
@@ -22,8 +22,12 @@ class Archive extends React.Component {
                 if (list) {
                     return (
                         <Col xs={12} key={i}>
-                            <Link to={post.link} style={{fontSize: FontSize.tiny, color: '#fff', fontWeight: 'bold'}}>
-                                {post.title.rendered}
+                            <Link to={post.link}
+                                  style={{
+                                      fontSize: FontSize.xxs,
+                                      color: Color.white,
+                                      fontWeight: 'bold'}}>
+                                <p dangerouslySetInnerHTML={{__html: post.title.rendered}}/>
                             </Link>
                         </Col>
                     )
@@ -47,7 +51,8 @@ class Archive extends React.Component {
         return (
             <div className={'archive'}>
 
-                <H2 className={`archive-title display-3 text-center mt-3 ${list ? 'mb-3' : 'mb-5'}`}>{title}</H2>
+                <SectionTitle
+                    className={`archive-title display-3 text-center mt-3 ${list ? 'mb-3' : 'mb-5'}`}>{title}</SectionTitle>
 
                 <div className={'archive-posts'}>
                     <Row>

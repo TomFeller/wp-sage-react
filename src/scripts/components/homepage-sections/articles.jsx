@@ -9,12 +9,12 @@ class Articles extends React.Component {
     render() {
 
         const allArticles = DataStore.getAllArticles();
-        const {list} = this.props;
+        const {list, maxItems} = this.props;
         return (
             <section className={'section section-articles'}>
                 <Container>
 
-                    <Archive max={6}
+                    <Archive max={maxItems ? maxItems : 6}
                              posts={allArticles.slice(0, 6)}
                              postSize={{
                                  sm: 6,

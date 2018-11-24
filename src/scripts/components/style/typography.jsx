@@ -1,5 +1,14 @@
+import React from 'react';
 import styled from 'styled-components';
 import {FontSize} from './variables.jsx'
+import {Color} from "./colors.jsx";
+import {Gutter} from "./variables";
+
+
+const FontFamily = {
+    title: `'Assistant', sans-serif;`,
+    description: `'Rubik', sans-serif;`
+};
 
 
 const
@@ -24,13 +33,30 @@ const
 
 const
     PageTitle = styled.h1` 
-    font-weight: 100;
-    text-align: center;
-    color: #000;
-`,
+        font-weight: 100;
+        text-align: center;
+        color: #000;
+    `,
     PageContent = styled.div`
         font-size: ${FontSize.sm};
         color: #000;
-`;
+    `,
+    SectionTitle = styled.h2`
+        font-size: ${FontSize.lg};
+        font-family: ${FontFamily.title};
+        font-weight: 500;
+        position: relative;
+        padding-bottom: ${Gutter.xxs};
+        &:after {
+            content: '';
+            width: 5rem;
+            height: .2rem;
+            background-color: ${Color.secondary};
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom:0;
+        }
+    `;
 
-export {H1, H2, H3, H4, H5, H6, PageTitle, PageContent};
+export {H1, H2, H3, H4, H5, H6, PageTitle, PageContent, FontFamily, SectionTitle};

@@ -4,6 +4,7 @@ import {Container, Row, Col, Card, CardBody, CardTitle, CardText} from 'reactstr
 import Archive from "../templates/archive";
 import Slider from "../utils/slider/Slider";
 import Image from "../utils/image/image";
+import {FontSize} from "../style/style";
 
 class Recommendations extends React.Component {
     constructor(props) {
@@ -32,7 +33,8 @@ class Recommendations extends React.Component {
                         <Card className={'text-right border-0'}>
                             <CardBody>
                                 <CardTitle>{title}</CardTitle>
-                                <CardText dangerouslySetInnerHTML={{__html: content}}/>
+                                <CardText dangerouslySetInnerHTML={{__html: content}}
+                                style={{fontSize: FontSize.sm}}/>
                             </CardBody>
                         </Card>
                     </Col>
