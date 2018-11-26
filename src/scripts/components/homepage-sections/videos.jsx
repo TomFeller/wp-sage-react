@@ -27,12 +27,12 @@ class Videos extends React.Component {
     componentDidMount() {
         const {allVideos, isList} = this.state;
         const sliderItems = allVideos.map((video, v) => {
-            console.log('video', video);
+
             return (
                 <div key={v} className={'video-thumbnail'}>
                     {isList ?
                         <Row className={'mb-2'}>
-                            <Col xs={3} className={'pl-0 pr-3'}>
+                            <Col xs={3} className={'pl-0 pr-3 pt-2'}>
                                 <Thumbnail>
                                     <img src={video.acf.thumbnail}/>
                                     <FaPlayCircle size={20}/>
@@ -75,11 +75,14 @@ class Videos extends React.Component {
                     {isList ?
                         <div>{sliderItems}</div>
                         :
-                        <VideosSlider>
+                        <div>
                             <SectionTitle className={'archive-title display-3 text-center mt-3 mb-5'}>סרטונים
                                 והדרכות</SectionTitle>
-                            {sliderItems}
-                        </VideosSlider>}
+                            <VideosSlider>
+                                {sliderItems}
+                            </VideosSlider>
+                        </div>
+                    }
                 </Container>
             </section>
         )

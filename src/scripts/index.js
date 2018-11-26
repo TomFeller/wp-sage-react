@@ -15,7 +15,7 @@ import {
     Redirect,
     Switch
 } from 'react-router-dom';
-import {Single} from "./components/templates/single";
+import Single from 'components/templates/single';
 import AccordionExamples from "./components/utils/accordion/accordion-examples.jsx";
 import GridExamples from "./components/utils/grid/grid-examples.jsx";
 import PanelExamples from "./components/utils/panel/panel-examples";
@@ -38,21 +38,35 @@ class AppInitializer {
         'panel-examples': PanelExamples,
         'button-examples': ButtonExamples,
         'modal-examples': ModalExamples,
-        'post': Single
+        'post': Single,
+        'article': Single,
+        'treatments': Single,
     };
 
     buildRoutes(data) {
-        const allData = data.posts.concat(data.pages);
+        const allData = data.posts
+            .concat(data.pages)
+            .concat(data.treatments)
+            .concat(data.articles)
+            .concat(data.recommendations)
+            .concat(data.videos);
 
         return (
             allData.map((post, i) => {
+                const {type, slug} = post;
                 const isPost = post.type === 'post';
-                const C = isPost ? this.templates.post : this.templates[post.slug];
+                const isTreatment = post.type === 'treatments';
+                const C = isTreatment ? this.templates.treatments : isPost ? this.templates.post : this.templates[slug];
+
+                const pathname = isTreatment ? `/treatments/${slug}` : isPost ? `/post/${slug}` : `/${slug}`;
+
                 return (
                     <Route
                         key={i}
-                        component={(props) => <C {...props} {...post}/>}
-                        path={isPost ? `/post/${post.slug}` : `/${post.slug}`}
+                        component={(props) => <C {...props}
+                                                 {...post}/>
+                        }
+                        path={pathname}
                         exact
                     />
                 )

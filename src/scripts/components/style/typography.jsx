@@ -46,7 +46,7 @@ const
         font-family: ${FontFamily.title};
         font-weight: 500;
         position: relative;
-        padding-bottom: ${Gutter.xxs};
+        padding-bottom: ${Gutter.xs};
         &:after {
             content: '';
             width: 5rem;

@@ -13,7 +13,7 @@ class Archive extends React.Component {
     }
 
     render() {
-        const {title, category, posts, max, postSize, list, cardColor} = this.props,
+        const {title, category, posts, max, postSize, list, cardColor, imageHeight} = this.props,
             archiveData = posts ? posts : category ? DataStore.getPostsByCategory(category) : DataStore.getAllPosts();
 
         let getArchivePosts = archiveData.map((post, i) => {
@@ -41,6 +41,7 @@ class Archive extends React.Component {
                             <Post id={post.id}
                                   className={post['slug']}
                                   cardColor={cardColor && cardColor}
+                                  imageHeight={imageHeight}
                                   {...post}/>
                         </Col>
                     )

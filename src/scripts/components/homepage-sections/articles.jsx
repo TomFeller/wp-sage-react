@@ -18,13 +18,14 @@ class Articles extends React.Component {
                              posts={allArticles.slice(0, 6)}
                              postSize={{
                                  sm: 6,
-                                 md: 4,
+                                 md: 6,
                                  lg: 4
 
                              }}
                              list={list && list}
                              title={'מאמרים'}
-                             cardColor={'primary'}/>
+                             cardColor={'primary'}
+                             imageHeight={230}/>
 
                 </Container>
             </section>

@@ -59,5 +59,6 @@ export default Header;
 const SiteHeader = styled.header`
     width: 100%;
     top: 0;
-    z-index: ${Zindex.lg} 
+    z-index: ${Zindex.lg};
+    box-shadow: 0rem 0rem .5rem rgba(0,0,0,.5);
 `;

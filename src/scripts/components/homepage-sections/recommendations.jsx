@@ -32,7 +32,7 @@ class Recommendations extends React.Component {
                     <Col sm={8}>
                         <Card className={'text-right border-0'}>
                             <CardBody>
-                                <CardTitle>{title}</CardTitle>
+                                <CardTitle dangerouslySetInnerHTML={{__html: title}}/>
                                 <CardText dangerouslySetInnerHTML={{__html: content}}
                                 style={{fontSize: FontSize.sm}}/>
                             </CardBody>
