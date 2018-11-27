@@ -8,62 +8,66 @@ import Image from "../utils/image/image";
 import styled from 'styled-components';
 import {Color, FontSize, Gutter, SectionTitle} from "../style/style";
 import {FaPlayCircle} from 'react-icons/fa';
+import DataActions from "../../flux/actions/DataActions";
 
 class Videos extends React.Component {
     constructor(props) {
         super(props);
 
-        const allVideos = DataStore.getAllVideos();
 
-        const {maxItems} = this.props;
 
         this.state = {
-            allVideos: maxItems ? allVideos.slice(0, maxItems) : allVideos,
+            allVideos: [],
             sliderItems: [],
             isList: this.props.list
         };
+
     }
 
     componentDidMount() {
-        const {allVideos, isList} = this.state;
-        const sliderItems = allVideos.map((video, v) => {
+        const {maxItems} = this.props,
+            {isList} = this.state;
 
-            return (
-                <div key={v} className={'video-thumbnail'}>
-                    {isList ?
-                        <Row className={'mb-2'}>
-                            <Col xs={3} className={'pl-0 pr-3 pt-2'}>
-                                <Thumbnail>
-                                    <img src={video.acf.thumbnail}/>
-                                    <FaPlayCircle size={20}/>
-                                </Thumbnail>
-                            </Col>
-                            <Col xs={9} className={'pr-1'}>
-                                <div dangerouslySetInnerHTML={{__html: video.title.rendered}}
-                                     style={{
-                                         fontSize: FontSize.xxs,
-                                         color: Color.white
-                                     }}/>
-                            </Col>
-                        </Row>
-                        :
-                        video.acf.url ?
-                            <div dangerouslySetInnerHTML={{__html: video.acf.url}}/>
+        DataActions.getAllVideos((allVideos) => {
+            const sliderItems = allVideos.map((video, v) => {
+                return (
+                    <div key={v} className={'video-thumbnail'}>
+                        {isList ?
+                            <Row className={'mb-2'}>
+                                <Col xs={3} className={'pl-0 pr-3 pt-2'}>
+                                    <Thumbnail>
+                                        <img src={video.acf.thumbnail}/>
+                                        <FaPlayCircle size={20}/>
+                                    </Thumbnail>
+                                </Col>
+                                <Col xs={9} className={'pr-1'}>
+                                    <div dangerouslySetInnerHTML={{__html: video.title.rendered}}
+                                         style={{
+                                             fontSize: FontSize.xxs,
+                                             color: Color.white
+                                         }}/>
+                                </Col>
+                            </Row>
                             :
-                            <HBox>
-                                <img src={video.acf.thumbnail}
-                                     width={'auto'}
-                                     height={220}
-                                     className={'display-block'}/>
-                            </HBox>
-                    }
-                </div>
-            )
-        });
+                            video.acf.url ?
+                                <div dangerouslySetInnerHTML={{__html: video.acf.url}}/>
+                                :
+                                <HBox>
+                                    <img src={video.acf.thumbnail}
+                                         width={'auto'}
+                                         height={220}
+                                         className={'display-block'}/>
+                                </HBox>
+                        }
+                    </div>
+                )
+            });
+            this.setState({
+                allVideos: maxItems ? allVideos.slice(0, maxItems) : allVideos,
+                sliderItems: sliderItems
 
-        this.setState({
-            sliderItems: sliderItems
-        })
+            })
+        });
     }
 
     render() {

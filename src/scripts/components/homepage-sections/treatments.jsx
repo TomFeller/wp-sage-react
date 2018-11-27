@@ -4,11 +4,27 @@ import {Container} from 'reactstrap';
 import Archive from "../templates/archive";
 import {ShadowFrame} from '../style/style'
 import SvgBackground from "../utils/svg/svg-background";
+import DataActions from "../../flux/actions/DataActions";
 
 class Treatments extends React.Component {
-    render() {
+    constructor(props) {
+        super(props);
 
-        const allTreatments = DataStore.getAllTreatments();
+        this.state = {
+            allTreatments: []
+        }
+
+    }
+    componentDidMount() {
+        DataActions.getAllTreatments((allTreatments) => {
+            this.setState({
+                allTreatments: allTreatments
+            })
+        });
+    }
+
+    render() {
+const {allTreatments} = this.state;
 
         return (
             <section className={'section section-treatments'}>

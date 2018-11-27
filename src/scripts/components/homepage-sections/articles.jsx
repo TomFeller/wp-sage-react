@@ -4,11 +4,28 @@ import {Container} from 'reactstrap';
 import Archive from "../templates/archive";
 import {ShadowFrame} from '../style/style';
 import Masonary from "../utils/masonary/masonary";
+import DataActions from "../../flux/actions/DataActions";
 
 class Articles extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            allArticles: []
+        }
+
+    }
+    componentDidMount() {
+        DataActions.getAllArticles((allArticles) => {
+            this.setState({
+                allArticles: allArticles
+            })
+        });
+    }
+
     render() {
 
-        const allArticles = DataStore.getAllArticles();
+        const {allArticles} = this.state;
         const {list, maxItems} = this.props;
         return (
             <section className={'section section-articles'}>

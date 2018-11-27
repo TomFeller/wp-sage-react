@@ -1,5 +1,5 @@
-import alt          from 'flux/alt/alt.js';
-import DataActions  from 'flux/actions/DataActions.js';
+import alt          from '../../flux/alt/alt.js';
+import DataActions  from '../../flux/actions/DataActions.js';
 
 class DataStore {
     constructor() {

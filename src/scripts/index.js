@@ -15,7 +15,7 @@ import {
     Redirect,
     Switch
 } from 'react-router-dom';
-import Single from 'components/templates/single';
+import {Single} from './components/templates/single';
 import AccordionExamples from "./components/utils/accordion/accordion-examples.jsx";
 import GridExamples from "./components/utils/grid/grid-examples.jsx";
 import PanelExamples from "./components/utils/panel/panel-examples";
@@ -44,29 +44,34 @@ class AppInitializer {
     };
 
     buildRoutes(data) {
-        const allData = data.posts
-            .concat(data.pages)
-            .concat(data.treatments)
-            .concat(data.articles)
-            .concat(data.recommendations)
-            .concat(data.videos);
+        const allData = data.posts.concat(data.pages).concat(data.treatments);
 
         return (
             allData.map((post, i) => {
                 const {type, slug} = post;
-                const isPost = post.type === 'post';
-                const isTreatment = post.type === 'treatments';
+                console.log('type', type);
+                const isPost = type === 'post';
+                const isTreatment = type === 'treatments';
+                const isVideo = type === 'videos';
+                const isArticle = type === 'letters_articles';
+                const isRecommendation = type === 'recommendation';
                 const C = isTreatment ? this.templates.treatments : isPost ? this.templates.post : this.templates[slug];
 
-                const pathname = isTreatment ? `/treatments/${slug}` : isPost ? `/post/${slug}` : `/${slug}`;
+                const pathname = isTreatment ? `/treatments/${slug}` :
+                    isPost ? `/post/${slug}` :
+                        isVideo ? `/video/${slug}` :
+                            isArticle ? `/article/${slug}` :
+                                isRecommendation ? `/recommendation/${slug}` : `/${slug}`;
 
+
+                console.log('pathname', pathname);
                 return (
                     <Route
                         key={i}
                         component={(props) => <C {...props}
                                                  {...post}/>
                         }
-                        path={pathname}
+                        path={isPost ? `/post/${post.slug}` : `/${post.slug}`}
                         exact
                     />
                 )
