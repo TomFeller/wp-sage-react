@@ -5,7 +5,7 @@ import {PageWrapper} from "./page-wrapper";
 
 const Single = ({className, id, ...props}) => {
     const classNames = ['page', className].join(" ");
-console.log('', s)
+console.log('', 's')
     return (
         <div>sssss</div>
 

@@ -49,7 +49,7 @@ class AppInitializer {
         return (
             allData.map((post, i) => {
                 const {type, slug} = post;
-                console.log('type', type);
+                // console.log('type', type);
                 const isPost = type === 'post';
                 const isTreatment = type === 'treatments';
                 const isVideo = type === 'videos';
@@ -71,7 +71,7 @@ class AppInitializer {
                         component={(props) => <C {...props}
                                                  {...post}/>
                         }
-                        path={isPost ? `/post/${post.slug}` : `/${post.slug}`}
+                        path={pathname}
                         exact
                     />
                 )
@@ -80,7 +80,7 @@ class AppInitializer {
     }
 
     run() {
-        DataActions.getPages((response) => {
+        DataActions.getPages((allPages) => {
             render(
                 <Router>
                     <div>
@@ -90,7 +90,7 @@ class AppInitializer {
                         <Switch>
                             <Route path="/" component={Home} exact/>
 
-                            {this.buildRoutes(response)}
+                            {this.buildRoutes(allPages)}
                             <Route render={() => {
                                 return <Redirect to="/"/>
                             }}/>
