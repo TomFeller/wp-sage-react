@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, PageWrapper, PageTitle, PageContent} from '../style/style';
+import {Container, SiteContent, PageTitle, PageContent} from '../style/style';
 
 const Page = ({className, id, ...props}) => {
 

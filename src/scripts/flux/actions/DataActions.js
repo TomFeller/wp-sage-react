@@ -4,7 +4,8 @@ import alt from '../../flux/alt/alt.js';
 class DataActions {
 
     constructor() {
-        const appUrl = 'http://127.0.0.1:88/wordpress'; // Wordpress installation url
+        const hostname = window.location.hostname;
+        const appUrl = hostname === 'localhost' ? 'http://127.0.0.1:88/wordpress/' : 'https://awake-admin.tf-interactive.com/?rest_route='; // Wordpress installation url
         const v2 = 'wp-json/wp/v2';
         this.generalEndPoint = `${appUrl}/${v2}`;
         this.configurationsEndPoint = `${appUrl}/${v2}/configurations?_embed`;
@@ -34,7 +35,9 @@ class DataActions {
     getPages(cb) {
         this.api(this.pagesEndPoint).then((pages) => {
             this.api(this.treatmentsEndPoint).then((treatments) => {
-                this.getPosts(pages, treatments, cb);
+                this.api(this.articlesEndPoint).then((articles) => {
+                    this.getPosts(pages, treatments, articles, cb);
+                })
             })
 
         });
@@ -104,10 +107,10 @@ class DataActions {
     }
 
     // Method for getting Posts data
-    getPosts(pages, treatments, cb) {
+    getPosts(pages, treatments, articles, cb) {
         this.api(this.postsEndPoint).then((posts) => {
 
-            const payload = {pages, treatments, posts};
+            const payload = {pages, treatments, articles, posts};
             this.getSuccess(payload); // Pass returned data to the store
             cb(payload); // This callback will be used for dynamic rout building
         });

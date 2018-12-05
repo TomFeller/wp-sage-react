@@ -20,12 +20,12 @@ const Viewport = {
     },
     FontFamily = {
         title: "'Roboto', sans-serif",
-        content: "'Lato', sans-serif"
+        content: "'Rubik', sans-serif"
     },
     FontSize = {
-        tiny: '.8rem',
-        xxs: '1rem',
-        xs: '1.3rem',
+        tiny: '.1rem',
+        xxs: '1.3rem',
+        xs: '1.5rem',
         sm: '1.8rem',
         md: '2.4rem',
         lg: '4rem',

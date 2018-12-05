@@ -1,7 +1,7 @@
 import React from 'react';
 import DataStore from '../../../flux/stores/DataStore.js'
 import {Page} from '../../templates/page.jsx';
-import {PageWrapper} from "../../templates/page-wrapper.jsx";
+import {SiteContent} from "../../templates/page-wrapper.jsx";
 import Accordion from "./accordion.jsx";
 import {Container} from "../../style/style";
 
@@ -39,7 +39,7 @@ class AccordionExamples extends React.Component {
         }];
 
         return (
-            <PageWrapper>
+            <SiteContent>
                 <Container>
                     <Accordion className={'test'}
                                sections={htmls}
@@ -53,7 +53,7 @@ class AccordionExamples extends React.Component {
                                collapsible
                                minOne/>
                 </Container>
-            </PageWrapper>
+            </SiteContent>
         );
     }
 }

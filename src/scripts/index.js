@@ -49,23 +49,21 @@ class AppInitializer {
         return (
             allData.map((post, i) => {
                 const {type, slug} = post;
-                // console.log('type', type);
-                const isPost = type === 'post';
+                 const isPost = type === 'post';
                 const isTreatment = type === 'treatments';
                 const isVideo = type === 'videos';
                 const isArticle = type === 'letters_articles';
                 const isRecommendation = type === 'recommendation';
-                const C = isTreatment ? this.templates.treatments : isPost ? this.templates.post : this.templates[slug];
+                const C = isTreatment ? this.templates.treatments : isPost ? this.templates.post : this.templates[encodeURIComponent(slug)];
 
-                const pathname = isTreatment ? `/treatments/${slug}` :
-                    isPost ? `/post/${slug}` :
-                        isVideo ? `/video/${slug}` :
-                            isArticle ? `/article/${slug}` :
-                                isRecommendation ? `/recommendation/${slug}` : `/${slug}`;
+                const pathname = isTreatment ? `/treatments/${encodeURIComponent(slug)}` :
+                    isPost ? `/post/${encodeURIComponent(slug)}` :
+                        isVideo ? `/video/${encodeURIComponent(slug)}` :
+                            isArticle ? `/article/${encodeURIComponent(slug)}` :
+                                isRecommendation ? `/recommendation/${encodeURIComponent(slug)}` : `/${encodeURIComponent(slug)}`;
 
 
-                console.log('pathname', pathname);
-                return (
+                 return (
                     <Route
                         key={i}
                         component={(props) => <C {...props}

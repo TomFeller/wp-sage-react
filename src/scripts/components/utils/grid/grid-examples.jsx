@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageWrapper} from "../../templates/page-wrapper.jsx";
+import {SiteContent} from "../../templates/page-wrapper.jsx";
 import Grid from "./grid.jsx";
 // import {Container} from "../../style/style";
 import {Container, Row, Col, Jumbotron, Button} from 'reactstrap';
@@ -28,7 +28,7 @@ class GridExamples extends React.Component {
         ];
 
         return (
-            <PageWrapper>
+            <SiteContent>
                 <Container fluid>
                     <Jumbotron fluid className={'background-primary'}>
                         <h1 className="display-5">Hello, world!</h1>
@@ -43,7 +43,7 @@ class GridExamples extends React.Component {
                         {htmls.map((item, i) => <Col key={i} xs={2} >bla</Col> )}
                     </Row>
                 </Container>
-            </PageWrapper>
+            </SiteContent>
         )
     }
 }

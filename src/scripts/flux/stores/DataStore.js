@@ -71,6 +71,7 @@ class DataStore {
 
     // Returns a Page by provided slug
     getPageBySlug(slug){
+        // const pages = this.getState().data.pages;
         const pages = this.getState().data.pages;
         return pages[Object.keys(pages).find((page, i) => {
             return pages[page].slug === slug;

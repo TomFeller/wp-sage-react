@@ -1,7 +1,7 @@
 import React from 'react'
 import DataStore from "../../flux/stores/DataStore";
 import {Container} from 'reactstrap';
-import {H6, SectionTitle, ShadowFrame} from '../style/style';
+import {H4, SectionTitle, ShadowFrame} from '../style/style';
 
 import Accordion from "../utils/accordion/accordion";
 
@@ -29,7 +29,7 @@ class Faq extends React.Component {
                         <div
                             className={`bg-primary p-3 border border-left-0 border-right-0 border-dark
                             ${i === 1 ? 'border-top-0' : ''} ${i === faqItems.length ? 'border-bottom-0' : ''}`}>
-                            <H6>{question}</H6>
+                            <H4>{question}</H4>
                         </div>
                     ),
                     content: (

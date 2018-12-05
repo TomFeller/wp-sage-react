@@ -22,7 +22,7 @@ const component = (
     <Button className={'test'}
             size={FontSize.lg}
             color={'main'}
-            gutter={`${Gutter.xxs} ${Gutter.md}`}
+            gutter={`${Gutter.xs} ${Gutter.md}`}
             onClick={this.doSomething}
             block
             sharp>

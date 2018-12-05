@@ -27,7 +27,7 @@ class Recommendations extends React.Component {
                     title = rec.title.rendered,
                     content = rec.content.rendered;
                 return (
-                    <Row key={r} style={{height: '24rem'}}>
+                    <Row key={r} style={{height: '35rem'}}>
                         <Col sm={4}>
                             <Image src={featuredImage}/>
                         </Col>

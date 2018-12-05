@@ -11,12 +11,13 @@ import {
 const Post = ({post, className, id, ...props}) => {
     const classNames = ['post', className].join(className ? ' post-' : '');
     const postImageUrl = props._embedded && props._embedded["wp:featuredmedia"] && props._embedded["wp:featuredmedia"][0].source_url;
-    const {type, title, content, excerpt, slug, cardColor, imageHeight} = props;
-    console.log('props', props);
+    const {title, content, excerpt, slug, cardColor, imageHeight} = props;
+    let type = props.type === 'letters_articles' ? 'articles' : props.type;
+
     return (
         <div id={`post-${id}`} className={classNames}>
             <Card className={`text-right ${cardColor ? `bg-${cardColor}` : ''}`}>
-                <Element height={imageHeight ? imageHeight : 'auto'} overflow={'hidden'}>
+                <Element height={imageHeight ? imageHeight : '51.8rem'} overflow={'hidden'}>
                     <CardImg top
                              src={postImageUrl}/>
                 </Element>
@@ -25,9 +26,9 @@ const Post = ({post, className, id, ...props}) => {
                     <CardText dangerouslySetInnerHTML={{__html: excerpt.rendered}}
                               style={imageHeight && cardTextHeight}/>
                     <HBox justifyContent={'flex-end'}>
-                        <Link to={`/${type}/${slug}`}>
-                            <Button>קרא עוד</Button>
-                        </Link>
+                        <a href={`/${type}/${slug}`}>
+                            <Button size={'sm'}>קרא עוד</Button>
+                        </a>
                     </HBox>
                 </CardBody>
             </Card>

@@ -33,7 +33,7 @@ const
 
 const
     PageTitle = styled.h1` 
-        font-weight: 100;
+        font-weight: 700;
         text-align: center;
         color: #000;
     `,
@@ -44,7 +44,7 @@ const
     SectionTitle = styled.h2`
         font-size: ${FontSize.lg};
         font-family: ${FontFamily.title};
-        font-weight: 500;
+        font-weight: 700;
         position: relative;
         padding-bottom: ${Gutter.xs};
         &:after {

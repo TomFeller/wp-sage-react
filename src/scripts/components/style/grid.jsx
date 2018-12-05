@@ -3,8 +3,8 @@ import {Viewport, Gutter} from "./variables.jsx";
 
 const
     Container = styled.div`
-        width: 100%;
-        padding: 0 ${Gutter.sm};
+        width: ${props => `100% ${props.fluid ? '!important;' : ';'}`}
+        padding:${props =>`0 ${props.noGutters ? '0' : Gutter.sm}`};
         margin: 0 auto;  
         @media screen and (min-width: ${Viewport.sm}) {
             width: ${Viewport.sm};

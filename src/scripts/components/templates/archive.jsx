@@ -22,13 +22,13 @@ class Archive extends React.Component {
                 if (list) {
                     return (
                         <Col xs={12} key={i}>
-                            <Link to={post.link}
+                            <a href={post.link}
                                   style={{
-                                      fontSize: FontSize.xxs,
+                                      fontSize: FontSize.xs,
                                       color: Color.white,
                                       fontWeight: 'bold'}}>
                                 <p dangerouslySetInnerHTML={{__html: post.title.rendered}}/>
-                            </Link>
+                            </a>
                         </Col>
                     )
                 } else {
@@ -37,7 +37,7 @@ class Archive extends React.Component {
                              md={postSize && postSize.md ? postSize.md : 6}
                              lg={postSize && postSize.lg ? postSize.lg : 6}
                              key={i}
-                             className={'my-3'}>
+                             className={'my-4'}>
                             <Post id={post.id}
                                   className={post['slug']}
                                   cardColor={cardColor && cardColor}

@@ -29,7 +29,7 @@ class Footer extends React.Component {
 
                         <Col xs={3}>
                             <H2 className={'mt-3 mb-3'}>פייסבוק</H2>
-                            <p style={{color: Color.white, fontSize: FontSize.xxs}}>
+                            <p style={{color: Color.white, fontSize: FontSize.xs}}>
                                 אני משתף על בסיס יומיומי תובנות<br/> וחוויות אישיות שעוזרות לי להבין,<br/> להתחבר, לקבל ולאהוב אותי ואחרים,<br/> מוזמנים לעקוב אחרי.
                             </p>
                             <a href={'https://www.facebook.com/elikrasnits'}/>
@@ -58,7 +58,7 @@ const FooterWrapper = styled.div`
         color: #fff; 
     }
     p, a {
-        font-size: ${FontSize.xxs};
+        font-size: ${FontSize.xs};
         font-weight: 300 !important;
     }
     iframe {

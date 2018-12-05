@@ -2,7 +2,7 @@ import React from 'react';
 import DataStore from '../flux/stores/DataStore.js'
 import classnames from "classnames";
 import Archive from "./templates/archive";
-import {PageWrapper} from "./templates/page-wrapper.jsx";
+import {SiteContent} from "./templates/page-wrapper.jsx";
 import {Jumbotron, Container, Button} from 'reactstrap';
 import {Card, CardTitle, CardText, CardImg, CardBody, CardSubtitle} from 'reactstrap';
 
@@ -60,7 +60,7 @@ class Home extends React.Component {
         }];
 
         return (
-            <PageWrapper>
+            <SiteContent>
 
                 <Slider items={items}/>
                 <div>
@@ -106,7 +106,7 @@ class Home extends React.Component {
                                  content={'This is the content'}/>
 
                 </Container>
-            </PageWrapper>
+            </SiteContent>
         );
     }
 }

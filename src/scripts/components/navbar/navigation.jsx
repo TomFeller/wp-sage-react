@@ -16,6 +16,7 @@ import {
 import DataStore from "../../flux/stores/DataStore";
 import DataActions from "../../flux/actions/DataActions";
 import Image from "../utils/image/image";
+import {FontSize} from "../style/style";
 
 class Navigation extends React.Component {
     constructor(props) {
@@ -73,10 +74,11 @@ class Navigation extends React.Component {
             <Wrapper>
                 <Navbar expand={expand ? expand : 'md'}>
                     <div className={'px-3'}>
-                        <Link to="/" style={{color: itemColor ? itemColor : '#000'}}>
+                        <a href={'/'}
+                           style={{color: itemColor ? itemColor : '#000'}}>
                             <Image src={'http://127.0.0.1:88/wordpress/wp-content/uploads/2017/09/לוגו-לאתר.png'}
                                    width={260}/>
-                        </Link>
+                        </a>
                     </div>
 
                     <NavbarToggler onClick={this.toggle}/>
@@ -93,7 +95,7 @@ class Navigation extends React.Component {
                                     )
                                 } else {
                                     return (
-                                        <NavItem key={p} className={'mx-2'}>
+                                        <NavItem key={p} className={'mx-4'}>
                                             <Link to={`/${nav.url}`}
                                                   style={{color: itemColor ? itemColor : '#000'}}>
                                                 {nav.title}
@@ -138,16 +140,16 @@ class NavWithChildren extends React.Component {
             <Dropdown nav
                       isOpen={this.state.dropdownOpen}
                       toggle={this.toggle}
-                      className={'mx-2'}>
+                      className={'mx-4'} right>
                 <DropdownToggle nav caret style={{color: color, padding: '0'}}>
                     {nav.title}
                 </DropdownToggle>
                 <DropdownMenu>
                     {children.map((child, c) => {
                         return (
-                            <DropdownItem key={c}>
+                            <DropdownItem key={c} style={{textAlign: 'right'}}>
                                 <Link to={`/${child.url}`}
-                                      style={{color: color}}
+                                      style={{color: color, whiteSpace: 'nowrap'}}
                                       className={'px-0'}>
                                     {child.title}
                                 </Link>
@@ -164,5 +166,8 @@ class NavWithChildren extends React.Component {
 const Wrapper = styled.div`
     .dropdown-toggle::after {
         margin-right: .5rem;
+    }
+    a {
+        font-size: ${FontSize.sm};
     }
 `;

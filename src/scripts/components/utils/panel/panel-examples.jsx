@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageWrapper} from "../../templates/page-wrapper.jsx";
+import {SiteContent} from "../../templates/page-wrapper.jsx";
 import Panel from "./panel.jsx";
 import {PanelBody, PanelImage, PanelHeader, PanelContent, PanelFooter} from "./panel-style";
 import {Container, FontSize, H1, H2, H3, H4, H5, H6} from "../../style/style";
@@ -9,7 +9,7 @@ import Button from "../button/button";
 class PanelExamples extends React.Component {
     render() {
         return (
-            <PageWrapper>
+            <SiteContent>
                 <Container>
                     <Grid>
                         <Panel className={'test'}>
@@ -43,7 +43,7 @@ class PanelExamples extends React.Component {
                         </Panel>
                     </Grid>
                 </Container>
-            </PageWrapper>
+            </SiteContent>
         );
     }
 }

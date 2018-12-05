@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const PageWrapper = styled.div`
+const SiteContent = styled.div`
     border: 2px solid;
 `;
 
-export {PageWrapper};
+export {SiteContent};

@@ -1,12 +1,12 @@
 import React from 'react';
-import {PageWrapper} from "../../templates/page-wrapper.jsx";
+import {SiteContent} from "../../templates/page-wrapper.jsx";
 import { FontSize, Gutter} from "../../style/style";
   import {Container, Button } from 'reactstrap';
 
   class ButtonExamples extends React.Component {
     render() {
         return (
-            <PageWrapper>
+            <SiteContent>
                 <Container>
                     <Button color="primary">primary!</Button>
                     <Button color="secondary">secondary!</Button>
@@ -15,7 +15,7 @@ import { FontSize, Gutter} from "../../style/style";
                     <Button color="info">info!</Button>
                     <Button color="danger">Danger!</Button>
                 </Container>
-            </PageWrapper>
+            </SiteContent>
         );
     }
 }

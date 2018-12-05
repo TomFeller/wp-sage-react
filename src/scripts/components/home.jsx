@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageWrapper} from "./templates/page-wrapper.jsx";
+import {SiteContent} from "./templates/page-wrapper.jsx";
 
 import Welcome from "./homepage-sections/welcome";
 import Treatments from "./homepage-sections/treatments";
@@ -12,7 +12,7 @@ import MainSlider from "./homepage-sections/main-slider";
 class Home extends React.Component {
     render() {
         return (
-            <PageWrapper className={'homepage'}>
+            <SiteContent className={'homepage'}>
                 <MainSlider/>
                 <Welcome/>
                 <Recommendations/>
@@ -20,7 +20,7 @@ class Home extends React.Component {
                 <Articles/>
                 <Videos/>
                 <Faq/>
-            </PageWrapper>
+            </SiteContent>
         );
     }
 }

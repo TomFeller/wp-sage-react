@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Gutter} from "../style/style";
 
-const PageWrapper = ({content, className, ...props}) => {
+const SiteContent = ({content, className, ...props}) => {
     const classNames = ['site-content', className].join(" ");
 
     return (
@@ -14,10 +14,10 @@ const PageWrapper = ({content, className, ...props}) => {
     )
 };
 
-export {PageWrapper}
+export {SiteContent}
 
 const Wrapper = styled.div`
-    padding-top: 14rem;
+    padding-top: ${props => props.paddingTop ? props.paddingTop : '14rem'};
     &.homepage {
         .section { 
             padding: ${Gutter.xl} 0;

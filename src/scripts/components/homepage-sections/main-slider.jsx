@@ -32,14 +32,13 @@ class MainSlider extends React.Component {
     render() {
         const {sliderData} = this.state;
 
-
         const sliderItems = sliderData.filter(item => item.title !== '').map((item) => {
             const {key, title, credit, subtitle, image, backgroundImage} = item;
             return (
-                <Row key={key} style={{height: '24rem'}}>
+                <Row key={key} style={{height: '38rem'}}>
                     {image &&
                     <Col sm={4} className={'p-0'}>
-                        <Image src={image} height={'100%'}/>
+                        <Image src={image}  width={'auto'}/>
                     </Col>
                     }
                     <Col sm={image ? 8 : 12} className={'p-0'}
@@ -53,7 +52,7 @@ class MainSlider extends React.Component {
                             <H3 className={'display-3 text-left'}>
                                 {credit}
                                 <p className={'mt-3 font-weight-bold text-left'}
-                                   style={{fontSize: FontSize.xxs}}>
+                                   style={{fontSize: FontSize.xs}}>
                                     {subtitle}
                                 </p>
                             </H3>

@@ -7,7 +7,7 @@ const AccordionWrapper = styled.div`
         }
         
         &_header{
-            cursor: pointer
+            cursor: pointer;
         }
         
         &_content {    

@@ -29,7 +29,7 @@ class Videos extends React.Component {
             {isList} = this.state;
 
         DataActions.getAllVideos((allVideos) => {
-            const sliderItems = allVideos.map((video, v) => {
+            const sliderItems = allVideos.slice(0, maxItems ? maxItems : allVideos.length).map((video, v) => {
                 return (
                     <div key={v} className={'video-thumbnail'}>
                         {isList ?
@@ -43,7 +43,7 @@ class Videos extends React.Component {
                                 <Col xs={9} className={'pr-1'}>
                                     <div dangerouslySetInnerHTML={{__html: video.title.rendered}}
                                          style={{
-                                             fontSize: FontSize.xxs,
+                                             fontSize: FontSize.xs,
                                              color: Color.white
                                          }}/>
                                 </Col>

@@ -23,7 +23,7 @@ class Header extends React.Component {
                     <Container>
                         <HBox justifyContent={'flex-end'} className={'top-header'}>
                             <HBox alignItems={'center'}>
-                                <a href={'tel:052-2263761'} style={{color: '#f4f4f4'}}>052-2263761</a>
+                                <a href={'tel:052-2263761'} style={{color: '#f4f4f4', fontSize: FontSize.sm}}>052-2263761</a>
                             </HBox>
                             <HBox borderRight={'.1rem solid #f4f4f4'}
                                   paddingRight={Gutter.xs}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageWrapper} from "../../templates/page-wrapper.jsx";
+import {SiteContent} from "../../templates/page-wrapper.jsx";
 import {Container, FontSize, Gutter} from "../../style/style";
 import Modal from "./modal";
 import Button from "../button/button";
@@ -7,7 +7,7 @@ import Button from "../button/button";
 class ModalExamples extends React.Component {
     render() {
         return (
-            <PageWrapper>
+            <SiteContent>
 
                 {this.state && this.state.openModal === 'test' &&
                 <Modal id={'test'}
@@ -56,7 +56,7 @@ class ModalExamples extends React.Component {
 
 
                 </Container>
-            </PageWrapper>
+            </SiteContent>
         );
     }
 }
