@@ -6,6 +6,7 @@ import {PageWrapper} from "./templates/page-wrapper.jsx";
 import {Jumbotron, Container, Button} from 'reactstrap';
 
 import {PageTitle} from "./style/typography";
+import Text from "./utils/text/text";
 
 class Home extends React.Component {
     render() {
@@ -14,7 +15,7 @@ class Home extends React.Component {
         return (
             <PageWrapper>
                 <Container>
-                    <PageTitle> {title.rendered}</PageTitle>
+                    <Text tag={'h1'}> {title.rendered}</Text>
 
                     <Archive/>
                 </Container>

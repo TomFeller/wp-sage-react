@@ -7,7 +7,9 @@
     "test": "jest",
     "start": "webpack-dev-server --inline --progress --config webpack.dev.js",
     "build": "npm run clean && webpack -p --progress --config webpack.production.js",
-    "clean": "rimraf ./build/*"
+    "clean": "rimraf ./build/*",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +21,8 @@
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
     "create-react-app": "^2.1.1",
+    "docz": "latest",
+    "docz-theme-default": "latest",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.2",
     "react": "^15.6.2",

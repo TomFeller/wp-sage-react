@@ -4,6 +4,7 @@ import {Post} from "./post";
 import {PageTitle} from '../style/style';
 import {Row, Col} from 'reactstrap';
 import DataActions from "../../flux/actions/DataActions";
+import TemplateGrid from "../utils/templates/template-grid";
 
 
 class Archive extends React.Component {
@@ -12,6 +13,7 @@ class Archive extends React.Component {
 
 
     }
+
     render() {
         const {title, category} = this.props,
             archiveData = category ? DataStore.getPostsByCategory(category) : DataStore.getAllPosts();
@@ -21,21 +23,16 @@ class Archive extends React.Component {
 
                 {title && <h1 className={'archive-title display-1'}>{title}</h1>}
 
-                <div className={'archive-posts'}>
-                    <Row>
-                        {archiveData.map((post, i) => {
-                            return (
-                                <Col sm={6} md={4} lg={3} key={i}>
-
-                                    <Post id={post.id}
-                                          className={post['slug']}
-                                          {...post}/>
-
-                                </Col>
-                            )
-                        })}
-                    </Row>
-                </div>
+                <TemplateGrid sm={6} md={4} lg={3} >
+                    {archiveData.map((post, i) => {
+                        return (
+                            <Post id={post.id}
+                                  key={i}
+                                  className={post['slug']}
+                                  {...post}/>
+                        )
+                    })}
+                </TemplateGrid>
 
             </div>
         )
