@@ -1,6 +1,7 @@
 import {Colors} from "./variables.jsx";
 
 const ColorClasses = () => {
+
     return (
         `&-primary {
             background-color: ${Colors.primary};

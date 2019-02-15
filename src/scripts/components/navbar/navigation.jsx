@@ -40,6 +40,8 @@ class Navigation extends React.Component {
 
         const {expand, color, itemColor} = this.props;
 
+
+        console.log('allPages', allPages);
         return (
             <div>
                 <Navbar color={color ? color : 'light'}

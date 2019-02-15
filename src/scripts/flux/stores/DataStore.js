@@ -15,7 +15,10 @@ class DataStore {
             getAllPages:    this.getAllPages,
             getAllPosts:    this.getAllPosts,
             getPageBySlug:  this.getPageBySlug,
-            getPostsByCategory: this.getPostsByCategory
+            getPostsByCategory: this.getPostsByCategory,
+            getStyle: this.getStyle,
+            getColors: this.getColors,
+            getFontSizeByTag: this.getFontSizeByTag
         });
     }
 
@@ -46,6 +49,23 @@ class DataStore {
     getPostsByCategory(cat) {
         const allPosts = this.getState().data.posts;
         return allPosts.filter(post => post.categories.some(category => category === cat))
+    }
+
+    getPageProps(pageData) {
+        const {title} = pageData;
+        return title
+    }
+
+    getStyle() {
+        return this.getState().data.styling.acf;
+    }
+
+    getFontSizeByTag(tag) {
+        return this.getState().data.styling.acf['font_sizes'][tag];
+    }
+
+    getColors() {
+        return this.getState().data.styling.acf.colors;
     }
 
     // Returns a Page by provided slug

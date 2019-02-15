@@ -3,10 +3,10 @@ import {render} from 'react-dom';
 
 import DataActions from 'flux/actions/DataActions.js';
 
-import Header from 'components/header/header';
+import PageHeader from 'components/layout/header/app-header';
 import Home from 'components/home';
-import About from 'components/pages/about';
-import Contact from 'components/pages/contact';
+import PageAbout from 'components/pages/page-about';
+import PageContact from 'components/pages/page-contact';
 import Archive from 'components/templates/archive';
 
 import {
@@ -22,13 +22,16 @@ import PanelExamples from "./components/utils/panel/panel-examples";
 import ButtonExamples from "./components/utils/button/button-examples";
 import ModalExamples from "./components/utils/modal/modal-examples";
 import TextExamples from "./components/utils/text/text-examples";
+import DataStore from "./flux/stores/DataStore";
+
+;
 
 
 class AppInitializer {
 
     templates = {
-        'about': About,
-        'contact': Contact,
+        'about': PageAbout,
+        'contact': PageContact,
         'archive': Archive,
         'accordion-examples': AccordionExamples,
         'grid-examples': GridExamples,
@@ -42,18 +45,23 @@ class AppInitializer {
     buildRoutes(data) {
         const allData = data.posts.concat(data.pages);
 
+        console.log('allData', allData);
         return (
             allData.map((post, i) => {
                 const isPost = post.type === 'post';
                 const C = isPost ? this.templates.post : this.templates[post.slug];
-                return (
-                    <Route
-                        key={i}
-                        component={(props) => <C {...props} {...post}/>}
-                        path={isPost ? `/post/${post.slug}` : `/${post.slug}`}
-                        exact
-                    />
-                )
+
+                if (C) {
+                    return (
+                        <Route
+                            key={i}
+                            component={(props) => <C {...props}
+                                                     {...post}/>}
+                            path={isPost ? `/post/${post.slug}` : `/${post.slug}`}
+                            exact
+                        />
+                    )
+                }
             })
         )
     }
@@ -64,7 +72,7 @@ class AppInitializer {
                 <Router>
                     <div>
 
-                        <Header color={'primary'}/>
+                        <PageHeader color={'primary'}/>
 
                         <Switch>
                             <Route path="/" component={Home} exact/>

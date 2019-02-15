@@ -14,26 +14,26 @@ class Archive extends React.Component {
     }
     render() {
         const {title, category} = this.props,
-            archiveData = category ? DataStore.getPostsByCategory(category) : DataStore.getAllPosts()
-
-        let getArchivePosts = archiveData.map((post, i) => {
-            return (
-                <Col sm={6} md={4} lg={3} key={i}>
-                    <Post id={post.id}
-                          className={post['slug']}
-                          {...post}/>
-                </Col>
-            )
-        });
+            archiveData = category ? DataStore.getPostsByCategory(category) : DataStore.getAllPosts();
 
         return (
             <div className={'archive'}>
 
-                <h1 className={'archive-title display-1'}>{title}</h1>
+                {title && <h1 className={'archive-title display-1'}>{title}</h1>}
 
                 <div className={'archive-posts'}>
                     <Row>
-                        {getArchivePosts}
+                        {archiveData.map((post, i) => {
+                            return (
+                                <Col sm={6} md={4} lg={3} key={i}>
+
+                                    <Post id={post.id}
+                                          className={post['slug']}
+                                          {...post}/>
+
+                                </Col>
+                            )
+                        })}
                     </Row>
                 </div>
 

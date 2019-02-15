@@ -8,8 +8,9 @@ const Single = ({className, id, ...props}) => {
 
     return (
         <PageWrapper id={`page-${id}`}
-                     className={classNames}
-                     content={<Post {...props}/>}/>
+                     className={classNames}>
+            <Post {...props}/>
+        </PageWrapper>
 
     )
 };

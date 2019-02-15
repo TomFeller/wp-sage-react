@@ -3,7 +3,7 @@ import DataStore from '../../flux/stores/DataStore.js'
 import {Page} from '../templates/page.jsx';
 import {PageWrapper} from "../templates/page-wrapper.jsx";
 
-class About extends React.Component {
+class PageAbout extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -12,15 +12,11 @@ class About extends React.Component {
         const pageData = DataStore.getPageBySlug('about');
 
         return (
-            <PageWrapper
-                content={
-                    <Page id={pageData.id}
-                          className={pageData.slug}
-                          {...pageData}/>
-                }
-            />
+            <PageWrapper>
+
+            </PageWrapper>
         );
     }
 }
 
-export default About;
+export default PageAbout;
