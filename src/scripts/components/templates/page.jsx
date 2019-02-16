@@ -1,26 +1,60 @@
 import React from 'react';
-import {Container, PageWrapper, PageTitle, PageContent} from '../style/style';
 
-const Page = ({className, id, ...props}) => {
+import {Gutter} from "../style/variables";
 
-    const classNames = ['page', className].join(" "),
-        pageImageUrl = props._embedded && props._embedded["wp:featuredmedia"] && props._embedded["wp:featuredmedia"][0].source_url;
+import TemplateDefault from "../utils/templates/template-default";
+import TemplateCenter from "../utils/templates/template-center";
+import TemplateGrid from "../utils/templates/template-grid";
+import TemplateSlider from "../utils/templates/template-slider";
+import Text from "../utils/text/text";
+import Image from "../utils/image/image";
 
-    return (
-        <div id={`page-${id}`}
-             className={classNames}>
+class Page extends React.Component {
 
-            <PageTitle className={'page-title'}>{props.title.rendered}</PageTitle>
+    getTemplateType(template) {
+        let Template = '';
+        switch (template.type) {
+            case 'default':
+                Template = TemplateDefault;
+                break;
+            case 'slider':
+                Template = TemplateSlider;
+                break;
+            case 'center':
+                Template = TemplateCenter;
+                break;
+            case 'grid':
+                Template = TemplateGrid;
+                break;
+        }
 
-            <div dangerouslySetInnerHTML={{__html: props.content.rendered}}/>
+        return Template;
+    }
 
-            {pageImageUrl &&
-            <div>
-                <img src={pageImageUrl}/>
-            </div>}
+    render() {
+        const {title, showTitle, acf} = this.props;
+        const Template = this.getTemplateType(acf.page_layout);
 
-        </div>
-    )
-};
+        console.log(this.props);
+        return (
+            <div className={'app-section'}
+                 style={{padding: `${Gutter.sm} 0`}}>
 
-export {Page}
+                {showTitle && <Text tag={'h1'}
+                                    className={'text-center'}
+                                    dangerouslySetInnerHTML={{__html: title}}/>}
+
+                <Template
+                          {...this.props}/>
+
+            </div>
+        )
+    }
+
+    static defaultProps = {
+        title: 'כותרת עמוד',
+        children: []
+    }
+}
+
+export default Page;

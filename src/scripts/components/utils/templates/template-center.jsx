@@ -1,5 +1,7 @@
 import React from 'react';
-import {Row, Col, Image} from 'react-bootstrap';
+import {Row, Col} from 'reactstrap';
+import Image from '../../utils/image/image';
+
 
 class TemplateCenter extends React.Component {
     render() {

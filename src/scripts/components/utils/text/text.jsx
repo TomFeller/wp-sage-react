@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, PageTitle, PageContent, H1, H2, H3, H4, H5, H6} from "../../style/style";
+import {H1, H2, H3, H4, H5, H6, P, Label} from "../../style/typography";
 import DataStore from "../../../flux/stores/DataStore";
 
 class Text extends React.Component {
@@ -42,9 +42,8 @@ class Text extends React.Component {
                  style={{
                      color: color,
                      textDecoration: underline ? 'underline' : 'none'
-                 }}>
-                {this.props.children}
-            </Tag>
+                 }}
+                 dangerouslySetInnerHTML={{__html: this.props.children}}/>
         )
     }
 

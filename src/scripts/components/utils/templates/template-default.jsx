@@ -1,42 +1,52 @@
 import React from 'react';
-import {Row, Col, Image} from 'react-bootstrap';
+import styled from 'styled-components';
+import {Row, Col} from 'reactstrap';
+import Image from '../../utils/image/image';
+import Text from "../text/text";
 
 class TemplateDefault extends React.Component {
     render() {
-        const {children, width, center} = this.props;
-        const imageSize = 12 / this.props.imageSize;
-        const contentSize = 12 - imageSize; 
+        console.log('his.props', this.props);
 
+        const title = this.props.title.rendered,
+            image = this.props._embedded["wp:featuredmedia"] && this.props._embedded["wp:featuredmedia"][0].source_url,
+            content = this.props.content.rendered;
+
+        const templateOptions = this.props['acf']['template_default_options'];
+        const {align, direction, items_order} = templateOptions;
+        console.log('items_order', items_order)
         return (
-            <div style={{
-                width: width && `${width}px`,
-                marginRight: center && 'auto',
-                marginLeft: center && 'auto'
-            }}>
-            <Row>
-                <Col sm={imageSize}>
-                    {children[0]}
-                </Col>
-                <Col sm={contentSize}>
-                    {children[1]}
-                </Col>
-            </Row>
-            </div>
+            <Wrapper {...templateOptions}>
+                {direction === 'horizontal' ?
+                    <Row className={'row-reverse'}>
+                        <Col sm={7}>
+                            <Text tag={'h1'}>{title}</Text>
+                            <Text tag={'p'}>{content}</Text>
+                        </Col>
+                        <Col sm={5}>
+                            <Image src={image}/>
+                        </Col>
+                    </Row>
+                    :
+                    <div>
+                        <Text tag={'h1'}>{title}</Text>
+                        <Image src={image}/>
+                        <Text tag={'p'}>{content}</Text>
+                    </div>
+                }
+
+
+            </Wrapper>
         )
     }
 
     static defaultProps = {
         imageSize: 3,
-        children: [
-            <Image src={'http://admin.youdoadventures.com/wp-content/uploads/2018/07/default-thumbnail.jpg'}
-                   width={'100%'}/>,
-            <div>
-                <h2 dangerouslySetInnerHTML={{__html: 'Title'}}/>
-                <h4 dangerouslySetInnerHTML={{__html: 'Subtitle'}}/>
-
-                <p dangerouslySetInnerHTML={{__html: 'Description'}}/>
-            </div>]
     }
 }
 
 export default TemplateDefault;
+
+const Wrapper = styled.div`
+    display: ${props => props.direction === 'horizontal' ? 'flex' : 'block'}
+`;

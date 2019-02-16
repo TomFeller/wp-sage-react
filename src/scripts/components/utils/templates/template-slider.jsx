@@ -1,5 +1,6 @@
 import React from 'react';
-import {Row, Col, Image, Card, Button, Carousel} from 'react-bootstrap';
+import {Carousel, CarouselItem} from 'reactstrap';
+import Image from '../../utils/image/image';
 
 class TemplateSlider extends React.Component {
     render() {
@@ -15,9 +16,9 @@ class TemplateSlider extends React.Component {
                 <Carousel color={'primary'}>
                     {children.map((child, c) => {
                         return (
-                            <Carousel.Item key={c}>
+                            <CarouselItem key={c}>
                                 {child}
-                            </Carousel.Item>
+                            </CarouselItem>
                         )
                     })}
                 </Carousel>
