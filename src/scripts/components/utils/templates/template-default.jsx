@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import {Row, Col} from 'reactstrap';
 import Image from '../../utils/image/image';
 import Text from "../text/text";
+import {HBox, Element} from 'react-stylesheet';
+import {Cell} from "../cell/cell";
 
 class TemplateDefault extends React.Component {
     render() {
@@ -13,26 +15,31 @@ class TemplateDefault extends React.Component {
             content = this.props.content.rendered;
 
         const templateOptions = this.props['acf']['template_default_options'];
-        const {align, direction, items_order} = templateOptions;
-        console.log('items_order', items_order)
+        const {align, direction, items_order, image_width, content_width, image_max_width} = templateOptions;
+        console.log('templateOptions', templateOptions);
         return (
             <Wrapper {...templateOptions}>
                 {direction === 'horizontal' ?
-                    <Row className={'row-reverse'}>
-                        <Col sm={7}>
+                    <HBox flexWrap={'wrap'}
+                          flexDirection={items_order === 'image-content' && 'row-reverse'}
+                          width={'100%'}>
+
+                        <Cell {...image_width}>
                             <Text tag={'h1'}>{title}</Text>
                             <Text tag={'p'}>{content}</Text>
-                        </Col>
-                        <Col sm={5}>
+                        </Cell>
+
+                        <Cell {...content_width}>
                             <Image src={image}/>
-                        </Col>
-                    </Row>
+                        </Cell>
+
+                    </HBox>
                     :
-                    <div>
+                    <Element textAlign={align}>
                         <Text tag={'h1'}>{title}</Text>
-                        <Image src={image}/>
+                        <Image src={image} maxWidth={image_max_width}/>
                         <Text tag={'p'}>{content}</Text>
-                    </div>
+                    </Element>
                 }
 
 

@@ -44,8 +44,7 @@ class Page extends React.Component {
                                     className={'text-center'}
                                     dangerouslySetInnerHTML={{__html: title}}/>}
 
-                <Template
-                          {...this.props}/>
+                <Template {...this.props}/>
 
             </div>
         )

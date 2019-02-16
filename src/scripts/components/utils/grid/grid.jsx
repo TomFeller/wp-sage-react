@@ -9,9 +9,11 @@ class Grid extends React.Component {
 
     render() {
         const {cells, className, gutter, cellSize, children} = this.props;
-
+console.log(cellSize)
         const classNames = ['grid', className].join(className ? ' grid-' : ''),
             gridContent = children.map((cell, s) => {
+
+
 
                 return (
                     <GridCell className={'grid_cell'}
