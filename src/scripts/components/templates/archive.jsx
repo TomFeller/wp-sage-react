@@ -23,7 +23,7 @@ class Archive extends React.Component {
 
                 {title && <h1 className={'archive-title display-1'}>{title}</h1>}
 
-                <TemplateGrid sm={6} md={4} lg={3} >
+                <TemplateGrid sm={6} md={4} lg={3} {...archiveData}>
                     {archiveData.map((post, i) => {
                         return (
                             <Post id={post.id}
