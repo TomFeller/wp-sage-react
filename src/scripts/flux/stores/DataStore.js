@@ -1,5 +1,5 @@
-import alt          from 'flux/alt/alt.js';
-import DataActions  from 'flux/actions/DataActions.js';
+import alt          from '../../flux/alt/alt.js';
+import DataActions  from '../../flux/actions/DataActions.js';
 
 class DataStore {
     constructor() {
@@ -14,6 +14,7 @@ class DataStore {
             getAll:         this.getAll,
             getAllPages:    this.getAllPages,
             getAllPosts:    this.getAllPosts,
+            getAllProducts:    this.getAllProducts,
             getPageBySlug:  this.getPageBySlug
         });
     }
@@ -34,8 +35,12 @@ class DataStore {
     }
 
     // Returns all Posts
-    getAllPosts(cat) {
+    getAllPosts() {
+        return this.getState().data.posts;
+    }
 
+    // Returns all Products
+    getAllProducts() {
         return this.getState().data.posts;
     }
 

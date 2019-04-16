@@ -1,0 +1,100 @@
+.logo-animation {
+  width: 100px;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  .logo-animation-item {
+    width: 50%;
+    height: 50%;
+    padding: 7px;
+    border-radius: 20px;
+    -webkit-animation: shrink 1.6s;
+    animation: shrink 1.6s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite; }
+    .logo-animation-item div {
+      height: 100%;
+      position: relative; }
+      .logo-animation-item div:before, .logo-animation-item div:after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #000000;
+        position: absolute; }
+    .logo-animation-item:first-child {
+      border-top-left-radius: 50%;
+      -webkit-animation-delay: .4s;
+      animation-delay: .4s; }
+      .logo-animation-item:first-child div {
+        border-right: 10px solid;
+        border-bottom: 10px solid; }
+        .logo-animation-item:first-child div:before {
+          bottom: -10px;
+          left: -5px; }
+        .logo-animation-item:first-child div:after {
+          top: -5px;
+          right: -10px; }
+    .logo-animation-item:nth-child(2) {
+      -webkit-animation-delay: .8s;
+      animation-delay: .8s; }
+      .logo-animation-item:nth-child(2) div {
+        border-bottom: 10px solid;
+        border-left: 10px solid; }
+        .logo-animation-item:nth-child(2) div:before {
+          top: -5px;
+          left: -10px; }
+        .logo-animation-item:nth-child(2) div:after {
+          bottom: -10px;
+          right: -5px; }
+    .logo-animation-item:nth-child(3) {
+      -webkit-animation-delay: 1.6s;
+      animation-delay: 1.6s; }
+      .logo-animation-item:nth-child(3) div {
+        border-top: 10px solid #ffca9b;
+        border-right: 10px solid #ffca9b; }
+        .logo-animation-item:nth-child(3) div:before {
+          top: -10px;
+          left: -5px;
+          background: #ffca9b; }
+        .logo-animation-item:nth-child(3) div:after {
+          bottom: -5px;
+          right: -10px;
+          background: #ffca9b; }
+    .logo-animation-item:nth-child(4) {
+      -webkit-animation-delay: 1.2s;
+      animation-delay: 1.2s; }
+      .logo-animation-item:nth-child(4) div {
+        border-top: 10px solid;
+        border-left: 10px solid; }
+        .logo-animation-item:nth-child(4) div:before {
+          top: -10px;
+          right: -5px; }
+        .logo-animation-item:nth-child(4) div:after {
+          bottom: -5px;
+          left: -10px; }
+
+@-webkit-keyframes shrink {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+  20% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8); }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
+@keyframes shrink {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+  20% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8); }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }

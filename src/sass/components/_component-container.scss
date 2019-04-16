@@ -1,6 +1,6 @@
 .container {
   transition: padding .5s;
-  border: 1px solid;
+
   @include responsive-prop(
                   padding,
                   0 $gutter,
@@ -18,7 +18,6 @@
 
 .row {
   padding: $gutter-sm;
-  border: .1rem solid red;
   margin-left: -$gutter;
   margin-right: -$gutter;
   display: flex;

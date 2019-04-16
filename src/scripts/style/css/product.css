@@ -1,0 +1,41 @@
+.product-col {
+    width: 100%;
+    border-right: 1px solid #000;
+}
+
+.product-col:last-child {
+    border-right: 0;
+}
+@media screen and (min-width: 480px) {
+    .product-col {
+        width: 50%;
+        margin: auto;
+    }
+}
+@media screen and (min-width: 768px) {
+    .product-col {
+        width: 20%;
+        margin: auto;
+    }
+}
+
+
+.productMobileSlider {
+
+}
+.productWrapperDesktop,
+.productWrapperDesktopFlex {
+    display: none;
+}
+
+@media screen and (min-width: 640px) {
+    .productMobileSlider {
+        display: none;
+    }
+    .productWrapperDesktop {
+        display: block;
+    }
+    .productWrapperDesktopFlex {
+        display: flex !important;
+    }
+}

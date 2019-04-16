@@ -1,0 +1,109 @@
+$width: 10px;
+
+.logo-animation {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  &-item {
+    width: 50%;
+    height: 50%;
+    padding: 7px;
+    border-radius: $width * 2;
+    animation: shrink 1.6s;
+    animation-iteration-count: infinite;
+
+    div {
+      height: 100%;
+      position: relative;
+      &:before,
+      &:after {
+        content: '';
+        width: $width;
+        height: $width;
+        border-radius: 50%;
+        background: #000000;
+        position: absolute;
+      }
+    }
+
+    &:first-child {
+      border-top-left-radius: 50%;
+      animation-delay: .4s;
+      div {
+        border-right: $width solid;
+        border-bottom: $width solid;
+
+        &:before {
+          bottom: -$width;
+          left: -$width / 2;
+        }
+        &:after {
+          top: -$width / 2;
+          right: -$width;
+        }
+      }
+    }
+    &:nth-child(2) {
+      animation-delay: .8s;
+      div {
+        border-bottom: $width solid;
+        border-left: $width solid;
+
+        &:before {
+          top: -$width / 2;
+          left: -$width;
+        }
+        &:after {
+          bottom: -$width;
+          right: -$width / 2;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      animation-delay: 1.6s;
+      div {
+        border-top: $width solid #ffca9b;
+        border-right: $width solid #ffca9b;
+        &:before {
+          top: -$width;
+          left: -$width / 2;
+          background: #ffca9b;
+        }
+        &:after {
+          bottom: -$width / 2;
+          right: -$width;
+          background: #ffca9b;
+        }
+      }
+    }
+    &:nth-child(4) {
+      animation-delay: 1.2s;
+      div {
+        border-top: $width solid;
+        border-left: $width solid;
+        &:before {
+          top: -$width;
+          right: -$width / 2;
+        }
+        &:after {
+          bottom: -$width / 2;
+          left: -$width;
+        }
+      }
+    }
+  }
+}
+
+@keyframes shrink {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(.8);
+  }
+  40% {
+    transform: scale(1);
+  }
+}

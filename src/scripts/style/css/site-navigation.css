@@ -1,0 +1,177 @@
+.navigation-wrapper {
+    width: 100%;
+    z-index: 1;
+    background: #ffffff;
+    overflow: visible;
+    position: relative;
+}
+
+@media screen and (max-width: 640px) {
+    .navigation-wrapper .nav-slider {
+
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .navigation-wrapper {
+        overflow: hidden;
+        /*height: 8rem;*/
+        position: absolute;
+        transition: transform .5s;
+        z-index: 201;
+    }
+    #app.scroll .navigation-wrapper {
+        transform: translateY(-13rem);
+    }
+    #app.scroll .navigation-wrapper.open {
+        transform: translateY(0);
+    }
+    #app.scroll .navigation-wrapper.open + .show-mobile-menu-button {
+        top: 13rem;
+        transform: rotate(180deg);
+    }
+
+    .navigation-wrapper .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .navigation-wrapper .nav-slider {
+        /*position: absolute;*/
+        left: 0;
+        width: 100%;
+        justify-content: flex-start !important;
+        flex-wrap: nowrap;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        height: 8rem;
+    }
+
+    .navigation-wrapper .nav-slider::-webkit-scrollbar-track {
+
+        background-color: #f4f4f4;
+        height: .2rem;
+    }
+
+    .navigation-wrapper .nav-slider::-webkit-scrollbar {
+        height: .3rem;
+        background-color: #5693b9;
+        width: .5rem;
+    }
+
+    .navigation-wrapper .nav-slider::-webkit-scrollbar-thumb {
+        background-color: #5693b9;
+        height: .2rem;
+    }
+
+}
+
+.show-mobile-menu-button {
+    z-index: 200;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #000;
+    top: 6rem;
+    opacity: 0;
+    border: 0;
+    outline: 0 !important;
+    transition: all .3s;
+    background-color: transparent;
+ }
+.show-mobile-menu-button svg {
+    background: #fff;
+    border-radius: 50%;
+}
+#app.scroll .show-mobile-menu-button {
+    opacity: 1;
+}
+.navigation-wrapper a:focus {
+    background: #fff;
+}
+
+.mobile-hidden {
+    display: none;
+}
+
+@media screen and (min-width: 640px) {
+    .mobile-hidden {
+        display: block
+    }
+}
+
+.flip-icon {
+    padding: 0 1.5rem 0;
+    /*max-width: 90px;*/
+    /*width: 90px;*/
+    transition: transform .2s;
+    position: relative;
+}
+.flip-icon {
+    padding: 0 1.5rem 0;
+    max-width: 25%;
+    width: 25%;
+    flex: 25% 0 0;
+
+}
+.flip-icon::-webkit-scrollbar {
+     display: none;
+ }
+/*.flip-icon:nth-child(5),*/
+/*.flip-icon:nth-child(6) {*/
+    /*opacity: 0;*/
+/*}*/
+/*.navigation-wrapper.open .flip-icon:nth-child(5),*/
+/*.navigation-wrapper.open .flip-icon:nth-child(6) {*/
+    /*opacity: 1;*/
+/*}*/
+
+@media screen and (min-width: 640px) {
+    .flip-icon {
+        padding: 0 1.5rem 0;
+        max-width: 16.6667%;
+        flex: 16.6667% 0 0;
+        width: auto;
+        opacity: 1;
+    }
+
+    .navigation-wrapper .flip-icon:nth-child(5),
+    .navigation-wrapper .flip-icon:nth-child(6) {
+        opacity: 1;
+    }
+}
+
+.flip-icon .tool-tip {
+    visibility: visible;
+    /*position: absolute;*/
+    left: 0;
+    bottom: -2rem;
+    width: 100%;
+    text-align: center;
+    opacity: 1;
+}
+
+@media screen and (min-width: 640px) {
+    .flip-icon .tool-tip {
+        opacity: 1;
+        visibility: hidden;
+        position: absolute;
+    }
+}
+
+.flip-icon a:hover {
+    transform: scale(.9);
+}
+
+.flip-icon:hover .tool-tip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.flip-icon .circle {
+    background-color: #fff !important;
+}
+
+.flip-icon p {
+    white-space: nowrap;
+}
