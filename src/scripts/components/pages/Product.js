@@ -22,6 +22,7 @@ class Product extends React.Component {
         };
 
         this.memberHover = this.memberHover.bind(this);
+        this.getMultiplyImagesArray = this.getMultiplyImagesArray.bind(this);
     }
 
     memberHover(index) {
@@ -31,6 +32,15 @@ class Product extends React.Component {
             sectionActive: parseInt(sectionActive) === parseInt(index) ? '' : parseInt(index)
         })
 
+    }
+
+    getMultiplyImagesArray(group, length) {
+        const arr = [];
+        for (let i = 0; i < length; i++) {
+            arr.push(i === 0 ? group.image : group[`image_${i + 1}`]);
+        }
+
+        return arr;
     }
 
     render() {
@@ -121,29 +131,42 @@ class Product extends React.Component {
                                                  border: '0 !important'
                                              }}>
                                         <Element className={'member'} width={'100%'} border={0}>
-                                            <Element position={'relative'}>
-                                                <Image src={sections[sectionActive].image}
-                                                       width={'100%'}
-                                                       className={'member_image'}/>
-                                                <h2 dangerouslySetInnerHTML={{__html: sections[sectionActive].price ? sections[sectionActive].price : '69$'}}
-                                                    className={'text-center mt-4 d-md-none'}/>
-                                            </Element>
+                                            {sections[sectionActive].number_of_images > 1 ?
+                                                <Element position={'relative'}>
+                                                    <ProductMobileSlider showInDesktop
+                                                        items={this.getMultiplyImagesArray(sections[sectionActive], sections[sectionActive].number_of_images)
+                                                            .map((image, i) => {
+                                                            return ({
+                                                                src: image,
+                                                                header: sections[sectionActive].title,
+                                                                altText: sections[sectionActive].price,
+                                                            })
+                                                        })}/>
+                                                </Element> :
+                                                <Element position={'relative'}>
+                                                    <Image src={sections[sectionActive].image}
+                                                           width={'100%'}
+                                                           className={'member_image'}/>
+                                                    <h2 dangerouslySetInnerHTML={{__html: sections[sectionActive].price ? sections[sectionActive].price : '69$'}}
+                                                        className={'text-center mt-4 d-md-none'}/>
+                                                </Element>
+                                            }
                                         </Element>
                                     </Section>
                                 </Col>
                             </Row>
-                        </Container>
-                        : inner_sections.template === 'blocks' ?
-                            <VBox alignItems={'center'} >
+                            </Container>
+                            : inner_sections.template === 'blocks' ?
+                            <VBox alignItems={'center'}>
                                 <Element marginBottom={Gutter.md}>
-                                <ProductMobileSlider items={sections.map((item, i) => {
-                                    return ({
-                                        src: item.image,
-                                        header: item.title,
-                                        altText: item.description,
+                                    <ProductMobileSlider items={sections.map((item, i) => {
+                                        return ({
+                                            src: item.image,
+                                            header: item.title,
+                                            altText: item.description,
 
-                                    })
-                                })}/>
+                                        })
+                                    })}/>
                                 </Element>
                                 {sections.map((section, i) => {
                                     const {title, description, image, price} = section;
@@ -221,7 +244,7 @@ class Product extends React.Component {
                                     </Row>
                                 </Element>
                             </Container>
-                    }
+                            }
                 </Element>
             </PageWrapper>
         )

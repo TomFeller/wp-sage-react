@@ -47,7 +47,7 @@ class ProductMobileSlider extends React.Component {
 
     render() {
         const {activeIndex} = this.state;
-        const {items} = this.props;
+        const {items, showInDesktop} = this.props;
         const slides = items.map((item) => {
             return (
                 <CarouselItem
@@ -68,7 +68,7 @@ class ProductMobileSlider extends React.Component {
                 activeIndex={activeIndex}
                 next={this.next}
                 previous={this.previous}
-                className={'product-mobile-slider d-md-none product-mobile-slider'}
+                className={`product-mobile-slider ${!showInDesktop && 'd-md-none'} product-mobile-slider`}
             >
                 <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex}/>
                 {slides}
