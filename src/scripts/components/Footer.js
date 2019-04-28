@@ -19,14 +19,20 @@ class Footer extends React.Component {
                     <HBox justifyContent={'space-between'}
                           alignItems={'center'}
                           flexWrap={'wrap'}
-                        className={'d-block d-sm-flex'}>
+                          className={'d-block'}>
 
-                        <OurPartners/>
-
+                        {/*<OurPartners/>*/}
+                        <Link to={'/'}>
                         <SiteLogo/>
+                        </Link>
+                        <HBox alignItems={'center'} justifyContent={'space-between'} margin={'2rem 0'} className={'d-flex d-md-block'}>
+                            <ShareIcons size={25} color={'#000'}/>
+                            <Link to={'/'} style={{width: '100%', display: 'block', color: '#000', fontSize: FontSize.xs,}}
+                                  className={'mt-sm-4 text-right text-md-center'}>terms & conditions</Link>
+                        </HBox>
 
-                        <ShareIcons size={25} color={'#000'}/>
 
+                        <p className={'text-center'}>2019 oleo vape™ LLC. All rights reserved. © </p>
                     </HBox>
                 </Container>
 

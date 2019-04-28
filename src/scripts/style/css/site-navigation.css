@@ -27,7 +27,7 @@
         transform: translateY(0);
     }
     #app.scroll .navigation-wrapper.open + .show-mobile-menu-button {
-        top: 13rem;
+        top: 11rem;
         transform: rotate(180deg);
     }
 
@@ -43,7 +43,7 @@
         flex-wrap: nowrap;
         overflow-x: auto !important;
         overflow-y: hidden !important;
-        height: 8rem;
+        height: 7rem;
     }
 
     .navigation-wrapper .nav-slider::-webkit-scrollbar-track {
@@ -68,11 +68,14 @@
 .show-mobile-menu-button {
     z-index: 200;
     position: fixed;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    margin: auto;
     text-align: center;
     font-weight: bold;
     color: #000;
-    top: 6rem;
+    top: 5.2rem;
     opacity: 0;
     border: 0;
     outline: 0 !important;
@@ -81,7 +84,16 @@
  }
 .show-mobile-menu-button svg {
     background: #fff;
-    border-radius: 50%;
+    position: relative;
+    /*border-radius: 50%;*/
+}
+.show-mobile-menu-button svg:before {
+    content:'';
+    width: 10px;
+    height: 10px;
+    background:red;
+    position: absolute;
+    left: 0;
 }
 #app.scroll .show-mobile-menu-button {
     opacity: 1;

@@ -48,15 +48,18 @@ class Team extends React.Component {
                 <Container>
                     <Row>
                         <Col md={6}>
-                            <HBox flexWrap={'wrap'}>
+                            <HBox flexWrap={'wrap'} justifyContent={'space-between'}>
                                 {members.map((member, i) => {
                                     const {name, role, content, image} = member;
                                     return (
-                                        <Member key={i} className={'member'}>
+                                        <Member key={i} className={'member'} id={`member-${i}`}>
                                             <VBox alignItems={'center'} className={'member'}>
                                                 <Element width={'100%'}
                                                          position={'relative'}
-                                                         onClick={() => i !== memberActive && this.memberHover(i)}
+                                                         onClick={() => {
+                                                             i !== memberActive && this.memberHover(i);
+                                                             window.location.href = '/#member-2'
+                                                         }}
                                                     // onMouseOver={this.memberHover}
                                                 >
                                                     <Image src={image}
@@ -108,8 +111,8 @@ class Team extends React.Component {
 }
 
 const Member = styled.div`
-    width: 50%;
-    border: 2rem solid #fff;
+    width: 47%;
+    
     
     ${props => props.active && `
         display: flex;
@@ -119,7 +122,7 @@ const Member = styled.div`
     `}
     
     @media screen and (min-width: ${Viewport.xs_l}) {
-        width: ${props => props.active ? '100%' : '50%'};
+        width: ${props => props.active ? '100%' : '47%'};
     }
     .member {
         &_name {

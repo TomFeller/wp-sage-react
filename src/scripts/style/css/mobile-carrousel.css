@@ -24,22 +24,28 @@
 }
 .product-mobile-slider .carousel-item p {
     color: #000000;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    max-width: 100%;
+    padding: 0 1.5rem;
 }
-
+.product-mobile-slider .carousel-caption {
+    padding-bottom: 0;
+}
 .product-mobile-slider .carousel-item img {
     height: 40rem;
     width: auto !important;
     margin: auto;
 }
-
+.product-mobile-slider .carousel-inner {
+text-align: center;
+}
 .product-mobile-slider .carousel-indicators li {
-    background-color: transparent;;
-    border: 1px solid rgba(221, 113, 34, 1);;
+    background-color: #999;
+    /*border: 1px solid rgba(221, 113, 34, 1);;*/
 }
 .product-mobile-slider .carousel-indicators li.active {
     background-color: rgba(221, 113, 34, 1);
-    border: rgba(221, 113, 34, 1);
+    /*border: rgba(221, 113, 34, 1);*/
 }
 
 .product-mobile-slider .carousel-caption {

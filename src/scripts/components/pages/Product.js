@@ -59,25 +59,40 @@ class Product extends React.Component {
 
                     {content.rendered && content.rendered !== '' &&
                     <h2 dangerouslySetInnerHTML={{__html: content.rendered}}
-                        className={`text-center ${inner_sections.template === 'blocks' ? 'mt-5 mb-5' : ''}`}
-                        style={{color: '#000'}}/>}
+                        className={`text-center product-name-title ${inner_sections.template === 'blocks' ? 'mt-5 mb-5' : ''}`}
+                        style={{color: '#000', marginBottom: Gutter.md}}/>}
 
                     {inner_sections.template === 'grid' ?
                         <Container>
+                            {/*<ProductMobileSlider items={sections.map((item, i) => {*/}
+                            {/*return ({*/}
+                            {/*src: item.image,*/}
+                            {/*header: item.title,*/}
+                            {/*altText: item.description,*/}
+                            {/*caption: item.price*/}
+                            {/*})*/}
+                            {/*})}/>*/}
+
                             <Row style={{marginBottom: Gutter.xl}}>
                                 <Col md={6}>
-                                    <HBox flexWrap={'wrap'}>
+                                    <HBox flexWrap={'wrap'} justifyContent={'space-between'}>
                                         {sections.map((section, i) => {
                                             console.log('section', section);
-                                            const {title, description, image} = section;
+                                            const {title, description, image, price,} = section;
                                             if (title !== '') {
                                                 return (
                                                     <Section key={i}
-                                                             onClick={() => i !== sectionActive && this.memberHover(i)}
+                                                             onClick={() => {
+                                                                 i !== sectionActive && this.memberHover(i);
+                                                                 window.location.href = `/put-your-skinniz-on/#section-active-item`;
+                                                             }}
+                                                             className={'section-grid-item'}
+                                                             id={`section-grid-item-${i}`}
                                                              style={{
                                                                  ...sectionStyle
                                                              }}>
-                                                        <VBox alignItems={'center'} className={'member'} style={{border: 0, margin:'auto'}}>
+                                                        <VBox alignItems={'center'} className={'member'}
+                                                              style={{border: 0, margin: 'auto'}}>
                                                             <HBox justifyContent={'center'} alignItems={'center'}
                                                                   width={'100%'}
                                                                   position={'relative'}>
@@ -91,7 +106,7 @@ class Product extends React.Component {
                                         })}
                                     </HBox>
                                 </Col>
-                                <Col md={6}>
+                                <Col md={6} id={'section-active-item'}>
                                     <Section active={true}
                                              style={{
                                                  ...sectionStyle,
@@ -103,13 +118,15 @@ class Product extends React.Component {
                                                  width: '100%',
                                                  height: '100%',
                                                  backgroundColor: 'transparent',
-                                                 border: '0'
+                                                 border: '0 !important'
                                              }}>
-                                        <Element className={'member'} width={'100%'}>
+                                        <Element className={'member'} width={'100%'} border={0}>
                                             <Element position={'relative'}>
                                                 <Image src={sections[sectionActive].image}
                                                        width={'100%'}
                                                        className={'member_image'}/>
+                                                <h2 dangerouslySetInnerHTML={{__html: sections[sectionActive].price ? sections[sectionActive].price : '69$'}}
+                                                    className={'text-center mt-4 d-md-none'}/>
                                             </Element>
                                         </Element>
                                     </Section>
@@ -124,7 +141,7 @@ class Product extends React.Component {
                                         src: item.image,
                                         header: item.title,
                                         altText: item.description,
-                                        caption: item.price
+
                                     })
                                 })}/>
 
@@ -132,9 +149,15 @@ class Product extends React.Component {
                                     const {title, description, image, price} = section;
                                     if (title !== '') {
                                         return (
-                                            <Row key={i} className={'productWrapperDesktop'}>
+                                            <Row key={i} className={'productWrapperDesktopFlex'}
+                                                 style={{width: '100%'}}>
                                                 <Col xs={4} sm={6}
-                                                     style={{backgroundImage: `url(${image}`}}
+                                                     style={{
+                                                         backgroundImage: `url(${image}`,
+                                                         backgroundSize: 'cover',
+                                                         backgroundPosition: 'center center',
+                                                         height: '100vh'
+                                                     }}
                                                      className={'px-0'}>
                                                 </Col>
                                                 <Col xs={8} sm={6}
@@ -208,19 +231,19 @@ class Product extends React.Component {
 export default Product;
 
 const sectionStyle = {
-    width: '50%',
+    // width: '50%',
     paddingTop: '15%',
     paddingBottom: '15%',
-    backgroundColor: '#999',
-    border: '2rem solid #fff'
+    // backgroundColor: '#999',
+    // border: '2rem solid #fff'
 }
 
 const Section = styled.div`
-    width: 50%;
+    
     padding-top: 15%;
     padding-bottom: 15%;
-    background-color: #999;
-    border: 2rem solid #fff;
+    // background-color: #999;
+    
     
     ${props => props.active && `
         display: flex;
@@ -231,11 +254,11 @@ const Section = styled.div`
         width: 100%;
         height: 100%;
         background-color: transparent;
-       border: 0;
+       border: 0 !important;
     `}
     
     @media screen and (min-width: ${Viewport.xs_l}) {
-        width: ${props => props.active ? '100%' : '50%'};
+        width: ${props => props.active ? '100%' : '47%'};
     }
     .member {
         &_name {

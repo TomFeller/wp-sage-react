@@ -1,0 +1,29 @@
+.words {
+
+}
+
+.words p {
+    color: #bbbbbb;
+    font-size: 2.5rem;
+    text-align: center;
+}
+.words p b {color: #151515}
+.words p strong {color: #151515}
+
+
+@media screen and (min-width: 640px) {
+    .words p {
+        font-size: 4rem;
+        text-align: center;
+    }
+}
+
+
+.homepage-section-wrapper  {
+    min-height: 55vh;
+}
+@media screen and (min-width: 640px) {
+    .homepage-section-wrapper  {
+        min-height: 110vh;
+    }
+}

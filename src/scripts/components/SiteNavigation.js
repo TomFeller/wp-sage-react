@@ -48,7 +48,7 @@ class SiteNavigation extends React.Component {
                 id: 0,
                 icon: FaCodepen,
                 title: 'oleovape',
-                href: '/dress-up-your-device'
+                href: '/its-all-about-you'
             }, {
                 id: 1,
                 icon: FaGroup,
@@ -62,7 +62,7 @@ class SiteNavigation extends React.Component {
             }, {
                 id: 3,
                 icon: FaShoppingBasket,
-                href: '/its-all-about-you',
+                href: '/put-your-skinniz-on',
                 title: 'accessories'
             }, {
                 id: 4,
@@ -108,7 +108,7 @@ class SiteNavigation extends React.Component {
                                 </div>
                             )
                         })}
-                        <MobileHidden style={{order: 2}} className={'mobile-hidden'}>
+                        <MobileHidden style={{order: 2, flex: '16.6667% 0 0'}} className={'mobile-hidden'}>
                             <Link to={'/'} style={{order: 2, padding: '0 10px'}}>
                                 <SiteLogo width={'120px'}/>
                             </Link>
@@ -119,7 +119,7 @@ class SiteNavigation extends React.Component {
 
             </NavigationWrapper>
             <button onClick={this.toggleMobileMenu} className={'d-sm-none mobile-only show-mobile-menu-button'}>
-            <FaAngleDown size={30}/>
+            <FaAngleDown size={24}/>
             </button>
         </div>
         )
