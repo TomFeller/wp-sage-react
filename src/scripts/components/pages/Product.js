@@ -134,8 +134,8 @@ class Product extends React.Component {
                             </Row>
                         </Container>
                         : inner_sections.template === 'blocks' ?
-                            <VBox alignItems={'center'}>
-
+                            <VBox alignItems={'center'} >
+                                <Element marginBottom={Gutter.md}>
                                 <ProductMobileSlider items={sections.map((item, i) => {
                                     return ({
                                         src: item.image,
@@ -144,7 +144,7 @@ class Product extends React.Component {
 
                                     })
                                 })}/>
-
+                                </Element>
                                 {sections.map((section, i) => {
                                     const {title, description, image, price} = section;
                                     if (title !== '') {

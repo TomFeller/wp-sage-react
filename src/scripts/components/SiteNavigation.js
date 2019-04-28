@@ -16,6 +16,7 @@ import {MobileHidden} from '../style/responsive'
 import Tooltip from "./utils/Tooltip";
 import '../style/css/site-navigation.css';
 import Button from "./utils/button/button";
+import IconSwitcher from "./utils/icon-switcher/IconSwitcher";
 
 
 class SiteNavigation extends React.Component {
@@ -61,7 +62,10 @@ class SiteNavigation extends React.Component {
                 title: 'team'
             }, {
                 id: 3,
-                icon: FaShoppingBasket,
+                icon_1: FaShoppingBasket,
+                icon_2: FaGroup,
+                icon_3: FaMapSigns,
+                icon_4: FaPhone,
                 href: '/put-your-skinniz-on',
                 title: 'accessories'
             }, {
@@ -80,48 +84,57 @@ class SiteNavigation extends React.Component {
 
         return (
             <div>
-            <NavigationWrapper className={`navigation-wrapper ${mobileMenuOpen ? 'open' : ''}`}>
-                <Container>
-                    <HBox justifyContent={'space-around'} overflow={'visible'} alignItems={'center'}
-                          className={'nav-slider'}>
-                        {navItems.map((item, i) => {
-                            return (
-                                <div key={i}
-                                     style={{order: i, zIndex: 100 - i}} className={'flip-icon'}>
-                                    <a href={item.href ? `${item.href}` : 'javascript:void(0)'}
-                                       onMouseOver={this.toggleTooltip} id={`tooltip-${i}`}>
-                                        <Circle size={40}
-                                            // border={'1px solid #000'}
-                                            // padding={Gutter.sm}
-                                                margin={'0 auto'}
-                                                background={'transparent'}
-                                                pointer>
-                                            <item.icon size={20} color={'#000'}/>
-                                        </Circle>
-                                    </a>
+                <NavigationWrapper className={`navigation-wrapper ${mobileMenuOpen ? 'open' : ''}`}>
+                    <Container>
+                        <HBox justifyContent={'space-around'} overflow={'visible'} alignItems={'center'}
+                              className={'nav-slider'}>
+                            {navItems.map((item, i) => {
+                                return (
+                                    <div key={i}
+                                         style={{order: i, zIndex: 100 - i}} className={'flip-icon'}>
 
-                                    <Tooltip direction={'right'}
-                                        // className={'mobile-hidden'}
-                                             toggle={this.toggleTooltip}>
-                                        {item.title}
-                                    </Tooltip>
-                                </div>
-                            )
-                        })}
-                        <MobileHidden style={{order: 2, flex: '16.6667% 0 0'}} className={'mobile-hidden'}>
-                            <Link to={'/'} style={{order: 2, padding: '0 10px'}}>
-                                <SiteLogo width={'120px'}/>
-                            </Link>
-                        </MobileHidden>
+                                        {item.icon ?
+                                            <a href={item.href ? `${item.href}` : 'javascript:void(0)'}
+                                               onMouseOver={this.toggleTooltip} id={`tooltip-${i}`}>
+                                                <Circle size={40}
+                                                    // border={'1px solid #000'}
+                                                    // padding={Gutter.sm}
+                                                        margin={'0 auto'}
+                                                        background={'transparent'}
+                                                        pointer>
+                                                    <item.icon size={20} color={'#000'}/>
+                                                </Circle></a>
+                                            :
+                                            <IconSwitcher item={item}
+                                                icon_1={item.icon_1}
+                                                          icon_2={item.icon_2}
+                                                          icon_3={item.icon_3}
+                                                          icon_4={item.icon_4}
+                                                          i={i}
+                                                          toggleTooltip={this.toggleTooltip}/>
+                                        }
+                                        <Tooltip direction={'right'}
+                                            // className={'mobile-hidden'}
+                                                 toggle={this.toggleTooltip}>
+                                            {item.title}
+                                        </Tooltip>
+                                    </div>
+                                )
+                            })}
+                            <MobileHidden style={{order: 2, flex: '16.6667% 0 0'}} className={'mobile-hidden'}>
+                                <Link to={'/'} style={{order: 2, padding: '0 10px'}}>
+                                    <SiteLogo width={'120px'}/>
+                                </Link>
+                            </MobileHidden>
 
-                    </HBox>
-                </Container>
+                        </HBox>
+                    </Container>
 
-            </NavigationWrapper>
-            <button onClick={this.toggleMobileMenu} className={'d-sm-none mobile-only show-mobile-menu-button'}>
-            <FaAngleDown size={24}/>
-            </button>
-        </div>
+                </NavigationWrapper>
+                <button onClick={this.toggleMobileMenu} className={'d-sm-none mobile-only show-mobile-menu-button'}>
+                    <FaAngleDown size={24}/>
+                </button>
+            </div>
         )
     }
 }

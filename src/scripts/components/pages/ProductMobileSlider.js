@@ -57,7 +57,7 @@ class ProductMobileSlider extends React.Component {
                 >
                     <img src={item.src} alt={item.altText}/>
                     <CarouselCaption captionHeader={item.caption} captionText={''}/>
-                    <h3 dangerouslySetInnerHTML={{__html: item.altText}}/>
+                    <h4 dangerouslySetInnerHTML={{__html: item.altText}}/>
                 </CarouselItem>
             );
         });
