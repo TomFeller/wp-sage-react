@@ -3,9 +3,11 @@ import {Element} from 'react-stylesheet';
 
 class BackgroundImage extends React.Component {
     render() {
-        const {width, height, position, repeat, size, url, attachment} = this.props;
+        const {width, height, position, repeat, size, url, attachment, className} = this.props;
         return (
-            <Element style={{
+            <Element
+                className={className && className}
+                style={{
                 width: width,
                 height: height,
                 backgroundAttachment: attachment && attachment,

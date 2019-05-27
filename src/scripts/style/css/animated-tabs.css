@@ -21,10 +21,12 @@
 .animated-tabs .tab.active {
      border-bottom: .3rem solid #ffb100;
 }
-
+.carousel-indicators {
+    height: 80px
+}
 @media screen and (min-width: 640px) {
     .animated-tabs {
-        height: calc(100vh - 85px);
+        min-height: calc(100vh - 85px);
     }
     .animated-tabs .tabs-title {
         font-size: 6rem;

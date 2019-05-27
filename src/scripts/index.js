@@ -56,6 +56,7 @@ class AppInitializer {
             const HomePage = () => {
                 return (
                     <Main page={response.pages.find(page => page.name === 'homepage')}
+                          isHomePage={true}
                           Content={Home}
                     />
                 )

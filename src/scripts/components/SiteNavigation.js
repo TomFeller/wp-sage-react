@@ -7,7 +7,7 @@ import FaPhone from 'react-icons/lib/fa/phone';
 import FaGroup from 'react-icons/lib/fa/group';
 import FaShoppingBasket from 'react-icons/lib/fa/shopping-basket';
 import FaMapSigns from 'react-icons/lib/fa/map-signs';
-import FaAngleDown from 'react-icons/lib/fa/angle-down';
+import GoDash from 'react-icons/lib/go/dash';
 import {Gutter} from "../style/variables";
 import Circle from "./utils/shapes/circle";
 import styled from 'styled-components';
@@ -53,13 +53,13 @@ class SiteNavigation extends React.Component {
             }, {
                 id: 1,
                 icon: FaGroup,
-                href: '/#our-story',
+                href: '/#animated-tabs',
                 title: 'our story'
             }, {
                 id: 2,
                 icon: FaMapSigns,
-                href: '/#our-team',
-                title: 'team'
+                href: '/#animated-tabs',
+                title: 'team',
             }, {
                 id: 3,
                 icon_1: FaShoppingBasket,
@@ -106,7 +106,7 @@ class SiteNavigation extends React.Component {
                                                 </Circle></a>
                                             :
                                             <IconSwitcher item={item}
-                                                icon_1={item.icon_1}
+                                                          icon_1={item.icon_1}
                                                           icon_2={item.icon_2}
                                                           icon_3={item.icon_3}
                                                           icon_4={item.icon_4}
@@ -131,8 +131,9 @@ class SiteNavigation extends React.Component {
                     </Container>
 
                 </NavigationWrapper>
-                <button onClick={this.toggleMobileMenu} className={'d-sm-none mobile-only show-mobile-menu-button'}>
-                    <FaAngleDown size={24}/>
+                <button onClick={this.toggleMobileMenu}
+                        className={'d-sm-none mobile-only show-mobile-menu-button'}>
+                    <GoDash size={24} color={'#999'}/>
                 </button>
             </div>
         )

@@ -47,6 +47,29 @@ class Team extends React.Component {
                 {/*<div dangerouslySetInnerHTML={{__html: pageData.content.rendered}}/>*/}
                 <Container>
                     <Row>
+
+                        <Col md={6}>
+                            <Member active={true} className={'member member-active'}>
+                                <Element>
+                                    <HBox alignItems={'flex-end'}>
+                                        <Element position={'relative'}>
+                                            <Image src={members[memberActive].image}
+                                                   width={'80px'}
+                                                   className={'member_image'}/>
+                                        </Element>
+                                        <Element paddingLeft={Gutter.sm}>
+                                            <h2 className={'member_name'}>{members[memberActive].name}</h2>
+                                            <h3 className={'member_role'}>{members[memberActive].role}</h3>
+                                        </Element>
+                                    </HBox>
+                                    <Element marginTop={Gutter.sm}>
+                                        <p style={{fontSize: FontSize.sm}}
+                                           dangerouslySetInnerHTML={{__html: members[memberActive].content}}/>
+                                    </Element>
+                                </Element>
+                            </Member>
+                        </Col>
+
                         <Col md={6}>
                             <HBox flexWrap={'wrap'} justifyContent={'space-between'}>
                                 {members.map((member, i) => {
@@ -58,10 +81,11 @@ class Team extends React.Component {
                                                          position={'relative'}
                                                          onClick={() => {
                                                              i !== memberActive && this.memberHover(i);
-                                                             window.location.href = '/#member-2'
+                                                             if (window.innerWidth < 768) window.location.href = '/#member-2'
                                                          }}
                                                     // onMouseOver={this.memberHover}
                                                 >
+
                                                     <Image src={image}
                                                            width={'100%'}
                                                            className={'member_image'}
@@ -81,27 +105,7 @@ class Team extends React.Component {
                                 })}
                             </HBox>
                         </Col>
-                        <Col md={6}>
-                            <Member active={true} className={'member member-active'}>
-                                <Element className={''}>
-                                    <HBox>
-                                        <Element position={'relative'}>
-                                            <Image src={members[memberActive].image}
-                                                   width={'80px'}
-                                                   className={'member_image'}/>
-                                        </Element>
-                                        <Element>
-                                            <h2 className={'member_name'}>{members[memberActive].name}</h2>
-                                            <h3 className={'member_role'}>{members[memberActive].role}</h3>
-                                        </Element>
-                                    </HBox>
-                                    <Element marginTop={Gutter.sm}>
-                                        <p style={{fontSize: FontSize.sm}}
-                                           dangerouslySetInnerHTML={{__html: members[memberActive].content}}/>
-                                    </Element>
-                                </Element>
-                            </Member>
-                        </Col>
+
                     </Row>
                 </Container>
 

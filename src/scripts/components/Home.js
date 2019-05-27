@@ -38,7 +38,7 @@ class Home extends React.Component {
                     isLoading: false
                 })
             },
-            2000
+            1000
         );
 
     }
@@ -98,11 +98,11 @@ class Home extends React.Component {
 
     render() {
         const pageData = DataStore.getPageBySlug('home'),
-            {first_section, second_section} = pageData.acf,
+            {first_section, second_section, product_image} = pageData.acf,
             {isLoading} = this.state;
 
 
-        console.log('first_section', first_section);
+        console.log('product_image', product_image);
         return (
             isLoading ?
                 <HBox justifyContent={'center'} alignItems={'center'} width={'100%'} height={'80vh'}>
@@ -117,7 +117,7 @@ class Home extends React.Component {
                     {/*<div>{pageData.text}</div>*/}
                     {/*<Archive archiveType={'posts'}/>*/}
 
-                    <HomepageMainSection href={'/dress-up-your-device'}/>
+                    <HomepageMainSection href={'/dress-up-your-device'} product_image={product_image}/>
 
                     <HomepageSection data={first_section} background={Colors.peach} href={'/its-all-about-you'} id={'welcome-kit'}/>
 

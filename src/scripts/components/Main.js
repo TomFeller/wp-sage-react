@@ -48,6 +48,7 @@ class Main extends React.Component {
             Content,
             pageData,
             props,
+            isHomePage
         } = this.props;
 
         const {createNewAdventureAfterLogin, loginModalActive, shareModalActive, reviewsModalActive, reviewData} = this.state;
@@ -57,7 +58,9 @@ class Main extends React.Component {
         const mobileHeaderHeight = 115;
         console.log('pageData', pageData);
         return (
-            <ScrollToTop paddingTop={headerHeight} paddingTopMobile={mobileHeaderHeight}>
+            <ScrollToTop paddingTop={headerHeight}
+                         paddingTopMobile={mobileHeaderHeight}
+                         isHomePage={isHomePage}>
 
                 <Header height={headerHeight}/>
 

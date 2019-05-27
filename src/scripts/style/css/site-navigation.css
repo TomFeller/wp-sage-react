@@ -20,21 +20,27 @@
         transition: transform .5s;
         z-index: 201;
     }
-    #app.scroll .navigation-wrapper {
+
+    #app .navigation-wrapper,
+    #app.scroll .homepage .navigation-wrapper {
         transform: translateY(-13rem);
     }
-    #app.scroll .navigation-wrapper.open {
+
+    #app.scroll .navigation-wrapper.open,
+    #app .homepage .navigation-wrapper {
         transform: translateY(0);
     }
+
     #app.scroll .navigation-wrapper.open + .show-mobile-menu-button {
-        top: 11rem;
-        transform: rotate(180deg);
+        top: 6.9rem;
+        /*transform: rotate(180deg);*/
     }
 
     .navigation-wrapper .container {
         padding-left: 0;
         padding-right: 0;
     }
+
     .navigation-wrapper .nav-slider {
         /*position: absolute;*/
         left: 0;
@@ -49,55 +55,59 @@
     .navigation-wrapper .nav-slider::-webkit-scrollbar-track {
 
         background-color: #f4f4f4;
-        height: .2rem;
+        height: 0
     }
 
     .navigation-wrapper .nav-slider::-webkit-scrollbar {
-        height: .3rem;
+        height: 0;
         background-color: #5693b9;
         width: .5rem;
     }
 
     .navigation-wrapper .nav-slider::-webkit-scrollbar-thumb {
         background-color: #5693b9;
-        height: .2rem;
+        height: 0;
     }
 
 }
 
 .show-mobile-menu-button {
-    z-index: 200;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    display: inline-block;
-    margin: auto;
+    /*z-index: 200;*/
+    position: relative;
+    /*display: inline-block;*/
+    /*margin: auto;*/
+    top: 0;
     text-align: center;
     font-weight: bold;
     color: #000;
-    top: 5.2rem;
+    /*top: 5.2rem;*/
     opacity: 0;
     border: 0;
     outline: 0 !important;
-    transition: all .3s;
-    background-color: transparent;
- }
+    transition: top .6s;
+    background-color: #ffffff;
+    width: 100%;
+}
+
 .show-mobile-menu-button svg {
     background: #fff;
     position: relative;
     /*border-radius: 50%;*/
 }
+
 .show-mobile-menu-button svg:before {
-    content:'';
+    content: '';
     width: 10px;
     height: 10px;
-    background:red;
-    position: absolute;
+    background: red;
+    /*position: absolute;*/
     left: 0;
 }
+
 #app.scroll .show-mobile-menu-button {
     opacity: 1;
 }
+
 .navigation-wrapper a:focus {
     background: #fff;
 }
@@ -119,6 +129,7 @@
     transition: transform .2s;
     position: relative;
 }
+
 .flip-icon {
     padding: 0 1.5rem 0;
     max-width: 25%;
@@ -126,16 +137,18 @@
     flex: 25% 0 0;
 
 }
+
 .flip-icon::-webkit-scrollbar {
-     display: none;
- }
+    display: none;
+}
+
 /*.flip-icon:nth-child(5),*/
 /*.flip-icon:nth-child(6) {*/
-    /*opacity: 0;*/
+/*opacity: 0;*/
 /*}*/
 /*.navigation-wrapper.open .flip-icon:nth-child(5),*/
 /*.navigation-wrapper.open .flip-icon:nth-child(6) {*/
-    /*opacity: 1;*/
+/*opacity: 1;*/
 /*}*/
 
 @media screen and (min-width: 640px) {

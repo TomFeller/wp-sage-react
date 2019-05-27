@@ -16,20 +16,19 @@ import SiteNavigation from "./SiteNavigation";
 import {MobileOnly} from '../style/responsive';
 
 
-
 class Header extends React.Component {
     render() {
         return (
             <header id="site-header" className="site-header">
-                <Element width={'100%'} className={'py-3 py-sm-0'}>
+                <Element width={'100%'} className={'pt-3 py-sm-0'}>
                     <div className={'d-sm-none'}>
                         <Link to={'/'}>
-                        <HBox width={'100%'}
-                              justifyContent={'center'}
-                              alignItems={'center'}
-                              background={'#fff'}>
-                            <SiteLogo/>
-                        </HBox>
+                            <HBox width={'100%'}
+                                  justifyContent={'center'}
+                                  alignItems={'center'}
+                                  background={'#fff'}>
+                                <SiteLogo/>
+                            </HBox>
                         </Link>
                     </div>
 

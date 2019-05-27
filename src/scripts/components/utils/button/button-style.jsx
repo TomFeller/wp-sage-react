@@ -3,7 +3,7 @@ import {ColorClasses} from "../../../style/colors";
 import '../../../style/css/button.css';
 const ButtonStyle = styled.button` 
     &.button {
-        font-size: ${props => props.size};
+        font-size: ${props => props.size}; 
         padding: ${props => props.gutter}; 
         border: ${props => props.border};
         ${props => props.block && {display: 'block', width: '100%'}};

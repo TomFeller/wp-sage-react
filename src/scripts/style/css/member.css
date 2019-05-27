@@ -4,26 +4,45 @@
 }
 
 .member:first-child {
-    border-right: 3px solid #151515;
-    border-bottom: 3px solid #151515;
-    border-bottom-right-radius: 2rem;
+    padding: 6rem 0 0 6rem;
 }
 
+.member:first-child .member {
+    border-right: 1px solid #151515;
+    border-bottom: 1px solid #151515;
+    border-bottom-right-radius: 2rem;
+    padding: 0;
+}
+
+
 .member:nth-child(2) {
-    border-left: 3px solid #151515;
-    border-bottom: 3px solid #151515;
+    padding: 6rem 6rem 0 0;
+}
+.member:nth-child(2) .member {
+    border-left: 1px solid #151515;
+    border-bottom: 1px solid #151515;
     border-bottom-left-radius: 2rem;
+    padding: 0;
 }
 
 .member:nth-child(3) {
-    border-right: 3px solid #f7dbc7;
-    border-top: 3px solid #f7dbc7;
-    border-top-right-radius: 2rem;
+    padding: 0 0 6rem 6rem;
 }
+.member:nth-child(3) .member {
+    border-right: 1px solid #f7dbc7;
+    border-top: 1px solid #f7dbc7;
+    border-top-right-radius: 2rem;
+    padding: 0;
+}
+
 .member:nth-child(4) {
-    border-left: 3px solid #151515;
-    border-top: 3px solid #151515;
+    padding: 0 6rem 6rem 0;
+}
+.member:nth-child(4) .member {
+    border-left: 1px solid #151515;
+    border-top: 1px solid #151515;
     border-top-left-radius: 2rem;
+    padding: 0;
 }
 
 .member_name {
@@ -66,11 +85,26 @@
 .member .member {
     width: 100%;
     border: 0;
+    margin: 0
 }
 
+
+
+@media screen and (max-width: 640px) {
+    .member {
+        padding: 0 !important;
+    }
+}
+
+@media screen and (max-height: 800px) {
+    .member:first-child, .member:nth-child(2) {
+        padding-top:0;
+    }
+}
 @media screen and (min-width: 480px) {
     .member {
         width: 47%;
+        overflow: hidden;
     }
 
     .member-active {

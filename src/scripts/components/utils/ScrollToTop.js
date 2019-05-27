@@ -8,8 +8,9 @@ class ScrollToTop extends React.Component {
     }
 
     render() {
-        const {paddingTop} = this.props;
-        return <Element style={{minHeight: '70vh', paddingTop: paddingTop && paddingTop}} className={'mainScrollWrapper'}>
+        const {paddingTop, isHomePage} = this.props;
+        return <Element style={{minHeight: '70vh', paddingTop: paddingTop && paddingTop}}
+                        className={`mainScrollWrapper ${isHomePage ? 'homepage' : ''}`}>
             {this.props.children}
             </Element>
     }

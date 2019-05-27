@@ -7,43 +7,39 @@ import {Gutter} from "../../style/variables";
 import Image from "../utils/image/image";
 import styled from "styled-components";
 import Button from "../utils/button/button";
+import BuyButton from "../utils/button/buy-button";
+import {MobileOnly} from "../../style/responsive";
+import '../../style/css/product.css';
+import BackgroundImage from "../utils/image/background-image";
 
 class ProductTopSection extends React.Component {
     render() {
         const {background_image, colors, title, description, price} = this.props;
         console.log(colors)
         return (
-            <Container fluid style={{backgroundColor: colors.background, height: '100vh'}}>
-                <Container style={{
-                    maxWidth: '140rem',
-                    height: '100%',
+            <Container fluid className={'product-top-section-wrapper'
+            } style={{backgroundColor: colors.background,}}>
+                <Container className={'product-top-section-container'} style={{
                     backgroundImage: `url(${background_image})`,
                     backgroundColor: `url(${colors.background})`,
-                    backgroundSize: '25%',
-                    backgroundPosition: 'right center',
-                    backgroundRepeat: 'no-repeat'
                 }}>
-                    <Element maxWidth={'60rem'} style={{...center, paddingLeft: Gutter.lg, color: '#ffffff'}}
-                             className={'pr-5'}>
+                    <Element maxWidth={'60rem'}
+                             style={{...center, paddingLeft: Gutter.lg, color: '#ffffff'}}
+                             className={'product-top-section-center pr-5 pt-3 pt-sm-0'}>
                         <h1 dangerouslySetInnerHTML={{__html: title}}
-                            style={{color: '#fff', fontSize: '4.2rem'}}
-                            className={'mb-3 mb-md-5'}/>
+                            className={'product-top-section-title mb-3 mb-md-5 text-center text-sm-right'}/>
+
+                        <BackgroundImage width={'100%'} className={'d-sm-none'}
+                                         url={background_image}
+                                         size={'contain'}
+                                         height={'50vh'} overflow={'hidden'}/>
+
                         <h2 dangerouslySetInnerHTML={{__html: description}}
                             style={{color: '#fff', fontSize: '2.2rem', marginBottom: Gutter.lg}}/>
 
 
-                        <button style={{
-                            fontSize: FontSize.md,
-                            cursor: 'pointer',
-                            backgroundColor: colors.button,
-                            width: '100%',
-                            fontWeight: 'bold',
-                            border: '0'
-                        }}>
-                            BUY NOW
-                            <span dangerouslySetInnerHTML={{__html: price}}
-                                  className={'text-center mb-4 px-3'}/>
-                        </button>
+                        <BuyButton price={59}/>
+
                     </Element>
                 </Container>
             </Container>
@@ -54,9 +50,5 @@ class ProductTopSection extends React.Component {
 export default ProductTopSection;
 
 const center = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    textAlign: 'left',
-    height: '100%'
+
 };
