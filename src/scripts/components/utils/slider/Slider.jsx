@@ -63,6 +63,7 @@ class Slider extends React.Component {
 
         return (
             <Carousel
+                interval={false}
                 activeIndex={activeIndex}
                 next={this.next}
                 previous={this.previous}

@@ -108,6 +108,8 @@ class ProductMobileSlider extends React.Component {
 
         return (
             <Carousel
+                interval={false}
+                ride={false}
                 autoPlay={false}
                 activeIndex={activeIndex}
                 next={this.next}

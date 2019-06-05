@@ -13,7 +13,7 @@ class TemplateSlider extends React.Component {
                 marginRight: center && 'auto',
                 marginLeft: center && 'auto'
             }}>
-                <Carousel color={'primary'}>
+                <Carousel color={'primary'} interval={false}>
                     {children.map((child, c) => {
                         return (
                             <CarouselItem key={c}>
