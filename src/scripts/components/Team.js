@@ -46,7 +46,7 @@ class Team extends React.Component {
 
                 {/*<div dangerouslySetInnerHTML={{__html: pageData.content.rendered}}/>*/}
                 <Container>
-                    <Row>
+                    <Row className={'flex-column-reverse flex-sm-row'}>
 
                         <Col md={6}>
                             <Member active={true} className={'member member-active'}>

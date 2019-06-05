@@ -53,12 +53,12 @@ class SiteNavigation extends React.Component {
             }, {
                 id: 1,
                 icon: FaGroup,
-                href: '/#animated-tabs',
+                href: '/#our-story',
                 title: 'our story'
             }, {
                 id: 2,
                 icon: FaMapSigns,
-                href: '/#animated-tabs',
+                href: '/#our-story',
                 title: 'team',
             }, {
                 id: 3,

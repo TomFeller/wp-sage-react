@@ -42,10 +42,10 @@ class ProductMobileSlider extends React.Component {
         const {swipeMove, originalSwipeLocation, activeSection} = this.state;
         const direction = swipeMove > originalSwipeLocation ? 1 : -1;
         const current = parseInt(activeSection);
-         if (direction > 0) {
-             this.previous();
-         } else {
-             this.next();
+        if (direction > 0) {
+            this.previous();
+        } else {
+            this.next();
         }
     }
 
@@ -82,23 +82,26 @@ class ProductMobileSlider extends React.Component {
                 <CarouselItem
                     onExiting={this.onExiting}
                     onExited={this.onExited}
+                    key={item.src}>
 
-                    key={item.src}
-                >
                     <img src={item.src} alt={item.altText} style={{display: 'block'}}
                          onTouchStart={touchStartEvent => this.handleTouchStart(touchStartEvent)}
                          onTouchMove={touchMoveEvent => this.handleTouchMove(touchMoveEvent)}
                          onTouchEnd={(touchEndEvent) => this.handleTouchEnd(touchEndEvent)}/>
 
-                    <div className={'mt-4'}>
-                        {item.header && <h2 dangerouslySetInnerHTML={{__html: item.header}}/>}
-                        {item.caption && <CarouselCaption captionHeader={item.caption} captionText={''}/>}
+                    <div className={'mt-4 mx-auto'} style={{maxWidth: '40rem'}}>
+                        {item.header && <h2 dangerouslySetInnerHTML={{__html: item.header}} className={'text-left'}/>}
+
+                        {item.caption && !item.buyButton &&
+                        <CarouselCaption captionHeader={item.caption} captionText={''}/>}
+
                         {item.altText && <h4 dangerouslySetInnerHTML={{__html: item.altText}}/>}
+
                         {item.buyButton && <BuyButton price={item.caption}
-                                                     background={'#cecece'}
-                                                     width={'40rem'}/>
+                                                      background={'#cecece'}/>
                         }
                     </div>
+
                 </CarouselItem>
             );
         });
@@ -109,9 +112,7 @@ class ProductMobileSlider extends React.Component {
                 activeIndex={activeIndex}
                 next={this.next}
                 previous={this.previous}
-                className={`product-mobile-slider ${!showInDesktop && 'd-md-none'} product-mobile-slider`}
-
-            >
+                className={`product-mobile-slider ${!showInDesktop && 'd-md-none'} product-mobile-slider`}>
                 <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex}/>
                 {slides}
                 {/*<CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}/>*/}

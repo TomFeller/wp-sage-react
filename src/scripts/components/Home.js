@@ -124,7 +124,7 @@ class Home extends React.Component {
                     <HomepageSection data={second_section} background={Colors.peach}
                                      listenToScroll={this.listenToScroll} href={'/put-your-skinniz-on'} id={'accessories'}/>
 
-                    <HBox justifyContent={'center'} alignItems={'flex-start'}>
+                    <HBox justifyContent={'center'} alignItems={'flex-start'} id={'inspiration'}>
                         <BackgroundImage
                             url={'http://oleo-admin.tf-interactive.com/wp-content/uploads/2019/03/oleo_image.jpeg'}
                             attachment={'fixed'}

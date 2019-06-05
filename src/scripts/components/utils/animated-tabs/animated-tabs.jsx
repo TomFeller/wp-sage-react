@@ -39,7 +39,7 @@ class AnimatedTabs extends React.Component {
         const {activeTab} = this.state;
         const {tabs} = this.props;
         return (
-            <TabsWrapper className={'animated-tabs'} position={'relative'} id={'animated-tabs'}>
+            <TabsWrapper className={'animated-tabs'} position={'relative'} id={'our-story'}>
                 <h2 className={'text-center scroll-element tabs-title'} style={title}>
                     {activeTab === 0 ? 'once upon a time' : 'NICE TO MEET YOU'}
                 </h2>
