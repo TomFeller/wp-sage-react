@@ -98,11 +98,10 @@ class Home extends React.Component {
 
     render() {
         const pageData = DataStore.getPageBySlug('home'),
-            {first_section, second_section, product_image} = pageData.acf,
+            {first_section, second_section, main_section} = pageData.acf,
             {isLoading} = this.state;
 
 
-        console.log('product_image', product_image);
         return (
             isLoading ?
                 <HBox justifyContent={'center'} alignItems={'center'} width={'100%'} height={'80vh'}>
@@ -117,12 +116,18 @@ class Home extends React.Component {
                     {/*<div>{pageData.text}</div>*/}
                     {/*<Archive archiveType={'posts'}/>*/}
 
-                    <HomepageMainSection href={'/dress-up-your-device'} product_image={product_image}/>
+                    <HomepageMainSection href={'/dress-up-your-device'}
+                                         product_image={main_section.image}
+                                         background={main_section.background_color}
+                                         title={main_section.title}
+                                         description={main_section.description}/>
 
-                    <HomepageSection data={first_section} background={Colors.peach} href={'/its-all-about-you'} id={'welcome-kit'}/>
+                    <HomepageSection data={first_section} background={first_section.background_color}
+                                     href={'/its-all-about-you'} id={'welcome-kit'}/>
 
-                    <HomepageSection data={second_section} background={Colors.peach}
-                                     listenToScroll={this.listenToScroll} href={'/put-your-skinniz-on'} id={'accessories'}/>
+                    <HomepageSection data={second_section} background={second_section.background_color}
+                                     listenToScroll={this.listenToScroll} href={'/put-your-skinniz-on'}
+                                     id={'accessories'}/>
 
                     <HBox justifyContent={'center'} alignItems={'flex-start'} id={'inspiration'}>
                         <BackgroundImage

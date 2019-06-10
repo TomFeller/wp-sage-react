@@ -38,7 +38,7 @@ class ProductTopSection extends React.Component {
                             style={{color: '#fff', fontSize: '2.2rem', marginBottom: Gutter.lg}}/>
 
 
-                        <BuyButton price={59}/>
+                        <BuyButton price={59} background={colors.button_bg} color={colors.button_txt}/>
 
                     </Element>
                 </Container>

@@ -13,7 +13,7 @@ class ProductColumns extends React.Component {
         const {sections} = this.props;
         return (
             <Container fluid>
-                <Element paddingBottom={Gutter.lg} className={'px-md-5'}>
+                <Element className={'px-md-5'}>
                     <ProductMobileSlider items={sections.map((item, i) => {
                         return ({
                             src: item.image,
@@ -24,20 +24,23 @@ class ProductColumns extends React.Component {
                         })
                     })}/>
 
-                    <Row className={'py-5 flex-md-nowrap productWrapperDesktopFlex'}>
+                    <Row className={'pt-5 pb-0 flex-md-nowrap productWrapperDesktopFlex'}>
                         {sections.map((section, i) => {
-                            const {title, description, image, price} = section;
+                            const {title, description, image, price, button_background_color, button_text_color} = section;
                             return (
-                                <ProductCol key={i} className={'mb-5 px-0 product-col'}>
-                                    <div className={'product-col-image-wrapper'} style={{backgroundImage: `url(${image})`}}>
-                                    <Image src={image} opacity={0}/>
+                                <ProductCol key={i} className={'mb-5 mb-md-0 px-0 product-col'}>
+                                    <div className={'product-col-image-wrapper'}
+                                         style={{backgroundImage: `url(${image})`}}>
+                                        <Image src={image} opacity={0}/>
                                     </div>
                                     <Element padding={Gutter.sm} className={'py-5'} background={'#fff'}>
                                         <h2 dangerouslySetInnerHTML={{__html: title}}/>
                                         {description && description !== '' &&
                                         <h4 dangerouslySetInnerHTML={{__html: description}}/>}
 
-                                        <BuyButton price={'12'} background={'#cecece'}/>
+                                        <BuyButton price={'12'}
+                                                   background={button_background_color}
+                                                   color={button_text_color}/>
                                     </Element>
 
                                 </ProductCol>

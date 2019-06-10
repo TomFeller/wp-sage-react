@@ -1,5 +1,5 @@
 .words {
-
+    font-weight: 300;
 }
 
 .words p {
@@ -13,7 +13,7 @@
 
 @media screen and (min-width: 640px) {
     .words p {
-        font-size: 4rem;
+        font-size: 3.5rem;
         text-align: center;
     }
 }
@@ -24,6 +24,6 @@
 }
 @media screen and (min-width: 640px) {
     .homepage-section-wrapper  {
-        min-height: 110vh;
+        min-height: 100vh;
     }
 }

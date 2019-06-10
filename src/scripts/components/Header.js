@@ -72,7 +72,7 @@ const SiteHeader = styled.header`
     .scroll & {
         // position: fixed;
         top: 0;
-        box-shadow: 0 0 5px 0px rgba(0,0,0,0.5);
+        box-shadow: 0 0 1px 0px rgba(0,0,0,0.5);
 `;
 
 const MenuIcon = styled.div`

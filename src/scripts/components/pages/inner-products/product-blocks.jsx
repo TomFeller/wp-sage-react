@@ -20,7 +20,7 @@ class ProductBlocks extends React.Component {
                     })}/>
                 </Element>
                 {sections.map((section, i) => {
-                    const {title, description, image, price} = section;
+                    const {title, description, image, price, button_background_color, button_text_color} = section;
                     if (title !== '') {
                         return (
                             <Row key={i}

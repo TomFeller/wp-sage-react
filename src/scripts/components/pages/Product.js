@@ -54,7 +54,8 @@ class Product extends React.Component {
                                                                  style={{
                                                                      textAlign: 'center',
                                                                      marginBottom: '0',
-                                                                     fontSize: '3rem',
+                                                                     marginTop: Gutter.lg,
+                                                                     fontSize: '4rem',
                                                                      padding: `${Gutter.sm} 0`,
                                                                      color: '#000'
                                                                  }}/>
@@ -63,7 +64,7 @@ class Product extends React.Component {
                     {content.rendered && content.rendered !== '' &&
                     <h2 dangerouslySetInnerHTML={{__html: content.rendered}}
                         className={`text-center product-name-title ${inner_sections.template === 'blocks' ? 'mt-5 mb-5' : ''}`}
-                        style={{color: '#000', marginBottom: Gutter.md}}/>}
+                        style={{color: '#000', marginBottom: Gutter.md, fontSize: '2.5rem'}}/>}
 
                     {inner_sections.template === 'grid' ?
                         <ProductGrid sections={sections} sectionActive={sectionActive}/> :

@@ -10,10 +10,11 @@ import '../style/css/homepage-section.css';
 
 class HomepageSection extends React.Component {
     render() {
-        const {title, description, image, image_side, cta_button_text} = this.props.data;
+        const {title, description, image, image_side, cta_button_text,} = this.props.data;
 
         return (
-            <HBox style={wrapper} className={'homepage-section-wrapper scroll-element'} id={this.props.id && this.props.id}>
+            <HBox style={wrapper}
+                  className={'homepage-section-wrapper scroll-element'} id={this.props.id && this.props.id}>
                 <Row className={`flex-row${image_side === 'Left' && '-reverse'} m-0`} style={{width: '100%'}}>
                     <Col xs={6} md={6}
                          className={'text-left text-md-center d-flex justify-content-center align-items-md-center'}
@@ -23,7 +24,7 @@ class HomepageSection extends React.Component {
                                 return (
                                     <p key={w}
                                        dangerouslySetInnerHTML={{__html: word}}
-                                       />
+                                    />
                                 )
                             })}
                         </Words>
@@ -61,9 +62,10 @@ const wrapper = {
 };
 
 const Words = styled.div`
+    margin-bottom: 3rem;
     p {
         color: #bbbbbb;
-        font-size: ${FontSize.lg};
+        font-size: 3.5rem;
         b {color: #151515}
         strong {color: #151515}
     }

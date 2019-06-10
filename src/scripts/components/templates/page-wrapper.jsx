@@ -14,4 +14,6 @@ const PageWrapper = ({content, className, ...props}) => {
 
 export {PageWrapper}
 
-const pageWrapper = {};
+const pageWrapper = {
+    minHeight: `calc(100vh - 75px - 176.7px)`
+};

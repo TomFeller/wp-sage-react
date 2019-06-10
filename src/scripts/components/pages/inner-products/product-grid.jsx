@@ -110,7 +110,9 @@ this.getMultiplyImagesArray = this.getMultiplyImagesArray.bind(this);
                                                className={'member_image'}/>
 
                                         <BuyButton
-                                            price={sections[sectionActive].price ? sections[sectionActive].price : '69'}/>
+                                            price={sections[sectionActive].price ? sections[sectionActive].price : '69'}
+                                            background={sections[sectionActive].button_background_color}
+                                            color={sections[sectionActive].button_text_color}/>
 
                                     </Element>
                                 }

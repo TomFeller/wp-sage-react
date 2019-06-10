@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {ColorClasses} from "../../../style/colors";
 import '../../../style/css/button.css';
+
 const ButtonStyle = styled.button` 
     &.button {
         font-size: ${props => props.size}; 
@@ -18,6 +19,7 @@ const ButtonStyle = styled.button`
         color: ${props => props.color};
         cursor: pointer;
         z-index: 0;
+        ${props => !props.block && `
         &:before { 
             content: '';
             position: absolute;
@@ -36,6 +38,7 @@ const ButtonStyle = styled.button`
                 transform: skewX(40deg);
              }
          }
+         `}
         
     }
 `;

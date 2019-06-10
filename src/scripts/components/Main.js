@@ -25,7 +25,6 @@ class Main extends React.Component {
     }
 
 
-
     listenToScroll = () => {
         const scrollElements = document.getElementsByClassName('scroll-element');
         const windowHeight = window.innerHeight;
@@ -65,13 +64,15 @@ class Main extends React.Component {
                 <Header height={headerHeight}/>
 
 
-                <Content {...props}
-                         {...pageData}
-                         listenToScroll={this.listenToScroll}
-                />
+                <div style={{minHeight: `calc(100vh - 75px - 30px)`}}>
 
+                    <Content {...props}
+                             {...pageData}
+                             listenToScroll={this.listenToScroll}
+                    />
+                </div>
 
-                <Footer />
+                <Footer/>
 
             </ScrollToTop>
         )

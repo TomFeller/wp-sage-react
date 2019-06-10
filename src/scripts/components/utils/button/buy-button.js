@@ -5,7 +5,7 @@ import {FontSize} from "../../../style/style";
 class BuyButton extends React.Component {
     render() {
         const {width, background, color, fontSize, margin} = this.props;
-        const {cta, price, currency} = this.props;
+        const {cta, price, currency, hidePrice} = this.props;
         const pricecurrency = price + currency;
         return (
             <button style={{
@@ -16,10 +16,12 @@ class BuyButton extends React.Component {
                 margin: margin,
                 fontSize: fontSize,
                 fontWeight: 'bold',
-                border: 0
+                border: 0,
+                borderRadius: '2rem',
+                padding: '.5rem 0'
             }}>
-                {cta} <span dangerouslySetInnerHTML={{__html: pricecurrency.replace('$$', '$')}}
-                            className={'text-center mb-4'}/>
+                {cta} {!hidePrice && <span dangerouslySetInnerHTML={{__html: pricecurrency.replace('$$', '$')}}
+                            className={'text-center mb-4'}/>}
             </button>
         )
     }
