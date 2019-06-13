@@ -7,6 +7,7 @@ import {Container, Row, Col} from 'reactstrap';
 import Image from "./utils/image/image";
 import Button from "./utils/button/button";
 import '../style/css/homepage-section.css';
+import BuyButton from "./utils/button/buy-button";
 
 class HomepageSection extends React.Component {
     render() {
@@ -29,21 +30,29 @@ class HomepageSection extends React.Component {
                             })}
                         </Words>
 
-                        <Button marginBottom={Gutter.md}
-                                background={'rgba(0, 0, 0, 0.3)'}
-                                color={'primary'}
-                                special
-                                className={'text-center text-md-left'}>
-                            <Link to={this.props.href} style={{color: '#151515', fontWeight: 'bold'}}>
+                        <Link to={this.props.href} style={{color: '#151515', fontWeight: 'bold'}}>
+                        <BuyButton marginBottom={Gutter.md}
+                                   background={'#fde7e2'}
+                                   color={'#000000'}
+                            // special
+                                   padding={'.5rem 2rem'}
+                                   width={'auto'}
+                                   className={'text-center text-md-left'}>
+
                                 {cta_button_text}
-                            </Link>
-                        </Button>
+
+                        </BuyButton>
+                        </Link>
                     </Col>
 
                     <Col xs={6} md={6}
                          className={'d-flex justify-content-center align-items-center'}
-                         style={{background: this.props.background}}>
-                        <Image src={image.url} width={'400px'}/>
+                         style={{
+                             backgroundImage: `url(${image.url})`,
+                             backgroundSize: 'cover',
+                             backgroundPosition: 'center center'
+                         }}>
+
                     </Col>
                 </Row>
             </HBox>
@@ -65,7 +74,7 @@ const Words = styled.div`
     margin-bottom: 3rem;
     p {
         color: #bbbbbb;
-        font-size: 3.5rem;
+        font-size: 3.3rem;
         b {color: #151515}
         strong {color: #151515}
     }

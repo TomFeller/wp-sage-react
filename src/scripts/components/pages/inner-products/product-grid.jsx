@@ -62,7 +62,7 @@ this.getMultiplyImagesArray = this.getMultiplyImagesArray.bind(this);
                                                  }}>
                                             <VBox alignItems={'center'} className={'member'}
                                                   style={{border: 0, margin: 'auto'}}>
-                                                <HBox justifyContent={'center'} alignItems={'center'}
+                                                <HBox justifyContent={'center'} alignItems={'center'}t
                                                       width={'100%'}
                                                       position={'relative'}>
                                                     <h3 dangerouslySetInnerHTML={{__html: title}}/>
@@ -196,6 +196,7 @@ const sectionStyle = {
     // width: '50%',
     paddingTop: '15%',
     paddingBottom: '15%',
+    cursor: 'pointer'
     // backgroundColor: '#999',
     // border: '2rem solid #fff'
 }

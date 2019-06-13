@@ -100,7 +100,7 @@ class SiteNavigation extends React.Component {
                                                     // border={'1px solid #000'}
                                                     // padding={Gutter.sm}
                                                         margin={'0 auto'}
-                                                        background={'transparent'}
+                                                        background={'#f6f2ec'}
                                                         pointer>
                                                     <item.icon size={20} color={'#000'}/>
                                                 </Circle></a>

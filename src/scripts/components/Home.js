@@ -120,7 +120,11 @@ class Home extends React.Component {
                                          product_image={main_section.image}
                                          background={main_section.background_color}
                                          title={main_section.title}
-                                         description={main_section.description}/>
+                                         description={main_section.description}
+                                         btn_background={main_section.buy_button.background_color}
+                                         btn_color={main_section.buy_button.color}
+                                         btn_label={main_section.buy_button.label}
+                    />
 
                     <HomepageSection data={first_section} background={first_section.background_color}
                                      href={'/its-all-about-you'} id={'welcome-kit'}/>

@@ -10,6 +10,7 @@ import BuyButton from "./utils/button/buy-button";
 
 class HomepageMainSection extends React.Component {
     render() {
+        console.log('this.props', this.props)
         return (
             <HBox alignItems={'center'}
                   className={'scroll-element-active'}
@@ -27,26 +28,29 @@ class HomepageMainSection extends React.Component {
 
                         <Col>
                             <VBox alignItems={'start'} className={'text-center text-md-left px-sm-5'}
-                                  maxWidth={'47rem'}>
+                                  maxWidth={'60rem'}>
                                 <Element marginBottom={'10rem'}>
                                     <h2 dangerouslySetInnerHTML={{__html: this.props.title ? this.props.title : 'DRESS UP YOUR DEVICE'}}
+
                                         className={'text-center text-md-left'}
-                                        style={{fontSize: FontSize.lg, color: '#000000'}}/>
+                                        style={{fontSize: '4.5rem', color: '#000000'}}/>
                                     <p dangerouslySetInnerHTML={{__html: this.props.description}}
                                        style={{fontSize: FontSize.md, margin: `${Gutter.sm} 0`, color: '#000000'}}/>
                                 </Element>
 
                                 <Link to={this.props.href} style={{color: '#151515', fontWeight: 'bold'}}>
                                     <BuyButton marginBottom={Gutter.md}
-                                               padding={'2rem 2rem'}
-                                               background={'#f2f2f2'}
-                                               color={'primary'}
+                                               padding={'.5rem 2rem'}
+                                               background={this.props.btn_background}
+                                               color={this.props.btn_color}
                                                className={'text-center text-md-left px-5'}
-                                               block
+                                               // block
+                                               // maxWidth={'auto'}
+                                        width={'auto'}
                                                hidePrice
                                                cta={'more outfits'}>
 
-                                        more outfits
+                                        {this.props.btn_label}
 
                                     </BuyButton>
                                 </Link>
@@ -54,7 +58,7 @@ class HomepageMainSection extends React.Component {
                             </VBox>
                         </Col>
                         <Col>
-                            <Image src={this.props.product_image} width={'90%'}/>
+                            <Image src={this.props.product_image} width={'84%'}/>
                         </Col>
                     </Row>
                 </Container>

@@ -14,7 +14,7 @@ const Viewport = {
         sm: '1.5rem',
         md: '2rem',
         lg: '3.5rem',
-        xl: '4.2rem'
+        xl: '4.5rem'
     },
     FontFamily = {
         title: "'Roboto', sans-serif",

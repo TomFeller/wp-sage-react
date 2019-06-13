@@ -24,7 +24,7 @@ class ProductColumns extends React.Component {
                         })
                     })}/>
 
-                    <Row className={'pt-5 pb-0 flex-md-nowrap productWrapperDesktopFlex'}>
+                    <Row className={'pt-5 pt-sm-0 pb-0 flex-md-nowrap productWrapperDesktopFlex'}>
                         {sections.map((section, i) => {
                             const {title, description, image, price, button_background_color, button_text_color} = section;
                             return (

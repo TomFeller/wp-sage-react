@@ -6,6 +6,7 @@ import {Colors, FontSize, Gutter, Viewport} from "../../../style/variables";
 import Image from "../image/image";
 import BackgroundImage from "../image/background-image";
 import '../../../style/css/animated-tabs.css';
+import DataStore from "../../../flux/stores/DataStore";
 
 class AnimatedTabs extends React.Component {
     constructor(props) {
@@ -38,10 +39,14 @@ class AnimatedTabs extends React.Component {
     render() {
         const {activeTab} = this.state;
         const {tabs} = this.props;
+
+        const pageData = DataStore.getPageBySlug(activeTab === 0 ? 'about' : 'team');
+        const teamTitle = pageData.acf.title;
+        console.log('teamTitle', teamTitle);
         return (
             <TabsWrapper className={'animated-tabs'} position={'relative'} id={'our-story'}>
                 <h2 className={'text-center scroll-element tabs-title'} style={title}>
-                    {activeTab === 0 ? 'once upon a time' : 'NICE TO MEET YOU'}
+                    {teamTitle}
                 </h2>
                 <HBox justifyContent={'center'} className={'tabs scroll-element'}>
                     {tabs.map((tab, t) => {
@@ -153,8 +158,5 @@ const SectionsWrapper = styled.div`
 
 
 const title = {
-    fontWeight: 'bold',
-    // fontSize: FontSize.md,
     marginBottom: '3rem',
-    textTransform: 'uppercase'
 };

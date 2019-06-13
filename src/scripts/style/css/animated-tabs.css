@@ -19,7 +19,7 @@
     font-weight: bold;
 }
 .animated-tabs .tab.active {
-     border-bottom: .3rem solid #ffb100;
+     border-bottom: .3rem solid #ffd9b0;
 }
 .carousel-indicators {
     height: 80px

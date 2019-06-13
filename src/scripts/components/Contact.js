@@ -9,6 +9,9 @@ import Form from "./utils/form/form";
 import Field from "./utils/form/field";
 import TextArea from "./utils/form/textarea";
 import Button from "./utils/button/button";
+import Circle from "./utils/shapes/circle";
+import FaPhone from "react-icons/lib/fa/phone";
+import Text from "./utils/text/text";
 
 class Contact extends React.Component {
     constructor(props) {
@@ -21,6 +24,7 @@ class Contact extends React.Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.openForm = this.openForm.bind(this);
     }
 
     handleChange(e) {
@@ -33,12 +37,18 @@ class Contact extends React.Component {
         })
     }
 
+    openForm() {
+        this.setState({
+            isFormOpen: true
+        })
+    }
+
     render() {
         const {homepage} = this.props;
         const pageData = DataStore.getPageBySlug('contact');
         const featuredImage = pageData['_embedded'] && pageData._embedded['wp:featuredmedia']['0']['source_url'];
 
-        const {name, email, message} = this.state;
+        const {name, email, message, isFormOpen} = this.state;
         return (
             <PageWrapper className={'contact-us scroll-element'}
                          id={'contact-us'}
@@ -77,8 +87,16 @@ class Contact extends React.Component {
 
                             <div style={contactDetails} dangerouslySetInnerHTML={{__html: pageData.content.rendered}}/>
                             <div style={contactDetails}>{pageData.text}</div>
+
+                            <Circle size={'90'} background={'#f6f2ec'} margin={`${Gutter.xl} auto ${Gutter.sm}`}
+                                    onClick={this.openForm} pointer>
+                                <FaPhone size={'50'} color={'#000000'}/>
+
+                            </Circle>
+                            <p style={{textAlign: 'center', color: '#ffffff', fontSize: FontSize.sm, cursor: 'pointer'}} onClick={this.openForm}>Write us</p>
                         </div>
-                        <Element width={'500px'} margin={`${Gutter.md} auto 0`}>
+
+                        <Element width={'500px'} height={isFormOpen ? '260px' : 0} transition={'height .5s'} overflow={'hidden'} margin={`${Gutter.md} auto 0`}>
                             <Form className={'text-center'}>
                                 <Field
                                     // label={'Name'}
@@ -106,9 +124,10 @@ class Contact extends React.Component {
                                     value={message}
                                     change={this.handleChange}/>
 
-                                <Button style={{float: 'right'}}>Send</Button>
+                                <Button style={{float: 'right', backgroundColor:'#fde7e2', marginRight: '0'}}>Send</Button>
                             </Form>
                         </Element>
+
                     </VBox>
                 </Container>
             </PageWrapper>

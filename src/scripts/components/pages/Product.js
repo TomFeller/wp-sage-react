@@ -54,7 +54,7 @@ class Product extends React.Component {
                                                                  style={{
                                                                      textAlign: 'center',
                                                                      marginBottom: '0',
-                                                                     marginTop: Gutter.lg,
+                                                                     marginTop: '2.5rem',
                                                                      fontSize: '4rem',
                                                                      padding: `${Gutter.sm} 0`,
                                                                      color: '#000'

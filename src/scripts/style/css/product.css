@@ -8,8 +8,8 @@
 .product-col-image-wrapper {
     position: relative;
     max-height: 50rem;
-    height: 47vh;
-    margin-bottom: 2.5rem;
+    height: 48.5vh;
+    /*margin-bottom: 2.5rem;*/
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
