@@ -1,14 +1,14 @@
 import React from 'react';
-import {H1, H2, H3, H4, H5, H6, P, Label} from "../../style/typography";
-import DataStore from "../../../flux/stores/DataStore";
+import {H1, H2, H3, H4, H5, H6, P, Label, Span} from "../../style/typography";
 
 class Text extends React.Component {
     render() {
-        const {tag, color, underline} = this.props,
-            fontSize = DataStore.getFontSizeByTag(tag);
+        const {tag, color, backgroundColor, underline, fontFamily, fontSize, mobileFontSize, pointer, textAlign, fontWeight, textShadow, className, style, index, onClick} = this.props;
+        const {padding, paddingTop, paddingRight, paddingBottom, paddingLeft} = this.props;
+        const {margin, marginTop, marginRight, marginBottom, marginLeft} = this.props;
 
         let Tag = H1;
-        switch (this.props.tag) {
+        switch (tag) {
             case ('h1') :
                 Tag = H1;
                 break;
@@ -33,23 +33,47 @@ class Text extends React.Component {
             case ('label') :
                 Tag = Label;
                 break;
+            case ('span') :
+                Tag = Span;
+                break;
             default:
                 Tag : P
         }
 
         return (
-            <Tag size={fontSize[`${tag}`]}
+            <Tag className={className && className}
+                 onClick={onClick && onClick}
+                 mobileFontSize={mobileFontSize && mobileFontSize}
                  style={{
+                     ...style && style,
                      color: color,
-                     textDecoration: underline ? 'underline' : 'none'
+                     backgroundColor: backgroundColor && backgroundColor,
+                     textDecoration: underline && 'underline',
+                     fontFamily: fontFamily && fontFamily,
+                     fontSize: fontSize && fontSize,
+                     textAlign: textAlign && textAlign,
+                     fontWeight: fontWeight && fontWeight,
+                     padding: padding && padding,
+                     paddingTop: paddingTop && paddingTop,
+                     paddingBottom: paddingBottom && paddingBottom,
+                     paddingLeft: paddingLeft && paddingLeft,
+                     paddingRight: paddingRight && paddingRight,
+                     margin: margin && margin,
+                     marginTop: marginTop && marginTop,
+                     marginBottom: marginBottom && marginBottom,
+                     marginLeft: marginLeft && marginLeft,
+                     marginRight: marginRight && marginRight,
+                     textShadow: textShadow && textShadow,
+                     cursor: pointer && 'pointer'
                  }}
+                 data-index={index && index}
                  dangerouslySetInnerHTML={{__html: this.props.children}}/>
         )
     }
 
     static defaultProps = {
         tag: 'p',
-        color: '#000'
+        color: '#151515'
     }
 }
 

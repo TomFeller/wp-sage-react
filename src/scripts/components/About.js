@@ -11,7 +11,6 @@ class About extends React.Component {
     render() {
         const {homepage} = this.props,
             pageData = DataStore.getPageBySlug('about'),
-            featuredImage = pageData['_embedded'] && pageData._embedded['wp:featuredmedia']['0']['source_url'],
             aboutContent = pageData.content.rendered;
         console.log('pageData', pageData);
 

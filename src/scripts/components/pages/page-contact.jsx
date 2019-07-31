@@ -27,8 +27,9 @@ class PageContact extends React.Component {
 
         const {name, email, message} = this.state;
         const colors = DataStore.getColors();
+        const free_text = pageData.acf.free_location_text;
 
-        return (
+         return (
             <PageWrapper>
                 <Container>
 

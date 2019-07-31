@@ -1,50 +1,90 @@
 import React from 'react';
 import DataStore from '../flux/stores/DataStore.js'
-import Archive from "./Archive";
-import {Gutter, PageWrapper, ResponsiveHalf} from '../style/style';
-import About from "./About";
+import {PageWrapper} from '../style/style';
 import {HBox, VBox, Element} from 'react-stylesheet';
 import Contact from "./Contact";
-import Team from "./Team";
-import Footer from "./Footer";
-import Loader from "./utils/Loader";
 import HomepageSection from "./HomepageSection";
-import AnimatedTabs from "./utils/animated-tabs/animated-tabs";
 import StoryTabs from "./StoryTabs/story-tabs";
-import Map from "./Map";
-import {Colors} from "../style/variables";
-import BackgroundImage from "./utils/image/background-image";
 import HomepageMainSection from "./HomepageMainSection";
 import LoaderLogo from "./utils/loader-logo/loader-logo";
+import './home-style.css';
 
+import {
+    Carousel,
+    CarouselItem,
+    CarouselControl,
+    CarouselIndicators,
+    CarouselCaption
+} from 'reactstrap';
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            isLoading: true
+            isLoading: true,
+            activeIndex: 0,
+            urlId: this.props.getUrlParams(window.location.href)
         };
-
+        this.next = this.next.bind(this);
+        this.previous = this.previous.bind(this);
+        this.goToIndex = this.goToIndex.bind(this);
+        this.onExiting = this.onExiting.bind(this);
+        this.onExited = this.onExited.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
     }
 
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
+
+        console.log('id',this.state.urlId)
+
+
         setTimeout(
             () => {
                 this.setState({
                     isLoading: false
-                })
+                });
+                let anchor = document.getElementById(this.state.urlId);
+                if (anchor) {
+                    anchor.scrollIntoView();
+                }
             },
-            1000
+            500
         );
+
 
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
+    }
+
+
+    onExiting() {
+        this.animating = true;
+    }
+
+    onExited() {
+        this.animating = false;
+    }
+
+    next(items) {
+        if (this.animating) return;
+        const nextIndex = this.state.activeIndex === items && items.length - 1 ? 0 : this.state.activeIndex + 1;
+        this.setState({activeIndex: nextIndex});
+    }
+
+    previous(items) {
+        if (this.animating) return;
+        const nextIndex = this.state.activeIndex === 0 ? items && items.length - 1 : this.state.activeIndex - 1;
+        this.setState({activeIndex: nextIndex});
+    }
+
+    goToIndex(newIndex) {
+        if (this.animating) return;
+        this.setState({activeIndex: newIndex});
     }
 
     handleScroll(event) {
@@ -98,9 +138,53 @@ class Home extends React.Component {
 
     render() {
         const pageData = DataStore.getPageBySlug('home'),
-            {first_section, second_section, main_section} = pageData.acf,
+            {first_section, second_section, main_section, inspiration} = pageData.acf,
             {isLoading} = this.state;
 
+        console.log('pageData.acf', pageData.acf);
+
+
+        console.log('inspiration', inspiration);
+
+        const allInapirations = [
+            {
+                src: inspiration.item_1.image,
+                altText: inspiration.item_1.title,
+                caption: inspiration.item_1.subtitle,
+                color: inspiration.item_1.text_color,
+                backgroundColor: inspiration.item_1.background_color
+            }
+        ];
+
+        const {activeIndex} = this.state;
+
+        const filterdItems = allInapirations.filter(item => !!item.src);
+
+        const slides = filterdItems.length > 0 ? filterdItems.map((item, i) => {
+                return (
+                    <CarouselItem key={i}
+                                  onExiting={this.onExiting}
+                                  onExited={this.onExited}>
+                        <img src={item.src} alt={item.altText} width={'100%'}/>
+                        <CarouselCaption captionText={item.caption} captionHeader={item.altText} color={item.color}/>
+                    </CarouselItem>
+                );
+            })
+            :
+            allInapirations.map((item, i) => {
+                console.log('item',item);
+                return (
+                    <CarouselItem
+                        key={i}
+                        onExiting={this.onExiting}
+                        onExited={this.onExited}>
+                        <Element width={'100%'}
+                                 height={'60rem'}
+                                 background={item.backgroundColor}/>
+                        <CarouselCaption captionText={item.caption} captionHeader={item.altText} color={item.color}/>
+                    </CarouselItem>
+                )
+            });
 
         return (
             isLoading ?
@@ -108,7 +192,7 @@ class Home extends React.Component {
                     <LoaderLogo/>
                 </HBox>
                 :
-                <PageWrapper className={'homepage'}>
+                <PageWrapper className={'homepage'} id={'homepage'}>
                     {/*<h2>Homepage template</h2>*/}
                     {/*<h1>{pageData.title.rendered}</h1>*/}
 
@@ -124,21 +208,29 @@ class Home extends React.Component {
                                          btn_background={main_section.buy_button.background_color}
                                          btn_color={main_section.buy_button.color}
                                          btn_label={main_section.buy_button.label}
+                                         image_size={main_section.image_size}
                     />
 
                     <HomepageSection data={first_section} background={first_section.background_color}
                                      href={'/its-all-about-you'} id={'welcome-kit'}/>
 
-                    <HomepageSection data={second_section} background={second_section.background_color}
+                    <HomepageSection data={second_section}
+                                     background={second_section.background_color}
                                      listenToScroll={this.listenToScroll} href={'/put-your-skinniz-on'}
                                      id={'accessories'}/>
 
-                    <HBox justifyContent={'center'} alignItems={'flex-start'} id={'inspiration'}>
-                        <BackgroundImage
-                            url={'http://oleo-admin.tf-interactive.com/wp-content/uploads/2019/03/oleo_image.jpeg'}
-                            attachment={'fixed'}
-                            height={'655px'}/>
-                    </HBox>
+
+                    <Element id={'inspiration-anchor'} position={'relative'}>
+                        <Element id={'blinkiz'} position={'relative'} top={'-80px'} width={'100%'}/>
+                        {slides &&
+                        <Carousel
+                            activeIndex={activeIndex}>
+
+                            {slides}
+
+                        </Carousel>
+                        }
+                    </Element>
 
                     <StoryTabs listenToScroll={this.listenToScroll}/>
 

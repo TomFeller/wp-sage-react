@@ -8,6 +8,8 @@ import '../../style/css/member.css';
 import ProductBlocks from "./inner-products/product-blocks";
 import ProductGrid from "./inner-products/product-grid";
 import ProductColumns from "./inner-products/product-columns";
+import Text from "../utils/text/text";
+import {FontSize} from "../style/variables";
 
 class Product extends React.Component {
     constructor(props) {
@@ -45,16 +47,20 @@ class Product extends React.Component {
         const {inner_sections, main_inner_section} = acf;
         const sections = [inner_sections.product_1, inner_sections.product_2, inner_sections.product_3, inner_sections.product_4, inner_sections.product_5];
 
+        console.log('inner_sections', inner_sections)
+
         return (
             <PageWrapper>
-                <Element>
+                <Element marginTop={'2rem'} className={inner_sections.template === 'blocks' && 'product-block' }>
                     {acf.add_main_section && main_inner_section && <ProductTopSection {...main_inner_section}/>}
 
+
+
                     {inner_sections.template !== 'blocks' && <h1 dangerouslySetInnerHTML={{__html: title.rendered}}
+                                                                 className={'mt-sm-4'}
                                                                  style={{
                                                                      textAlign: 'center',
                                                                      marginBottom: '0',
-                                                                     marginTop: '2.5rem',
                                                                      fontSize: '4rem',
                                                                      padding: `${Gutter.sm} 0`,
                                                                      color: '#000'
@@ -63,13 +69,13 @@ class Product extends React.Component {
 
                     {content.rendered && content.rendered !== '' &&
                     <h2 dangerouslySetInnerHTML={{__html: content.rendered}}
-                        className={`text-center product-name-title ${inner_sections.template === 'blocks' ? 'mt-5 mb-5' : ''}`}
+                        className={`text-center product-name-title px-3 ${inner_sections.template === 'blocks' ? 'mt-5 mb-5' : ''}`}
                         style={{color: '#000', marginBottom: Gutter.md, fontSize: '2.5rem'}}/>}
 
                     {inner_sections.template === 'grid' ?
                         <ProductGrid sections={sections} sectionActive={sectionActive}/> :
                         inner_sections.template === 'blocks' ?
-                            <ProductBlocks sections={sections}/> :
+                            <ProductBlocks sections={sections} special_sentence={inner_sections.special_sentence} sentence_font_size={inner_sections.sentence_font_size}/> :
                             <ProductColumns sections={sections}/>
                     }
 

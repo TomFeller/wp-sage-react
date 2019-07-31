@@ -13,13 +13,15 @@ class ProductColumns extends React.Component {
         const {sections} = this.props;
         return (
             <Container fluid>
-                <Element className={'px-md-5'}>
-                    <ProductMobileSlider items={sections.map((item, i) => {
+                <Element className={'px-md-5 mb-5'}>
+                    <ProductMobileSlider hideArrows items={sections.map((item, i) => {
                         return ({
                             src: item.image,
                             header: item.title,
                             altText: item.description,
                             caption: item.price,
+                            buttonBgColor: item.button_background_color,
+                            buttonColor: item.button_text_color,
                             buyButton: true
                         })
                     })}/>
@@ -34,12 +36,13 @@ class ProductColumns extends React.Component {
                                         <Image src={image} opacity={0}/>
                                     </div>
                                     <Element padding={Gutter.sm} className={'py-5'} background={'#fff'}>
-                                        <h2 dangerouslySetInnerHTML={{__html: title}}/>
+                                        <h2 className={'text-center'} dangerouslySetInnerHTML={{__html: title}}/>
                                         {description && description !== '' &&
-                                        <h4 dangerouslySetInnerHTML={{__html: description}}/>}
+                                        <h4 className={'text-center'} dangerouslySetInnerHTML={{__html: description}}/>}
 
-                                        <BuyButton price={'12'}
+                                        <BuyButton price={price}
                                                    background={button_background_color}
+                                                   showMessage={true}
                                                    color={button_text_color}/>
                                     </Element>
 

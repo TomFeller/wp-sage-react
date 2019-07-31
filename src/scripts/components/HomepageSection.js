@@ -11,8 +11,9 @@ import BuyButton from "./utils/button/buy-button";
 
 class HomepageSection extends React.Component {
     render() {
-        const {title, description, image, image_side, cta_button_text,} = this.props.data;
+        const {title, description, video, image, image_side, cta_button_text,} = this.props.data;
 
+        console.log('video',video)
         return (
             <HBox style={wrapper}
                   className={'homepage-section-wrapper scroll-element'} id={this.props.id && this.props.id}>
@@ -30,11 +31,13 @@ class HomepageSection extends React.Component {
                             })}
                         </Words>
 
-                        <Link to={this.props.href} style={{color: '#151515', fontWeight: 'bold'}}>
+                        <Link to={this.props.href} style={{color: '#151515', fontWeight: 'bold', textAlign: 'center'}}>
                         <BuyButton marginBottom={Gutter.md}
                                    background={'#fde7e2'}
                                    color={'#000000'}
                             // special
+                            cta={cta_button_text}
+                                   hidePrice
                                    padding={'.5rem 2rem'}
                                    width={'auto'}
                                    className={'text-center text-md-left'}>
@@ -48,11 +51,27 @@ class HomepageSection extends React.Component {
                     <Col xs={6} md={6}
                          className={'d-flex justify-content-center align-items-center'}
                          style={{
+                             overflow: 'hidden',
                              backgroundImage: `url(${image.url})`,
                              backgroundSize: 'cover',
                              backgroundPosition: 'center center'
                          }}>
-
+                        {video.url &&
+                        <video id={'homepage-video'}
+                               autoPlay
+                               muted
+                               loop
+                               style={{
+                                   // opacity: '.6',
+                                   position: 'absolute',
+                                   left: '50%', top: '50%',
+                                   transform: 'translate(-50%, -50%)'
+                               }}>
+                            <source
+                                src={video.url}
+                                type="video/mp4"/>
+                        </video>
+                        }
                     </Col>
                 </Row>
             </HBox>

@@ -1,10 +1,12 @@
 .button {
-    outline: 0;
+    outline: 0 !important;
     margin-right: 10px;
     position: relative;
     background-color: transparent;
     cursor: pointer;
     z-index: 0;
+    border-radius: 2rem;
+    transition: .3s border-radius;
 }
 .button:before {
      content: '';
@@ -20,7 +22,8 @@
      z-index: -1;
 }
 .button:hover {
-    /*box-shadow: 0 0 .5rem .2rem #000*/
+    border-radius: .5rem;
+
 }
 .button:hover:before {
      transform: skewX(40deg);

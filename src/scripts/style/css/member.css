@@ -4,7 +4,7 @@
 }
 
 .member:first-child {
-    padding: 6rem 0 0 6rem;
+    padding: 0rem 0 0 6rem;
 }
 
 .member:first-child .member {

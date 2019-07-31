@@ -9,6 +9,7 @@ import {
 } from 'reactstrap';
 import '../../style/css/mobile-carrousel.css';
 import BuyButton from "../utils/button/buy-button";
+import {FontSize, Gutter} from "../style/variables";
 
 class ProductMobileSlider extends React.Component {
     constructor(props) {
@@ -27,25 +28,34 @@ class ProductMobileSlider extends React.Component {
 
     handleTouchStart(e) {
         this.setState({
-            originalSwipeLocation: e.targetTouches[0].clientX,
+            originalSwipeLocationX: e.targetTouches[0].clientX,
+            originalSwipeLocationY: e.targetTouches[0].clientY,
         });
         console.log('handleTouchStart', e)
     }
 
     handleTouchMove(e) {
         this.setState({
-            swipeMove: e.targetTouches[0].clientX
+            swipeMoveX: e.targetTouches[0].clientX,
+            swipeMoveY: e.targetTouches[0].clientY
         })
     }
 
     handleTouchEnd() {
-        const {swipeMove, originalSwipeLocation, activeSection} = this.state;
-        const direction = swipeMove > originalSwipeLocation ? 1 : -1;
+        const {swipeMoveX, swipeMoveY, originalSwipeLocationX, originalSwipeLocationY, activeSection} = this.state;
+        const directionX = swipeMoveX > originalSwipeLocationX ? 1 : -1;
+        const directionY = swipeMoveY - 50 > originalSwipeLocationY || swipeMoveY + 50 < originalSwipeLocationY ? 1 : -1;
         const current = parseInt(activeSection);
-        if (direction > 0) {
-            this.previous();
-        } else {
-            this.next();
+
+        console.log('directionX', directionX);
+        console.log('directionY', directionY);
+
+        if (directionY < 0) {
+            if (directionX > 0) {
+                this.previous();
+            } else {
+                this.next();
+            }
         }
     }
 
@@ -77,20 +87,29 @@ class ProductMobileSlider extends React.Component {
     render() {
         const {activeIndex} = this.state;
         const {items, showInDesktop} = this.props;
+        const {buttonBgColor, buttonColor} = this.props;
+
         const slides = items.map((item) => {
             return (
                 <CarouselItem
                     onExiting={this.onExiting}
                     onExited={this.onExited}
-                    key={item.src}>
+                    key={item.src}
+                    style={{position: 'relative', maxWidth: '35rem',}}>
+
 
                     <img src={item.src} alt={item.altText} style={{display: 'block'}}
                          onTouchStart={touchStartEvent => this.handleTouchStart(touchStartEvent)}
                          onTouchMove={touchMoveEvent => this.handleTouchMove(touchMoveEvent)}
                          onTouchEnd={(touchEndEvent) => this.handleTouchEnd(touchEndEvent)}/>
 
-                    <div className={'mt-4 mx-auto'} style={{maxWidth: '40rem'}}>
-                        {item.header && <h2 dangerouslySetInnerHTML={{__html: item.header}} className={'text-left'}/>}
+                    <div className={'mt-0 mx-auto py-5'}
+                         style={{maxWidth: '40rem', display: 'inline-block', width: 'auto'}}>
+
+
+                        {item.header &&
+                        <h2 dangerouslySetInnerHTML={{__html: `${item.header} ${item.index ? item.index : ''}`}}
+                            className={'text-center text-sm-left'}/>}
 
                         {item.caption && !item.buyButton &&
                         <CarouselCaption captionHeader={item.caption} captionText={''}/>}
@@ -98,7 +117,11 @@ class ProductMobileSlider extends React.Component {
                         {item.altText && <h4 dangerouslySetInnerHTML={{__html: item.altText}}/>}
 
                         {item.buyButton && <BuyButton price={item.caption}
-                                                      background={'#cecece'}/>
+                                                      background={item.buttonBgColor}
+                                                      color={item.buttonColor}
+                                                      showMessage={true}
+                                                      padding={'.5rem 2rem'}
+                                                      width={'auto'}/>
                         }
                     </div>
 
@@ -109,16 +132,23 @@ class ProductMobileSlider extends React.Component {
         return (
             <Carousel
                 interval={false}
-                ride={false}
+                ride={'carousel'}
                 autoPlay={false}
                 activeIndex={activeIndex}
                 next={this.next}
                 previous={this.previous}
                 className={`product-mobile-slider ${!showInDesktop && 'd-md-none'} product-mobile-slider`}>
-                <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex}/>
+                <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex}
+                                    className={'d-md-none'}/>
                 {slides}
-                {/*<CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}/>*/}
-                {/*<CarouselControl direction="next" directionText="Next" onClickHandler={this.next}/>*/}
+                {!this.props.hideArrows &&
+                <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}
+                                 className={'arrow'}>asd</CarouselControl>
+                }
+                {!this.props.hideArrows &&
+                <CarouselControl direction="next" directionText="Next" onClickHandler={this.next}
+                                 className={'arrow'}>asd</CarouselControl>
+                }
             </Carousel>
         );
     }
@@ -132,3 +162,10 @@ class ProductMobileSlider extends React.Component {
 }
 
 export default ProductMobileSlider;
+
+const indexNumber = {
+    position: 'absolute',
+    top: '50px',
+    right: '50px',
+    fontSize: FontSize.sm
+}

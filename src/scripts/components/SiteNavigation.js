@@ -47,35 +47,35 @@ class SiteNavigation extends React.Component {
         const navItems = [
             {
                 id: 0,
-                icon: FaCodepen,
-                title: 'oleovape',
+                icon: 'http://oleo-admin.tf-interactive.com/wp-content/uploads/2019/06/Oleo_icons-01.png',
+                title: 'welcome kit',
                 href: '/its-all-about-you'
             }, {
                 id: 1,
-                icon: FaGroup,
-                href: '/#our-story',
-                title: 'our story'
+                icon: 'http://oleo-admin.tf-interactive.com/wp-content/uploads/2019/06/Oleo_icons-02.png',
+                href: '/dress-up-your-device',
+                title: 'skinniz',
             }, {
                 id: 2,
-                icon: FaMapSigns,
-                href: '/#our-story',
-                title: 'team',
-            }, {
-                id: 3,
-                icon_1: FaShoppingBasket,
-                icon_2: FaGroup,
-                icon_3: FaMapSigns,
-                icon_4: FaPhone,
+                // icon: 'https://admin.youdoadventures.com/wp-content/uploads/2019/06/icons-05.png',
+                icon_1: 'http://oleo-admin.tf-interactive.com/wp-content/uploads/2019/06/Oleo_icons-03.png',
+                icon_2: 'http://oleo-admin.tf-interactive.com/wp-content/uploads/2019/06/Oleo_icons-04.png',
+                icon_3: 'http://oleo-admin.tf-interactive.com/wp-content/uploads/2019/06/Oleo_icons-05.png',
                 href: '/put-your-skinniz-on',
                 title: 'accessories'
             }, {
+                id: 3,
+                icon: 'http://oleo-admin.tf-interactive.com/wp-content/uploads/2019/06/Oleo_icons-06.png',
+                href: '/#our-story',
+                title: 'our story'
+            }, {
                 id: 4,
-                icon: FaMapSigns,
-                href: '/#inspiration',
-                title: 'inspiration'
+                icon: 'http://oleo-admin.tf-interactive.com/wp-content/uploads/2019/06/Oleo_icons-08.png',
+                href: '/#blinkiz',
+                title: 'blinkiz'
             }, {
                 id: 5,
-                icon: FaPhone,
+                icon: 'http://oleo-admin.tf-interactive.com/wp-content/uploads/2019/06/Oleo_icons-07.png',
                 href: '/#contact-us',
                 title: 'contact'
             }
@@ -83,7 +83,7 @@ class SiteNavigation extends React.Component {
         const {tooltipOpen, mobileMenuOpen} = this.state;
 
         return (
-            <div>
+            <div style={{marginTop: '.9rem'}}>
                 <NavigationWrapper className={`navigation-wrapper ${mobileMenuOpen ? 'open' : ''}`}>
                     <Container>
                         <HBox justifyContent={'space-around'} overflow={'visible'} alignItems={'center'}
@@ -91,25 +91,26 @@ class SiteNavigation extends React.Component {
                             {navItems.map((item, i) => {
                                 return (
                                     <div key={i}
-                                         style={{order: i, zIndex: 100 - i}} className={'flip-icon'}>
+                                         style={{order: i, zIndex: 100 - i}} className={'flip-icon text-center'}>
 
                                         {item.icon ?
                                             <a href={item.href ? `${item.href}` : 'javascript:void(0)'}
-                                               onMouseOver={this.toggleTooltip} id={`tooltip-${i}`}>
-                                                <Circle size={40}
+                                               onMouseOver={this.toggleTooltip} className={'text-center'}
+                                               id={`tooltip-${i}`}>
+                                                <Circle size={50}
                                                     // border={'1px solid #000'}
                                                     // padding={Gutter.sm}
                                                         margin={'0 auto'}
-                                                        background={'#f6f2ec'}
+                                                        background={'transparent'} //fef5f0
                                                         pointer>
-                                                    <item.icon size={20} color={'#000'}/>
-                                                </Circle></a>
+                                                    <img src={item.icon} width={30}/>
+                                                </Circle>
+                                            </a>
                                             :
                                             <IconSwitcher item={item}
                                                           icon_1={item.icon_1}
                                                           icon_2={item.icon_2}
                                                           icon_3={item.icon_3}
-                                                          icon_4={item.icon_4}
                                                           i={i}
                                                           toggleTooltip={this.toggleTooltip}/>
                                         }
@@ -122,9 +123,11 @@ class SiteNavigation extends React.Component {
                                 )
                             })}
                             <MobileHidden style={{order: 2, flex: '16.6667% 0 0'}} className={'mobile-hidden'}>
-                                <Link to={'/'} style={{order: 2, padding: '0 10px'}}>
-                                    <SiteLogo width={'120px'}/>
-                                </Link>
+                                <div>
+                                    <a href={'/#'} style={{order: 2, padding: '0 10px'}}>
+                                        <SiteLogo width={'120px'}/>
+                                    </a>
+                                </div>
                             </MobileHidden>
 
                         </HBox>

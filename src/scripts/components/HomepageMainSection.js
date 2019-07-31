@@ -7,46 +7,53 @@ import Image from "./utils/image/image";
 import Button from "./utils/button/button";
 import {MobileHidden, MobileOnly} from '../style/responsive';
 import BuyButton from "./utils/button/buy-button";
+import BackgroundImage from "./utils/image/background-image";
+import Text from "./utils/text/text";
 
 class HomepageMainSection extends React.Component {
     render() {
-        console.log('this.props', this.props)
+        const {image_size, product_image} = this.props;
+
+        const isImageCover = image_size === 'Full Screen';
+        const isImageHalf = image_size === 'Half Screen';
+
+
         return (
             <HBox alignItems={'center'}
                   className={'scroll-element-active'}
                   style={{
                       ...wrapper,
-                      // backgroundImage: `url(${this.props.product_image})`,
-                      backgroundSize: '50%',
+                      backgroundImage: isImageCover && `url(${product_image})`,
+                      backgroundSize: 'cover',
                       backgroundRepeat: 'no-repeat',
-                      backgroundAttachment: 'fixed',
-                      backgroundPosition: '100% 70%',
+                      // backgroundAttachment: 'fixed',
+                      backgroundPosition: 'center center',
                       backgroundColor: this.props.background
                   }}>
-                <Container>
-                    <Row className={'align-items-center flex-column-reverse flex-md-row'}>
-
-                        <Col>
+                <Container className={'product-top-section-wrapper'} fluid={isImageCover || isImageHalf}>
+                    <Row className={'align-items-center flex-column-reverse flex-md-row'} style={{height: '100%'}}>
+                        <Col sm={6} className={'d-flex pl-sm-5 pr-0 justify-content-center'}>
                             <VBox alignItems={'start'} className={'text-center text-md-left px-sm-5'}
-                                  maxWidth={'60rem'}>
-                                <Element marginBottom={'10rem'}>
+                                  width={'60rem'}
+                                  maxWidth={'100%'}>
+                                <Element className={'product-top-section-titles'}>
                                     <h2 dangerouslySetInnerHTML={{__html: this.props.title ? this.props.title : 'DRESS UP YOUR DEVICE'}}
-
-                                        className={'text-center text-md-left'}
-                                        style={{fontSize: '4.5rem', color: '#000000'}}/>
+                                        className={'text-center text-md-left main-title'}/>
                                     <p dangerouslySetInnerHTML={{__html: this.props.description}}
                                        style={{fontSize: FontSize.md, margin: `${Gutter.sm} 0`, color: '#000000'}}/>
                                 </Element>
 
-                                <Link to={this.props.href} style={{color: '#151515', fontWeight: 'bold'}}>
+                                <Link to={this.props.href}
+                                      style={{color: '#151515', fontWeight: 'bold', textAlign: 'center'}}>
                                     <BuyButton marginBottom={Gutter.md}
                                                padding={'.5rem 2rem'}
                                                background={this.props.btn_background}
                                                color={this.props.btn_color}
-                                               className={'text-center text-md-left px-5'}
-                                               // block
-                                               // maxWidth={'auto'}
-                                        width={'auto'}
+                                               // margin={'0 5rem 0 0'}
+                                               className={'text-center text-md-left px-5 mr-auto ml-auto ml-sm-0 mr-md-4'}
+                                        // block
+                                        // maxWidth={'auto'}
+                                               width={'auto'}
                                                hidePrice
                                                cta={'more outfits'}>
 
@@ -57,9 +64,22 @@ class HomepageMainSection extends React.Component {
 
                             </VBox>
                         </Col>
-                        <Col>
-                            <Image src={this.props.product_image} width={'84%'}/>
+                        {isImageHalf &&
+                        <Col sm={6} style={{height: '100%'}} className={'px-0'}>
+                            <BackgroundImage width={'100%'}
+                                             url={product_image}
+                                             size={'cover'}
+                                             height={'100%'}
+                                             overflow={'hidden'}
+                            />
                         </Col>
+                        }
+
+                        {!isImageCover && !isImageHalf &&
+                        <Col className={'text-center text-sm-right pr-sm-5 pl-0'}>
+                            <Image src={this.props.product_image} width={'70%'}/>
+                        </Col>
+                        }
                     </Row>
                 </Container>
             </HBox>
@@ -74,7 +94,7 @@ class HomepageMainSection extends React.Component {
 export default HomepageMainSection;
 
 const wrapper = {
-    minHeight: '92vh',
+    height: '92vh',
     borderBottom: '1x #333',
-    padding: '50px 0'
+    padding: '0 0 5rem'
 };

@@ -3,19 +3,20 @@ import {Element} from 'react-stylesheet';
 
 class BackgroundImage extends React.Component {
     render() {
-        const {width, height, position, repeat, size, url, attachment, className} = this.props;
+        const {style, width, height, position, repeat, size, url, attachment, className} = this.props;
         return (
             <Element
                 className={className && className}
                 style={{
-                width: width,
-                height: height,
-                backgroundAttachment: attachment && attachment,
-                backgroundPosition: position,
-                backgroundRepeat: repeat,
-                backgroundSize: size,
-                backgroundImage: `url(${url})`
-            }}/>
+                    width: width,
+                    height: height,
+                    backgroundAttachment: attachment && attachment,
+                    backgroundPosition: position,
+                    backgroundRepeat: repeat,
+                    backgroundSize: size,
+                    backgroundImage: `url(${url})`,
+                    ...style
+                }}/>
         )
     }
 

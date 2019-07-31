@@ -22,11 +22,11 @@
      border-bottom: .3rem solid #ffd9b0;
 }
 .carousel-indicators {
-    height: 80px
+    height: 40px
 }
 @media screen and (min-width: 640px) {
     .animated-tabs {
-        min-height: calc(100vh - 85px);
+        /*min-height: calc(100vh - 85px);*/
     }
     .animated-tabs .tabs-title {
         font-size: 6rem;

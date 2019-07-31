@@ -48,16 +48,16 @@ class AnimatedTabs extends React.Component {
                 <h2 className={'text-center scroll-element tabs-title'} style={title}>
                     {teamTitle}
                 </h2>
-                <HBox justifyContent={'center'} className={'tabs scroll-element'}>
-                    {tabs.map((tab, t) => {
-                        return (
-                            <Element className={`tab ${activeTab === t ? 'active' : ''}`}
-                                     data-index={t} onClick={this.switchTab} key={t}>
-                                {tab.label}
-                            </Element>
-                        )
-                    })}
-                </HBox>
+                {/*<HBox justifyContent={'center'} className={'tabs scroll-element'}>*/}
+                    {/*{tabs.map((tab, t) => {*/}
+                        {/*return (*/}
+                            {/*<Element className={`tab ${activeTab === t ? 'active' : ''}`}*/}
+                                     {/*data-index={t} onClick={this.switchTab} key={t}>*/}
+                                {/*{tab.label}*/}
+                            {/*</Element>*/}
+                        {/*)*/}
+                    {/*})}*/}
+                {/*</HBox>*/}
 
                 <Element className={'tabs-sections scroll-element'} position={'relative'}
                          height={'auto'}
@@ -159,4 +159,5 @@ const SectionsWrapper = styled.div`
 
 const title = {
     marginBottom: '3rem',
+    fontSize: '4.8rem'
 };

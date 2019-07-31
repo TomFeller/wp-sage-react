@@ -1,6 +1,36 @@
 .product-mobile-slider .carousel-control-next,
-.product-mobile-slider .carousel-control-prev{
-    background-color: #000000;
+.product-mobile-slider .carousel-control-prev {
+    background-color: transparent;
+    outline: black;
+    opacity: 0;
+    width: 20%;
+}
+
+.product-mobile-slider:hover .carousel-control-prev,
+.product-mobile-slider:hover .carousel-control-next {
+    opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    height: 100px;
+    width: 100px;
+    outline: black;
+    background-size: 100%, 100%;
+    background-image: none;
+}
+
+.carousel-control-next-icon:after {
+    content: '>';
+    font-size: 50px;
+    color: #333333;
+    font-weight: 100;
+}
+
+.carousel-control-prev-icon:after {
+    content: '<';
+    font-size: 50px;
+    color: #333333;
 }
 
 .product-mobile-slider .carousel-caption.d-none {
@@ -8,50 +38,89 @@
 }
 
 .product-mobile-slider .carousel-item {
-    padding-top: 5rem;
+    /*padding-top: 5rem;*/
+    /*padding-bottom: 5rem;*/
 }
 
 .product-mobile-slider .carousel-item h3 {
     color: #000000;
     font-size: 2.2rem;
 }
+
 .product-mobile-slider .carousel-item p {
     color: #000000;
     font-size: 1.6rem;
     max-width: 100%;
     padding: 0 5rem;
 }
+
 .product-mobile-slider .carousel-caption {
     padding-bottom: 0;
 }
+
 .product-mobile-slider .carousel-item img {
-    /*height: 40rem;*/
+    /*height: 30rem;*/
     width: 100% !important;
     margin: auto;
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+    .product-block .product-mobile-slider .carousel-item:first-child img {
+        width: 90% !important;
+    }
+
+    .product-block .product-mobile-slider .carousel-item:nth-child(2) img {
+        width: 80% !important;
+    }
+
+    .product-block .product-mobile-slider .carousel-item:nth-child(3) img {
+        width: 70% !important;
+    }
+
+    .product-block .product-mobile-slider .carousel-item:nth-child(4) img {
+        width: 55% !important;
+    }
+    .product-block .product-mobile-slider .carousel-item:nth-child(5) img {
+        transform: scale(1);
+    }
+    .product-mobile-slider .carousel-control-next,
+    .product-mobile-slider .carousel-control-prev {
+        opacity: 0 !important;
+    }
 }
 .carousel-indicators {
-    flex-direction: row-reverse;
+    flex-direction: row;
+    position: relative;
 }
+
 @media screen and (min-width: 768px) {
     .carousel-indicators {
         flex-direction: row;
     }
+    .product-mobile-slider .carousel-control-next,
+    .product-mobile-slider .carousel-control-prev {
+        width: 40%;
+    }
 }
+
 .product-mobile-slider .carousel-inner {
-text-align: center;
+    text-align: center;
 }
+
 .product-mobile-slider .carousel-indicators li {
     background-color: transparent;
-    border: 1px solid rgba(221, 113, 34, 1);
+    border: 2px solid #fcc597;
     width: 8px;
     height: 8px;
     margin-top: 1.5px;
     transition: all .3s;
     border-radius: 50%;
 }
+
 .product-mobile-slider .carousel-indicators li.active {
-    background-color: rgba(221, 113, 34, 1);
-    width:  11px;
+    background-color: #fcc597;
+    width: 11px;
     margin-top: 0;
     height: 11px;
 }
@@ -61,5 +130,5 @@ text-align: center;
 }
 
 .product-mobile-slider .carousel-indicators {
-    top: 20px;
+    top: -4px;
 }

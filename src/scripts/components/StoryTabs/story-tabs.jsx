@@ -8,19 +8,23 @@ import {FontSize} from "../../style/variables";
 
 class StoryTabs extends React.Component {
     render() {
-        const tabs = [{
-            index: 0,
-            label: 'Story',
-            section: <About homepage/>
-        }, {
-            index: 1,
-            label: 'Team',
-            section: <Element>
-                <Team homepage/>
-            </Element>
-        }];
+        const tabs = [
+            {
+                index: 0,
+                label: 'Story',
+                section: <About homepage/>
+            },
+            // {
+            //     index: 1,
+            //     label: 'Team',
+            //     section: <Element>
+            //         <Team homepage/>
+            //     </Element>
+            // }
+        ];
         return (
-            <Element background={'#ffffff'} padding={'5rem 0 5rem'} id={'our-story'}>
+            <Element background={'#ffffff'} padding={'5rem 0 5rem'} position={'relative'}>
+                <Element id={'our-story'} position={'absolute'} top={'-80px'} width={'100%'}/>
                 <AnimatedTabs tabs={tabs} container={'fluid'}/>
             </Element>
         )

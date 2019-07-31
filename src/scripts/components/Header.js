@@ -22,14 +22,14 @@ class Header extends React.Component {
             <header id="site-header" className="site-header">
                 <Element width={'100%'} className={'pt-3 py-sm-0'}>
                     <div className={'d-sm-none'}>
-                        <Link to={'/'}>
+                        <a href={'/#'}>
                             <HBox width={'100%'}
                                   justifyContent={'center'}
                                   alignItems={'center'}
                                   background={'#fff'}>
                                 <SiteLogo/>
                             </HBox>
-                        </Link>
+                        </a>
                     </div>
 
                     <SiteNavigation/>

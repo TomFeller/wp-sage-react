@@ -26,12 +26,15 @@
         transform: translateY(-13rem);
     }
 
-    #app.scroll .navigation-wrapper.open,
     #app .homepage .navigation-wrapper {
         transform: translateY(0);
     }
+    #app .navigation-wrapper.open,
+    #app .homepage .navigation-wrapper.open {
+        transform: translateY(0);
+    }
 
-    #app.scroll .navigation-wrapper.open + .show-mobile-menu-button {
+    #app .navigation-wrapper.open + .show-mobile-menu-button {
         top: 6.9rem;
         /*transform: rotate(180deg);*/
     }
@@ -81,7 +84,7 @@
     font-weight: bold;
     color: #000;
     /*top: 5.2rem;*/
-    opacity: 0;
+    opacity: 1;
     border: 0;
     outline: 0 !important;
     transition: top .6s;
@@ -168,9 +171,9 @@
 
 .flip-icon .tool-tip {
     visibility: visible;
-    /*position: absolute;*/
+    position: static;
     left: 0;
-    bottom: -2rem;
+    /*bottom: -2rem;*/
     width: 100%;
     text-align: center;
     opacity: 1;
@@ -180,13 +183,13 @@
     .flip-icon .tool-tip {
         opacity: 1;
         visibility: hidden;
-        position: absolute;
+        /*position: absolute;*/
     }
 }
 
-.flip-icon a:hover {
-    transform: scale(.9);
-}
+/*.flip-icon a:hover {*/
+    /*transform: scale(.9);*/
+/*}*/
 
 .flip-icon:hover .tool-tip {
     opacity: 1;
@@ -194,9 +197,10 @@
 }
 
 .flip-icon .circle {
-    background-color: #f6f2ec !important;
+    background-color: transparent !important;
 }
 
 .flip-icon p {
     white-space: nowrap;
+    margin-bottom: 0;
 }

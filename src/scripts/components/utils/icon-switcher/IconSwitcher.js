@@ -34,20 +34,20 @@ class IconSwitcher extends React.Component {
         const icon = () => {
             switch (activeIcon) {
                 case 1:
-                    return <item.icon_1 size={20} color={'#000'}/>;
+                    return <img src={item.icon_1} width={30}/>;
                 case 2:
-                    return <item.icon_2 size={20} color={'#000'}/>;
+                    return <img src={item.icon_2} width={30}/>;
                 case 3:
-                    return <item.icon_3 size={20} color={'#000'}/>;
+                    return <img src={item.icon_3} width={40}/>;
                 case 4:
-                    return <item.icon_4 size={20} color={'#000'}/>;
+                    return <img src={item.icon_4} width={30}/>;
             }
         };
 
         return (
             <a href={item.href ? `${item.href}` : 'javascript:void(0)'}
                onMouseOver={toggleTooltip} id={`tooltip-${i}`}>
-                <Circle size={40}
+                <Circle size={50}
                     // border={'1px solid #000'}
                     // padding={Gutter.sm}
                         margin={'0 auto'}
