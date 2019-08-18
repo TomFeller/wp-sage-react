@@ -54,6 +54,7 @@ class ProductTopSection extends React.Component {
                                        color={colors.button_txt}
                                        showMessage={true}
                                        width={'auto'}
+                                       maxWidth={'18rem'}
                                        padding={'.5rem 2rem'}
                                        className={'text-center text-md-left px-5'}/>
 

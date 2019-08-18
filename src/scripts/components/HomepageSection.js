@@ -61,6 +61,7 @@ class HomepageSection extends React.Component {
                                autoPlay
                                muted
                                loop
+                               playsinline
                                style={{
                                    // opacity: '.6',
                                    position: 'absolute',

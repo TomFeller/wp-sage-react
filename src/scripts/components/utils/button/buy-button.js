@@ -23,7 +23,7 @@ class BuyButton extends React.Component {
     render() {
         const {width, padding, maxWidth, background, color, fontSize, margin} = this.props;
         const {cta, price, currency, hidePrice} = this.props;
-        const pricecurrency = price + currency;
+        const pricecurrency = price;
         const {showMessage} = this.state;
         return (<div style={{position: 'relative'}}>
                 <button style={{
@@ -45,10 +45,29 @@ class BuyButton extends React.Component {
                                                className={'text-center mb-4'}/>}
                 </button>
                 {this.props.showMessage &&
-                <span style={{width: '100%', left: 0, textAlign: 'center', fontSize: '1.3rem', top:'100%', display: 'block', opacity: showMessage ? 1 : 0}}>At this point we sell only throw b2b</span>}
+                <span style={{
+                    width: '100%',
+                    maxWidth: maxWidth,
+                    left: 0,
+                    textAlign: 'center',
+                    fontSize: '1.5rem',
+                    top: '100%',
+                    display: 'block',
+                    opacity: showMessage ? 1 : 0
+                }}>Currently only for sale B2B</span>}
                 {this.props.showMessage &&
-                <span style={{width: '100%', left: 0, textAlign: 'center', fontSize: '1.3rem', top:'100%', display: 'block', opacity: showMessage ? 1 : 0}}>
-                    <a href={'/#contact-us'} style={{cursor:'pointer', fontWeight: 'bold', textDecoration: 'underline'}}>Contact us</a></span>}
+                <span style={{
+                    width: '100%',
+                    maxWidth: maxWidth,
+                    left: 0,
+                    textAlign: 'center',
+                    fontSize: '1.3rem',
+                    top: '100%',
+                    display: 'block',
+                    opacity: showMessage ? 1 : 0
+                }}>
+                    <a href={'/#contact-us'}
+                       style={{cursor: 'pointer', fontWeight: 'bold', textDecoration: 'underline', color: '#9aceca'}}>Contact us</a></span>}
             </div>
         )
     }

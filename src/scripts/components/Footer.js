@@ -26,20 +26,22 @@ class Footer extends React.Component {
                             <SiteLogo/>
                         </a>
                         <Element className={'mt-4'}>
-                            <ShareIcons size={18} color={'#000'}/>
-
-                            <HBox justifyContent={'center'} alignItems={'center'}>
-                                <p className={'mb-0'} style={{fontSize: '1rem'}}>Patent Design Pending 63868</p>
-                                <a href={'/'}
-                                      style={{color: '#000', fontSize: '1rem'}}
-                                      className={'px-3 my-4 text-center'}>terms & conditions</a>
-                                <p className={'mb-0'} style={{fontSize: '1rem'}}>USPTO 62/844,204</p>
-                            </HBox>
+                            {/*<ShareIcons size={18} color={'#000'}/>*/}
+                            <p style={{fontWeight: 'bold', textAlign:'center'}}>Designed and developed by Oléo Vape™ in Tel-Aviv</p>
+                            <VBox justifyContent={'center'} alignItems={'center'}>
+                                <p className={'mb-0'} style={{fontSize: '1rem'}}>Design - (Patent Pending 63868)
+                                </p>
+                                {/*<a href={'/'}*/}
+                                      {/*style={{color: '#000', fontSize: '1rem'}}*/}
+                                      {/*className={'px-3 my-4 text-center'}>terms & conditions</a>*/}
+                                <p className={'mb-0'} style={{fontSize: '1rem'}}>Filling method – (Patent Pending USPTO 62/844,204)
+                                </p>
+                            </VBox>
                         </Element>
 
                         <HBox justifyContent={'center'} alignItems={'center'}>
 
-                            <p className={'mb-0 text-center'} style={{fontSize: FontSize.xxs}}>© 2019 olėo vape™ All rights reserved.</p>
+                            <p className={'mb-0 text-center'} style={{fontSize: FontSize.xxs}}>© 2019  Oléo Vape™ All rights reserved.</p>
                         </HBox>
                     </HBox>
                 </Container>
