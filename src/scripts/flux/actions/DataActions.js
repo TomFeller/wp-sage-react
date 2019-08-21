@@ -6,7 +6,7 @@ class DataActions {
     constructor() {
         const hostname = window.location.hostname;
         // hostname === 'localhost' ? 'http://127.0.0.1:82/wordpress/wp-json' :
-        const appUrl = 'http://oleo-admin.tf-interactive.com/?rest_route='; // Wordpress installation url
+        const appUrl = 'https://admin.oleovape.com/?rest_route='; // Wordpress installation url
 
         this.pagesEndPoint = `${appUrl}/wp/v2/pages&_embed`; // Endpoint for getting Wordpress Pages
         this.postsEndPoint = `${appUrl}/wp/v2/posts&_embed`; // Endpoint for getting Wordpress Posts
